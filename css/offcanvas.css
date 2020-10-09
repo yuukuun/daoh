@@ -129,11 +129,13 @@ textarea{ width: 100%;  }
         color: #022;
         background-color: #e8e7e3;
         border: 1px solid #fff;
-       text-align: center;
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     /*   显示内容限制*/
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap; 
+      /*
+       */
 }
 
 .bor { border-bottom: 1px #000 solid;  }

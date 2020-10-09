@@ -169,11 +169,13 @@ pip install --upgrade --force-reinstall 'requests==2.6.0' urllib3
 certbot certonly --webroot -w /usr/local/nginx/html/ -d $url -m 0@yahoo.com --agree-tos --test-cert -n ### --test-cert测试模式 -n不交互
  
 ###通配符域名证书
-certbot -d baidu.cn -d "*.baidu.cn" --manual --preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory certonly -m qingkele@gmail.com --agree-tos
+certbot -d baidu.cn -d "*.baidu.cn" --manual --preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory certonly \
+-m 123@gmail.com --agree-tos
  
 ###自动通配符证书，需要域名验证
 wget https://dl.eff.org/certbot-auto && chmod a+x certbot-auto
-./certbot-auto -d "*.mgleek.cn" --manual --preferred-challenges dns-01 certonly -m 1233@qq.com --agree-tos --server https://acme-v02.api.letsencrypt.org/directory
+./certbot-auto -d "*.mgleek.cn" --manual --preferred-challenges dns-01 certonly -m 1233@qq.com --agree-tos \
+--server https://acme-v02.api.letsencrypt.org/directory
  
 ###续费
 echo '0 4 * * * 2 /usr/bin/certbot renew --dry-run "/usr/local/nginx/sbin/nginx -s reload"' >> /var/spool/cron/root
