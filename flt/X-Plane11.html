@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+
+    <title>导航</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+<link href="css/main.css" rel="stylesheet">
+  </head>
+
+<body>
+    <!-- <nav class="nav-collapse"> 
+      <ul>
+        <li><a href="index.html">网页</a></li>
+        <li><a href="video.html">频道</a></li>
+        <li ><a href="soft.html">软件</a></li>
+        <li><a id="actives" href="info.html">关于</a></li>
+      </ul>
+    </nav> -->
+
+<div class="container"> <!-- 主要 DIV -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!---------------------------------------------------------------------------- 信息中心 --------------------------------------------------------------------------------->
+  <div class="row">
+    <div class="col-xs-12 biaoti"><p><a href="./X-Plane11.rar" target="_blank">X-Plane11 快捷键</a></p></div>
+  </div>
+
+<div class="row">
+<!-- <div class="col-xs-12 infos"> --><!-- <p class="lead text-left storetype"> -->
+
+  <div class="table-responsive">
+    <!--<table class="table  table-bordered table-striped ">  table-condensed table-hover table-condensed
+      <tr>
+        <td><a href="https://www.bilibili.com/video/av33695943/" target="_blank">面板介绍</a></td>
+        <td><a href="https://www.bilibili.com/video/av16652556/" target="_blank">冷启动</a></td>
+        
+      </tr>
+    </table> -->
+    <table class="table  table-bordered table-striped table-hover table-condensed"> <!-- table-condensed -->
+      <tr><td width="50%">地图ILS亲近</td><td>M</td></tr>
+      <tr><td width="50%">飞行设置</td><td>·</td></tr>
+      <tr><td width="50%">教官窗口</td><td>i</td></tr>
+    </table>
+
+    <table class="table  table-bordered table-striped table-hover table-condensed"> <!-- table-condensed -->
+      <tr><td width="50%">暂停</td><td>P</td></tr>
+      <tr><td width="50%">模拟加速</td><td>Ctrl + T</td></tr>
+      <tr><td width="50%">地速加速</td><td>Alt + T</td></tr>
+    </table>
+
+    <table class="table  table-bordered table-striped table-hover table-condensed"> <!-- table-condensed -->
+      <tr><td width="50%">放大移动视角</td><td>鼠标右键</td></tr>
+      <tr><td width="50%">默认视角</td><td>W</td></tr>
+      <tr><td width="50%">前方视角</td><td>Shift + W , Ctrl + W</td></tr>
+      <tr><td width="50%">视角位置</td><td>Ctrl + (1-9)Num</td></tr>
+      <tr><td width="50%">视角缩小放大</td><td>, + .</td></tr>
+      <tr><td width="50%">外部视角</td><td>Shift + (1-6)</td></tr>
+      <tr><td width="50%">太阳模式</td><td>Shift + S</td></tr>
+      <tr><td width="50%">夜景模式</td><td>Shift + N</td></tr>
+    </table>
+
+    <table class="table  table-bordered table-striped table-hover table-condensed"> <!-- table-condensed -->
+      <tr><td width="50%">起落架</td><td>G</td></tr>
+      <tr><td width="50%">刹车和释放</td><td>V , B</td></tr>
+      <tr><td width="50%">打开减速板</td><td>1</td></tr>
+      <tr><td width="50%">关闭减速板</td><td>2</td></tr>
+    </table>
+
+    <table class="table  table-bordered table-striped table-hover table-condensed"> <!-- table-condensed -->
+      <tr><td width="50%">油门大小</td><td>F2 F1</td></tr>
+      <tr><td width="50%">反推</td><td>Shift + /</td></tr>
+      
+    </table>
+
+     <table class="table  table-bordered table-striped table-hover table-condensed"> <!-- table-condensed -->
+      <tr><td width="50%">烟雾开关</td><td>X</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="row"><div class="col-xs-12 col-md-12 btit">154156</div></div>
+<div class="row"><pre>
+
+</pre></div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+</div> <!-- 主要 DIV -->
+
+    <script>
+      var navigation = responsiveNav(".nav-collapse", {
+        animate: true,                    // Boolean: Use CSS3 transitions, true or false
+        transition: 284,                  // Integer: Speed of the transition, in milliseconds
+        label: "Menu",                    // String: Label for the navigation toggle
+        insert: "after",                  // String: Insert the toggle before or after the navigation
+        customToggle: "",                 // Selector: Specify the ID of a custom toggle
+        closeOnNavClick: false,           // Boolean: Close the navigation when one of the links are clicked
+        openPos: "relative",              // String: Position of the opened nav, relative or static
+        navClass: "nav-collapse",         // String: Default CSS class. If changed, you need to edit the CSS too!
+        navActiveClass: "js-nav-active",  // String: Class that is added to <html> element when nav is active
+        jsClass: "js",                    // String: 'JS enabled' class which is added to <html> element
+        init: function(){},               // Function: Init callback
+        open: function(){},               // Function: Open callback
+        close: function(){}               // Function: Close callback
+      });
+    </script>
+
+  </body>
+</html>
