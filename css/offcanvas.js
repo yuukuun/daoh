@@ -6,10 +6,11 @@ $(function () {
   })
 })
 
-
+  // location.reload();
 //全局变量
-var player = ""	
+var player = "";
 function play(urls) {
+
 	  //修改视频
       var player = document.getElementById("player");  //获取ID为player元素
       player.src = urls;                //修改播放器的src
@@ -23,8 +24,7 @@ function play(urls) {
       audiodown.setAttribute("href",urls);	//修改href
       audiodown.setAttribute("download",urls);	//修改href
 
-    
-     
+
     //修改播放器
       var tit = urls;
       var arr = tit.split(".");
@@ -32,8 +32,8 @@ function play(urls) {
       // alert(lrc);
       document.getElementById("myModalLabel").innerText = arr[0]; //修改标题
       document.getElementById("inobj").data = lrc;  //修改导入文件  
+     
 }
-
 ////////////////////代码快速复制////////////////////
    $(function(){
         //给每一串代码元素增加复制代码节点
