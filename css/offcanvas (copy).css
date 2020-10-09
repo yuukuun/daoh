@@ -1,4 +1,3 @@
-/***************************bootstrap 4.5 offcanvas 导航定义************************************/
 html,
 body {
   overflow-x: hidden; /* Prevent scroll on narrow devices */
@@ -76,8 +75,50 @@ body {
 .lh-125 { line-height: 1.25; }
 .lh-150 { line-height: 1.5; }
 
-/*******************************一级目录标题***********************************/
-/*  linux 和 go代码复制  */
+/*********************************************************************/
+.container a { color: #000; }
+.container-fluid a { color: #000; }
+  
+/*店铺导航的*/
+.btit{
+        text-align: left;
+        font: 17px/35px arial,sans-serif;
+        border-top: #000 solid red;
+        background-color: #ccccca;
+        color: black;
+        text-align: center;
+        border-top: 15px solid #fff;
+}
+.txt {
+  font: 16px/5px arial,sans-serif;
+        color: #000;
+}
+.tit{
+        font: 16px/28px arial,sans-serif; 
+        color: #022;
+        background-color: #e8e7e3;
+        border: 1px solid #fff;
+       text-align: center;
+}
+.tit:hover {    background-color:  #ccccca;   }    
+.tit:link {   background-color:  #ccccca; }
+.texts{
+        font: 16px/25px arial,sans-serif; 
+        color: #022;
+}
+/*背景*/
+.imp {   
+       /*border-bottom: 1px #cf0d0d solid;*/ 
+       background-color:  #bebebe;
+  }
+.imps {   
+        background-color:  #828282;
+        
+  }
+.bor { border-bottom: 1px #000 solid;  }
+
+
+/*代码复制*/
   .container-fluid pre {
     /*position: relative;
     background-color: #red;
@@ -112,95 +153,41 @@ pre .btn-pre-copy{
     transition: color .1s;
 }
 textarea{ width: 100%;  }
-/*  soft.html 和 site.html */
-.container a { color: #000; }
-.container-fluid a { color: #000; }
-.btit{
-        text-align: left;
-        font: 17px/35px arial,sans-serif;
-        border-top: #000 solid red;
-        background-color: #ccccca;
-        color: black;
-        text-align: center;
-        border-top: 15px solid #fff;
-}
-.tit{
-        font: 16px/28px arial,sans-serif; 
-        color: #022;
-        background-color: #e8e7e3;
-        border: 1px solid #fff;
-       text-align: center;
-}
-.bor { border-bottom: 1px #000 solid;  }
-.imp { background-color:  #bebebe;  }
-.tit:hover {    background-color:  #ccccca;   }    
-.tit:link {   background-color:  #ccccca; }
-/*  图片导航  */
+
+
+/*图片导航*/
 .links { 
     border: 6px #fff solid;
     padding: 4px;
     padding-bottom: 1px;
     font: 13px/24px arial,sans-serif; 
+
  }
- .links:hover {    
+ .bg {
+     background-color: #eee;
+ }
+.links:hover {    
     /*background-color: #ffcccc; */
     color: red;
     border: 1px red solid; 
     font: bold 13px/24px arial,sans-serif; 
-} 
-/*  到顶部 */
+}  
+
+.logo {
+  width: 190px;
+}
+
+
+/*备案和回到顶部*/
+.beian{
+   text-align: center;
+   font: 14px/24px arial,sans-serif; 
+}
 .up {
    position:fixed;  
    width: 70px;
    height: 70px;
+
    bottom: 8%;
    right: 4%;
-}
-
-/*******************************二级目录音乐***********************************/
-/*  音频播放器 */
-.audioplayer{  
-    position: fixed;
-    bottom: 20px;
-    z-index: 1000;
-    display: none;
-}
-/*  音频播放器背景色  */
-.audioplayerbg{  
-      border: #adadad solid 1px;
-      background:  #ccccca;
-      height: 86px;  
-      position: fixed;
-      bottom: 20px;
-      font: 24px/29px arial,sans-serif;
-      vertical-align:bottom;
-      text-align: center;
-      z-index: 900;
-      display: none;
-      box-shadow: 4px 4px 10px #888888;
-}
-.lrcin {
-  height: 550px;
-}
-
-#inobj {
-  background-color: #dadada;
-  height: 500px;
- /* width: 600px;
-  height: 800px;*/
-}
-
-/*视频播放器*/
-.ifrvideo{
-    z-index: 1000;
-    position: fixed;
-    bottom: 20px;
-    height:250px;
-    border: 1px solid #ccccca;
-    display: none;
-}
-
-.hou {
-  background-color: #fff;
-  height: 400px;
 }
