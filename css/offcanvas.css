@@ -165,6 +165,18 @@ textarea{ width: 100%;  }
    right: 4%;
 }
 
+/*******************************博客文本***********************************/
+.texts {
+font: 18px/28px arial,sans-serif; 
+white-space: pre-wrap;           /* css-3 */
+white-space: -moz-pre-wrap;      /* Mozilla, since 1999 */
+white-space: -pre-wrap;          /* Opera 4-6 */
+white-space: -o-pre-wrap;        /* Opera 7 */
+word-wrap: break-word;           /* Internet Explorer 5.5+ */
+
+}
+
+
 /*******************************二级目录音乐***********************************/
 /*  音频播放器 */
 .audioplayer{  
