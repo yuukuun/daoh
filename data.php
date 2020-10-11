@@ -12,18 +12,6 @@ array("b","http://www.ikanmv.com","ikanmv电影"),
 );
 
 
-// https://www.pianyivps.com/4098.html  VPS推荐 
-// https://www.wn789.com/tag/%E5%9B%BD%E5%A4%96%E6%9C%80%E4%BE%BF%E5%AE%9Cvps  VPS推荐 
-// https://justmysocks3.net/  JustMySocks 
-// https://bwh88.net/  Bangwagon VPS 
-// https://vultr.com/  Vultr VPS 
-// https://cloudcone.com/  CloudCone VPS 
-
-// https://namesilo.com/  namesilo域名 
-// https://freenom.com/  免费域名 
-// https://mail.protonmail.com/  protonmail
-// https://wizardforcel.gitbooks.io/daxueba-kali-linux-tutorial  Kali Linux 渗透 
-
 
 
 ?>
