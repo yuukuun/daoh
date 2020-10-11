@@ -25,10 +25,9 @@ fi
 mkdir /usr/local/nginx/$url
 cp -r /usr/local/nginx/html/* /usr/local/nginx/$url/
 sed -i "s%\$urls%$url%g" /usr/local/nginx/conf.d/$url.conf
-# sed -i "s%\$paths%$url%g" /usr/local/nginx/conf.d/$url.conf
 
 /usr/local/nginx/sbin/nginx -t
 /usr/local/nginx/sbin/nginx -s reload
-systemctl restart nginx.service
+# systemctl restart nginx.service
 
 

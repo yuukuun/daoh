@@ -6,12 +6,11 @@ $(function () {
   })
 })
 
-  // location.reload();
-//全局变量
+////////////////////音频////////////////////
 var player = "";
 function play(urls) {
 
-	  //修改视频
+	  // 本地视频视频
       var player = document.getElementById("player");  //获取ID为player元素
       player.src = urls;                //修改播放器的src
       player.style.display = "block"; //显示制定的元素
@@ -34,6 +33,18 @@ function play(urls) {
       document.getElementById("inobj").data = lrc;  //修改导入文件  
      
 }
+////////////////////youtube视频////////////////////
+function ytb(urls) {
+  player = document.getElementById("player");  //获取ID为player元素
+  player.src = 'https://www.youtube.com/embed/' + urls + '?autoplay=1';    //修改播放器的src
+  player.style.display = "block"; //显示制定的元素
+
+  var audiodown = document.getElementById(urls);  //获取down元素
+  audiodown.setAttribute("href",'https://www.y2mate.com/youtube/' + urls);   // 修改href
+  
+}
+
+
 ////////////////////代码快速复制////////////////////
    $(function(){
         //给每一串代码元素增加复制代码节点
