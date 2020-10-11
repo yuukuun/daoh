@@ -1,3 +1,5 @@
+<?php require 'data.php'; ?>
+
 <!doctype html>
 <html lang="en">
 <!--------------------------------------------------头部-------------------------------------------------------->
@@ -25,7 +27,7 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="css/offcanvas.css" rel="stylesheet">
-    <title>Linux</title>
+    <title>网页</title>
   </head>
 <!--------------------------------------------------导航-------------------------------------------------------->
   <body class="bg-light">
@@ -38,9 +40,11 @@
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <!-- <li class="nav-item active"><a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a></li> -->
-      <li class="nav-item"><a class="nav-link" href="go.html">Go</a></li>
-  
-
+      <li class="nav-item active"><a class="nav-link" href="site.html">网页</a></li>
+      <li class="nav-item"><a class="nav-link" href="m/index.html">音乐</a></li>
+      <li class="nav-item"><a class="nav-link" href="head.html">头部</a></li>
+      <li class="nav-item"><a class="nav-link" href="women.html">女装</a></li>
+     
 
      <!--  <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
@@ -51,10 +55,10 @@
         </div>
       </li> -->
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+   <!--  <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go</button>
-    </form>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> -->
   </div>
 </nav>
 <!--------------------------------------------------二级导航-------------------------------------------------------->
@@ -72,10 +76,51 @@
   </nav>
 </div> -->
 <!--------------------------------------------------内容-------------------------------------------------------->
-<main role="main" class="container-fluid">
+<main role="main" class="container">
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
-<?php phpinfo(); ?>
+<div class="row"><div class="col-xs-12 col-md-12 btit">网页</div></div>
+<div class="row">
+
+<?php 
+
+$sel = "b";
+
+
+
+for ($i = 0; $i < count($site); $i++) { 
+	if ($site[$i][0] == $sel) {
+		for ($j = 1; $j < count($site[$i]); $j++) { 
+			$url = $site[$i][$j - 1];
+			$name = $site[$i][$j];
+		}
+	echo '<div class="col-6 col-md-2 tit"><a target="_blank" href="'.$url.'">'.$name.'</a></div>';
+	}
+}
+
+
+?>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="col-6 col-md-2 tit"><a target="_blank" href="http://www.51ape.com/">51ape无损音乐</a></div> -->
+
+<!-- <div class="col-6 col-md-2 tit"><a target="_blank" href="https://sina.com">新浪</a></div>
+<div class="col-6 col-md-2 tit"><a target="_blank" href="https://163.com">163</a></div> -->
+
+
+
+
+
+
+
+
+
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <div class="up"><a href="#top" target="_self"><img src="css/top.png" class="img-fluid" alt="Responsive image"></a></div> <!-- 回到顶部  -->
