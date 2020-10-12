@@ -97,6 +97,7 @@ var rules = [
             "030buy.com", 
             "cloudcone.com", 
             "cloudflare.com", 
+            "qiqing.cf", 
             "docker.com", 
             "dubox.com", 
             "pixnet.net", 
