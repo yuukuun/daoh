@@ -41,7 +41,7 @@
       <li class="nav-item"><a class="nav-link" href="go.html">Go</a></li>
       <li class="nav-item"><a class="nav-link" href="soft.html">软件</a></li>
       <li class="nav-item"><a class="nav-link" href="site.html">网页</a></li>
-<li class="nav-item"><a class="nav-link" href="blog.html">博客</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html">易经</a></li>
       <li class="nav-item"><a class="nav-link" href="m/index.html">音乐</a></li>
       <li class="nav-item"><a class="nav-link" href="head.html">头部</a></li>
       <li class="nav-item"><a class="nav-link" href="women.html">女装</a></li>
@@ -132,6 +132,7 @@ git add . && git status -sb && git commit -m "$(date +%Y.%m.%d-%H:%M)" && git pu
 sed -i '/site.html/a\ssssssssssss' *.html
 sed -i '/对配内容/a \新内容' *.html  ###对配内容后行插入
 sed -i '/对配内容/d' *.html  ###对配内容行删除
+sed -i 's/blog.html">博客/blog.html">易经/g' *.html   ###分隔符 % / !
 
 ###代理 vim .ssh/config #ssh，rsync都可以总代理
 Host github.com 11.22.33.44
