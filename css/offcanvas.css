@@ -1,9 +1,14 @@
 /***************************bootstrap 4.5 offcanvas 导航定义************************************/
-html,
+/*html,*/
+/*.bg-light {  background-color: #f8f9fa;  }*/
+.container-fluid {  background-color: #f8f9fa;  }
+.container {  background-color: #f8f9fa;  }
+.container a { color: #000;  }
+.container-fluid a { color: #000;   }
+
 body {
   overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
-
 body {
   padding-top: 56px;
 }
@@ -72,6 +77,7 @@ body {
 
 .bg-purple { background-color: #6f42c1; }
 
+
 .lh-100 { line-height: 1; }
 .lh-125 { line-height: 1.25; }
 .lh-150 { line-height: 1.5; }
@@ -87,7 +93,6 @@ body {
     padding: 10px;
 */
     position: relative;
-    background-color: #red;
     border: 1px solid #ccc;
     border-radius: 7px;
     padding: 14px;
@@ -114,8 +119,8 @@ pre .btn-pre-copy{
 }
 textarea{ width: 100%;  }
 /*  soft.html 和 site.html */
-.container a { color: #000; }
-.container-fluid a { color: #000; }
+/*.container a { color: #000;  }
+.container-fluid a { color: #000;   }*/
 .btit{
         text-align: left;
         font: 17px/35px arial,sans-serif;
@@ -123,20 +128,17 @@ textarea{ width: 100%;  }
         background-color: #ccccca;
         color: black;
         text-align: center;
-        border-top: 15px solid #fff;
+        border-top: 15px solid #f8f9fa;
 }
 .tit{
         font: 16px/28px arial,sans-serif; 
         color: #022;
         background-color: #e8e7e3;
-        border: 1px solid #fff;
+        border: 1px solid #f8f9fa;
         text-align: left;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-    /*   显示内容限制*/
-      /*
-       */
 }
 
 .bor { border-bottom: 1px #000 solid;  }
@@ -151,7 +153,6 @@ textarea{ width: 100%;  }
     font: 13px/24px arial,sans-serif; 
  }
  .links:hover {    
-    /*background-color: #ffcccc; */
     color: red;
     border: 1px red solid; 
     font: bold 13px/24px arial,sans-serif; 
@@ -167,13 +168,19 @@ textarea{ width: 100%;  }
 
 /*******************************博客文本***********************************/
 .texts {
-font: 18px/28px arial,sans-serif; 
-white-space: pre-wrap;           /* css-3 */
-white-space: -moz-pre-wrap;      /* Mozilla, since 1999 */
-white-space: -pre-wrap;          /* Opera 4-6 */
-white-space: -o-pre-wrap;        /* Opera 7 */
-word-wrap: break-word;           /* Internet Explorer 5.5+ */
-
+  font: 18px/28px arial,sans-serif; 
+  white-space: pre-wrap;           /* css-3 */
+  white-space: -moz-pre-wrap;      /* Mozilla, since 1999 */
+  white-space: -pre-wrap;          /* Opera 4-6 */
+  white-space: -o-pre-wrap;        /* Opera 7 */
+  word-wrap: break-word;           /* Internet Explorer 5.5+ */
+    /*
+  white-space: pre-wrap;            css-3 
+  white-space: -moz-pre-wrap;      Mozilla, since 1999 
+  white-space: -pre-wrap;           Opera 4-6 
+  white-space: -o-pre-wrap;        Opera 7 
+  word-wrap: break-word;           Internet Explorer 5.5+ 
+  */
 }
 
 
@@ -219,8 +226,6 @@ word-wrap: break-word;           /* Internet Explorer 5.5+ */
     border: 1px solid #ccccca;
     display: none;
 }
-
 .hou {
- /* background-color: red;*/
   height: 850px;
 }
