@@ -221,6 +221,6 @@ word-wrap: break-word;           /* Internet Explorer 5.5+ */
 }
 
 .hou {
-  background-color: #fff;
-  height: 400px;
+ /* background-color: red;*/
+  height: 550px;
 }

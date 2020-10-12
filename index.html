@@ -126,9 +126,22 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <div class="row"><div class="col-xs-12 col-md-12 btit">Linux配置</div></div>
 <div class="row"><pre>
-sed -i '/site.html/a\ssssssssssss' *.html
 wget https://moru.gq/ins.sh && chmod +x ins.sh && ./ins.sh
 wget https://raw.githubusercontent.com/yuukuun/daoh/main/ins.sh && chmod +x ins.sh && ./ins.sh
+git add . && git status -sb && git commit -m "$(date +%Y.%m.%d-%H:%M)" && git push
+
+sed -i '/site.html/a\ssssssssssss' *.html
+sed -i '/对配内容/a \新内容' *.html  ###对配内容后行插入
+sed -i '/对配内容/d' *.html  ###对配内容行删除
+
+###代理 vim .ssh/config #ssh，rsync都可以总代理
+Host github.com 11.22.33.44
+ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
+#ProxyCommand ncat --proxy-type socks5 --proxy 127.0.0.1:1080 %h %p
+ServerAliveInterval  20 ###每20秒链接一次
+
+ssh root@11.22.33.44 -p 22 ~/.ssh/id_rsa
+rsync -av -e 'ssh root@11.22.33.44 -p 22 -i ~/.ssh/id_rsa' --exclude={'目录',} /root/* root@:/root/ ###--exclude={'目录',}排除目录
 </pre></div>
 
 <!---------------------------------------------------------------------------------------------------------------------------->
@@ -139,11 +152,6 @@ wget https://raw.githubusercontent.com/yuukuun/daoh/main/ins.sh && chmod +x ins.
 ssh -T -p 22 git@github.com -i ~/.ssh/id_rsa    ###测试
 git config --global user.name "username"    ###设置用户名
 git config --global user.email "user@gmail.com"    ###设置邮箱
-
-###代理 vim .ssh/config
-Host github.com
-    ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
-    ServerAliveInterval   10
 
 ###  <a href="https://github.com/yuukuun/tool/commits/master/" target="_blank">这里修改状态</a>
 git status -sb ###本地与远程是否一致
@@ -255,7 +263,7 @@ acme.sh --cron  ###续期情
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <div class="up"><a href="#top" target="_self"><img src="css/top.png" class="img-fluid" alt="Responsive image"></a></div> <!-- 回到顶部  -->
-<div class="row"><hr></div>
+<div class="row hou"><hr></div>
 </main>
 
     <!-- Optional JavaScript -->
