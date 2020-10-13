@@ -82,6 +82,7 @@
 <!--------------------------------------------------二级导航-------------------------------------------------------->
 <div class="nav-scroller bg-white shadow-sm">
   <nav class="nav nav-underline">
+    <a class="nav-link" href="mom.html">内存</a>
     <a class="nav-link" href="index.html">Linux</a>
     <a class="nav-link" href="go.html">Go</a>
     <a class="nav-link active" href="php.html">PHP</a>
@@ -91,23 +92,117 @@
 <main role="main" class="container-fluid">
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
-<div class="row"><div class="col-xs-12 col-md-12 btit">PHP基础</div></div>
-<span  class="texts" >  
-在内存中存储的每个空间都独立的内存地址。通常由0x(16进制)表示。逻辑上大体内存分为四段，栈空间，堆空间，初始化数据段，代码段。
-在内存中存储的每个空间都独立的内存地址。通常由0x(16进制)表示。逻辑上大体内存分为四段，栈空间，堆空间，初始化数据段，代码段。栈：空间小，cpu访问最快，长度不变占用空间较小的数据，先进后出原则。double,boolean,int。
-堆：动态分配的内存段，大小可以扩张或缩小。
-初始化数据段：可执行文件中初始化的全局变量，静态分配的变量。
-代码段：可执行文件操作指令。只读不可修改。函数在这段内存中
+<div class="row"><div class="col-xs-12 col-md-12 btit">计算机</div></div>
+<span  class="codetext" >  
+php的很多功能需要相应的应用库，比如更好的图形支持就安装GD库。php5.6.2最稳定。集成开发工具：zend stdio 和 netbean 。前端notepad++ editplus。
 </span>
+<pre>
+//php.ini
+    ;显示错误信息  
+    display_errors = On  
+    ;显示php开始错误信息  
+    display_startup_errors = On  
+    ;日志记录错误信息  
+    log_errors = On
 
-<div class="row"><pre>
-//////变量//////
-var i int = 25
-var m = "string"( m := "string" )//go 可以进行类型推到，自己判断类型。
-var m,n,l int //定义多个变量
-var m,n,l = 45,"string",65.89 ( m,n,l := 45,"string",65.89 
-</pre></div>
+//编码设置
+    header("content-type:text/html;charset="utf-8");    
+ 
+引入方式（推荐require和require_once方式）：
+用require方式引入文件成功返回 1 。也可以实际情况返回数组或变量（return）。当遇到引入文件遇到return时候终止引入，返回主文件继续执行。
+ 
+    require 'a.php';    //require可以多次引入php文件，文件不存在退出程序
+    require_once 'a.php';    //require_once只能单次引入php文件，文件不存在退出程序
+    include 'a.php';    //重复引入单个文件，文件不存在继续执行程序。
+    include_once 'a.php';    //只能引入一次单个文件，文件不存在继续执行程序。
+</pre>
 
+<span  class="codetext" >
+变量：
+      局部变量：只有函数内部有效，函数执行完就注销。全局变量：全局通用，函数内外都可以用。超全局变量：php中许多预定义的变量是全局的。函数终须执行GLOBAL $variable 就可以用的。</span>
+<span  class="codetext" >
+对象：
+      类和对象的关系如同模具与铸件的关系，类的实例化就是对象。开发中要先抽象类再用该创建对象。对象也类似变量的数据类型，运行时候都加载到内存。对象在堆中，对象的引用名字在栈中，不能直接访问对象，通过引用名称访问。PHP中new Person();实例化一个对象，每个对象有自己独立空间，都存放类中声明的成员。
+      关键字1：var(成员属性默认)，public(公共访问)，pretected(类继承者可访问)，private(类内可访问),如果没指定关键字默认都是public。$this 关键字是成员方法访问成员属性。
+构造方法和析构方法是对象特殊方法，它们都对象生命周期有关。构造方法是对象创建后第一个调用，通常对成员属性初始化，PHP5以前类名和构造方法名相同，一个类只能有一个构造方法。析构方法是对象销毁前最后调用的方法，通常是关闭文件，释放资源等等。析构方法没有参数。
+静态函数也叫类的方法，我们操作静态属性可以使用静态函数操作，使用静态函数在没有实例化对象的情况下使用。
+静态方法中不能调用非静态属性。普通成员函数，可以访问静态属性
+</span>
+<pre>
+类定义：
+类中直接声明的变量叫成员属性。
+class 类名{
+     关键字 成员属性名;
+     关键字 function 成员方法名(){}
+}
+ 
+对象实例化：
+$变量名 = new 类名([参数]);
+访问成员属性：
+$变量名 -> 成员属性 = 值;
+成员方法内访问成员属性：
+function 方法名(){ $this->成员属性名; }
+
+构造方法：
+function __construct(){} //构造方法
+function __destruct(){} //构方法是
+
+命名：
+类名文件的命名是按照，ClassName.class.php方式命名的。
+对象1=对象2时候对象1和对象2是值拷贝，但是通过对象标识符指向同个对象属性值。
+ 
+class 类名{   修饰符 成员属性；构造函数；修饰符 成员函数； 析构函数；  }
+修饰符：public(公开),protected(类内和继承可访问),private(类内可访问)
+构造函数:初始化类的对象。没有返回值，定义构造函数后默认的构造方法被覆盖。默认修饰符是public
+析构函数：系统销毁对象之前，释放对象分配的资源。最后创建的最先释放。
+
+self::$VarName; //访问静态属性
+OjeactName->StaticFunctionName();( ClassName::StaticFunctionName(); ) //类的外面访问静态函数
+self::StaticFunctionName(); ( $this->StaticFunctionName(); )  //类内静态函数
+
+子类继承父类的属性和方法的继承。父类的public和protected修饰符的属性和方法子类可以继承（ class 子类 extends 父类 ）子类只能继承一个父类。
+当一个对象操作属性和函数时候现在子类查找，找不到的话然后在在父类中查找属性和方法，然后判断是否可以操作。如果父类没有到他上一级类查找。子内没有自定义构造函数时候，
+调用父类的构造函数。子类中调用父类的函数（public protected）。子类和父类方法相同，叫重写。
+$this->MyFunction();
+FatherClassName::MyFunction();
+parent::MyFunction();(parent::__construct();)
+</pre>
+<span  class="codetext">
+函数：
+1.构造函数没有返回值
+2.主要对新对象的初始化，并不是创建本身。
+3.一个类只有一个构造函数。PHP5中__construct()和类名()可以供存。
+4.如果没有构造方法，则是使用系统默认的构造方法。
+5.如果该类定义构造函数后默认的构造方法被覆盖。
+6.构造方法的默认修饰符是 public
+</span>
+<pre>
+__FILE__     //获取文件名
+__LINE__     //获取当前行数
+__FUNCION__  //当前函数名
+__CLASS__    //当前类
+__METHOD__   //当前对象方法
+define("CON_INT",100)   //定义常量
+ 
+$a = (float)$a  //$a转换成float
+is_bool($a);    //$a为是否bool
+is_int($a);     //$a为是否int
+is_string($a);  //$a为是否string
+is_array($a);   //$a为是否array
+is_object($a);      //$a为是否object
+is_resource($a);    //$a为是否resource
+is_null($a);        //$a为是否null
+is_scalar($a);      //$a为是否表量
+is_numeric($a);     //$a为是否数字或数字字符串
+is_callable($a);    //是否函数名
+ 
+unset($a)       //删除变量
+empty($a)       //是否空
+var_dump($a)    //输出类型
+</pre>
+
+<span  class="codetext"></span>
+<pre></pre>
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <div class="up"><a href="#top" target="_self"><img src="../css/top.png" class="img-fluid" alt="Responsive image"></a></div> <!-- 回到顶部  -->
