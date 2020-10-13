@@ -147,9 +147,10 @@ textarea{ width: 100%;  }
 .tit:link {   background-color:  #ccccca; }
 /*  图片导航  */
 .links { 
-    border: 6px #fff solid;
-    padding: 4px;
-    padding-bottom: 1px;
+   /* border: 6px #fff solid;
+    padding: 4px;*/
+    /*padding-bottom: 1px;*/
+    border: 1px; 
     font: 13px/24px arial,sans-serif; 
  }
  .links:hover {    
