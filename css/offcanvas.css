@@ -151,12 +151,12 @@ textarea{ width: 100%;  }
     padding: 4px;*/
     /*padding-bottom: 1px;*/
     border: 1px; 
-    font: 13px/24px arial,sans-serif; 
+    font: 12px/22px arial,sans-serif; 
  }
  .links:hover {    
     color: red;
     border: 1px red solid; 
-    font: bold 13px/24px arial,sans-serif; 
+    font: bold 12px/22px arial,sans-serif; 
 } 
 /*  到顶部 */
 .up {
