@@ -14,10 +14,9 @@ sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_
 #sed -i "/PasswordAuthentication/a\Port 19631" /etc/ssh/sshd_config
 sed -i "/PasswordAuthentication/a\Port 19631" /etc/ssh/sshd_config
 sed -i "/PasswordAuthentication/a\Port 22" /etc/ssh/sshd_config
+systemctl restart sshd 
 
-
-yum update -y
-#yum install -y yum-utils rsync wget vim 
+# yum update -y
 yum install -y rsync wget vim 
 
 systemctl start firewalld.service   
@@ -28,7 +27,6 @@ firewall-cmd --runtime-to-permanent
 firewall-cmd --reload 
 
 systemctl enable firewalld.service 
-systemctl restart sshd 
 sysctl net.ipv4.tcp_available_congestion_control
-
-shutdown -r now
+firewall-cmd --list-all
+# shutdown -r now
