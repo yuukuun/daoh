@@ -214,7 +214,7 @@ wget https://dl.eff.org/certbot-auto && chmod a+x certbot-auto
 --server https://acme-v02.api.letsencrypt.org/directory
  
 ###续费
-echo '0 4 * * * 2 /usr/bin/certbot renew --dry-run "/usr/local/nginx/sbin/nginx -s reload"' >> /var/spool/cron/root
+echo '5 4 * * 2 /usr/bin/certbot renew --dry-run "/usr/local/nginx/sbin/nginx -s reload"' >> /var/spool/cron/root
 ###删除
 certbot certificates
 certbot delete --cert-name example.com
