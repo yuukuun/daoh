@@ -40,7 +40,7 @@ function ytb(urls) {
   player.style.display = "block"; //显示制定的元素
 
   var audiodown = document.getElementById(urls);  //获取down元素
-  audiodown.setAttribute("href",'https://www.y2mate.com/youtube/' + urls);   // 修改href
+  audiodown.setAttribute("href",'https://www.y2mate.com/youtube-mp3/' + urls);   // 修改href
   
 }
 
