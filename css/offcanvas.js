@@ -48,7 +48,7 @@ function ytb(urls) {
 ////////////////////代码快速复制/////////////////////////////////////////////////////////////////
    $(function(){
         //给每一串代码元素增加复制代码节点
-        let preList = $(".container-fluid pre");
+        let preList = $(".container pre");
         for (let pre of preList) {
             //给每个代码块增加上“复制代码”按钮
             let btn = $("<span class=\"btn-pre-copy\" onclick='preCopy(this)'>复制代码</span>");

@@ -32,12 +32,12 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
   <a class="navbar-brand mr-auto mr-lg-0" href="#">&nbsp;</a>
   <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon"></span></div>
   </button>
 
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <!-- <li class="nav-item active"><a class="nav-link" href="../#">Dashboard <span class="sr-only">(current)</span></a></li> -->
+      <!-- <li class="nav-item active"><a class="nav-link" href="../#">Dashboard <span class="sr-only">(current)</span></div></a></li> -->
  <li class="nav-item"><a class="nav-link" href="../index.html">博客</a></li>
       <li class="nav-item active"><a class="nav-link" href="#">Lang</a></li>
     <!--   <li class="nav-item active"><a class="nav-link" href="../go.html">Go</a></li> -->
@@ -92,14 +92,14 @@
   </nav>
 </div>
 <!--------------------------------------------------内容-------------------------------------------------------->
-<main role="main" class="container-fluid">
+<main role="main" class="container">
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 <div class="row"><div class="col-xs-12 col-md-12 btit">计算机</div></div>
-<span  class="codetext" >  
+<div class="row"><span  class="txt">  
 php的很多功能需要相应的应用库，比如更好的图形支持就安装GD库。php5.6.2最稳定。集成开发工具：zend stdio 和 netbean 。前端notepad++ editplus。
-</span>
-<pre>
+</span></div>
+<div class="row"><pre>
 //php.ini
     ;显示错误信息  
     display_errors = On  
@@ -118,20 +118,20 @@ php的很多功能需要相应的应用库，比如更好的图形支持就安�
     require_once 'a.php';    //require_once只能单次引入php文件，文件不存在退出程序
     include 'a.php';    //重复引入单个文件，文件不存在继续执行程序。
     include_once 'a.php';    //只能引入一次单个文件，文件不存在继续执行程序。
-</pre>
+</pre></div>
 
-<span  class="codetext" >
+<div class="row"><span  class="txt">
 变量：
-      局部变量：只有函数内部有效，函数执行完就注销。全局变量：全局通用，函数内外都可以用。超全局变量：php中许多预定义的变量是全局的。函数终须执行GLOBAL $variable 就可以用的。</span>
-<span  class="codetext" >
+      局部变量：只有函数内部有效，函数执行完就注销。全局变量：全局通用，函数内外都可以用。超全局变量：php中许多预定义的变量是全局的。函数终须执行GLOBAL $variable 就可以用的。</span></div>
+<div class="row"><span  class="txt">
 对象：
       类和对象的关系如同模具与铸件的关系，类的实例化就是对象。开发中要先抽象类再用该创建对象。对象也类似变量的数据类型，运行时候都加载到内存。对象在堆中，对象的引用名字在栈中，不能直接访问对象，通过引用名称访问。PHP中new Person();实例化一个对象，每个对象有自己独立空间，都存放类中声明的成员。
       关键字1：var(成员属性默认)，public(公共访问)，pretected(类继承者可访问)，private(类内可访问),如果没指定关键字默认都是public。$this 关键字是成员方法访问成员属性。
 构造方法和析构方法是对象特殊方法，它们都对象生命周期有关。构造方法是对象创建后第一个调用，通常对成员属性初始化，PHP5以前类名和构造方法名相同，一个类只能有一个构造方法。析构方法是对象销毁前最后调用的方法，通常是关闭文件，释放资源等等。析构方法没有参数。
 静态函数也叫类的方法，我们操作静态属性可以使用静态函数操作，使用静态函数在没有实例化对象的情况下使用。
 静态方法中不能调用非静态属性。普通成员函数，可以访问静态属性
-</span>
-<pre>
+</span></div>
+<div class="row"><pre>
 类定义：
 类中直接声明的变量叫成员属性。
 class 类名{
@@ -169,8 +169,8 @@ self::StaticFunctionName(); ( $this->StaticFunctionName(); )  //类内静态函�
 $this->MyFunction();
 FatherClassName::MyFunction();
 parent::MyFunction();(parent::__construct();)
-</pre>
-<span  class="codetext">
+</pre></div>
+<div class="row"><span class="txt">
 函数：
 1.构造函数没有返回值
 2.主要对新对象的初始化，并不是创建本身。
@@ -178,8 +178,8 @@ parent::MyFunction();(parent::__construct();)
 4.如果没有构造方法，则是使用系统默认的构造方法。
 5.如果该类定义构造函数后默认的构造方法被覆盖。
 6.构造方法的默认修饰符是 public
-</span>
-<pre>
+</span></div>
+<div class="row"><pre>
 __FILE__     //获取文件名
 __LINE__     //获取当前行数
 __FUNCION__  //当前函数名
@@ -202,10 +202,10 @@ is_callable($a);    //是否函数名
 unset($a)       //删除变量
 empty($a)       //是否空
 var_dump($a)    //输出类型
-</pre>
+</pre></div>
 
-<span  class="codetext"></span>
-<pre></pre>
+<div class="row"><span class="txt"></span></div>
+<div class="row"><pre></pre></div>
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <div class="up"><a href="#top" target="_self"><img src="../css/top.png" class="img-fluid" alt="Responsive image"></a></div> <!-- 回到顶部  -->

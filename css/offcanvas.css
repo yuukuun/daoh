@@ -83,9 +83,37 @@ body {
 .lh-150 { line-height: 1.5; }
 
 
-/*******************************一级目录标题***********************************/
+/*******************************代码复制***********************************/
+/*代码文本*/
+.txt {
+  font: 17px arial,sans-serif; 
+  white-space: pre-wrap;           /* css-3 */
+  white-space: -moz-pre-wrap;      /* Mozilla, since 1999 */
+  white-space: -pre-wrap;          /* Opera 4-6 */
+  white-space: -o-pre-wrap;        /* Opera 7 */
+  word-wrap: break-word;           /* Internet Explorer 5.5+ */
+   /*
+  white-space: pre-wrap;            css-3 
+  white-space: -moz-pre-wrap;      Mozilla, since 1999 
+  white-space: -pre-wrap;           Opera 4-6 
+  white-space: -o-pre-wrap;        Opera 7 
+  word-wrap: break-word;           Internet Explorer 5.5+ 
+  */
+}
+/*内容文本*/
+.texts {
+  /*background-color: red;*/
+  font: 22px/28px arial,sans-serif; 
+  white-space: pre-wrap;           /* css-3 */
+  white-space: -moz-pre-wrap;      /* Mozilla, since 1999 */
+  white-space: -pre-wrap;          /* Opera 4-6 */
+  white-space: -o-pre-wrap;        /* Opera 7 */
+  word-wrap: break-word;           /* Internet Explorer 5.5+ */
+
+}
+
 /*  linux 和 go代码复制  */
-  .container-fluid pre {
+  .container pre {
     /*position: relative;
     background-color: #red;
     border: 1px solid #ccc;
@@ -96,7 +124,10 @@ body {
     border: 1px solid #ccc;
     border-radius: 7px;
     padding: 14px;
-    background-color: #f1fff6;
+  /*  background-color: #f1fff6;*/
+/*    color: #D3D7CF;*/
+    background-color: #2E3436;
+    color: #D3D7CF;
     width: 100%;
 }
 pre .btn-pre-copy{
@@ -121,6 +152,7 @@ textarea{ width: 100%;  }
 /*  soft.html 和 site.html */
 /*.container a { color: #000;  }
 .container-fluid a { color: #000;   }*/
+/*******************************一级目录标题***********************************/
 .btit{
         text-align: left;
         font: 17px/35px arial,sans-serif;
@@ -168,31 +200,6 @@ textarea{ width: 100%;  }
 }
 
 /*******************************博客文本***********************************/
-.codetext {
-  font: 16px arial,sans-serif; 
-  white-space: pre-wrap;           /* css-3 */
-  white-space: -moz-pre-wrap;      /* Mozilla, since 1999 */
-  white-space: -pre-wrap;          /* Opera 4-6 */
-  white-space: -o-pre-wrap;        /* Opera 7 */
-  word-wrap: break-word;           /* Internet Explorer 5.5+ */
-
-}
-.texts {
-  font: 19px/28px arial,sans-serif; 
-  white-space: pre-wrap;           /* css-3 */
-  white-space: -moz-pre-wrap;      /* Mozilla, since 1999 */
-  white-space: -pre-wrap;          /* Opera 4-6 */
-  white-space: -o-pre-wrap;        /* Opera 7 */
-  word-wrap: break-word;           /* Internet Explorer 5.5+ */
-    /*
-  white-space: pre-wrap;            css-3 
-  white-space: -moz-pre-wrap;      Mozilla, since 1999 
-  white-space: -pre-wrap;           Opera 4-6 
-  white-space: -o-pre-wrap;        Opera 7 
-  word-wrap: break-word;           Internet Explorer 5.5+ 
-  */
-}
-
 
 /*******************************二级目录音乐***********************************/
 /*  音频播放器 */
