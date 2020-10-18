@@ -12,7 +12,8 @@
 
         //默认icon的css属性值
         var defaultOpt = {
-            offset : 420,
+            //offset : 420,
+            offset : 320,
             speed : 500,
             iconSpeed : 200,
             animationShow : {'opacity' : '1'},
@@ -74,7 +75,8 @@
 
 //例子
 $('#js-go_top').gotoTop({
-        offset : 500, //距离顶部的位置
+        //offset : 500, //距离顶部的位置
+        offset : 200, //距离顶部的位置
         speed : 300, //移动到顶部的速度
         /*     iconSpeed : 300, //icon动画样式的速度*/
         animationShow : {
