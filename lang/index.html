@@ -107,10 +107,9 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 <div class="row"><div class="col-xs-12 col-md-12 btit">Linux配置</div></div>
+<div class="row"><pre>wget https://raw.githubusercontent.com/yuukuun/daoh/main/ins.sh && chmod +x ins.sh && ./ins.sh</pre></div>
+<div class="row"><pre>git add . && git status -sb && git commit -m "$(date +%Y.%m.%d-%H:%M)" && git push</pre></div>
 <div class="row"><pre>
-wget https://raw.githubusercontent.com/yuukuun/daoh/main/ins.sh && chmod +x ins.sh && ./ins.sh
-git add . && git status -sb && git commit -m "$(date +%Y.%m.%d-%H:%M)" && git push
-
 ###快捷键
 Ctrl + C    #强制终止
 Ctrl + L    #清屏
@@ -133,8 +132,7 @@ ServerAliveInterval  20 ###每20秒链接一次
 ssh root@11.22.33.44 -p 22 ~/.ssh/id_rsa
 rsync -av -e 'ssh root@11.22.33.44 -p 22 -i ~/.ssh/id_rsa' --exclude={'目录',} /root/* root@:/root/ ###--exclude={'目录',}排除目录
 
-
-</pre></div></div>
+</pre></div>
 
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
