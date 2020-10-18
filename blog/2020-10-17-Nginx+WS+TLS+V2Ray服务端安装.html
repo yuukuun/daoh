@@ -25,7 +25,7 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="../css/offcanvas.css" rel="stylesheet">
-    <title>go</title>
+    <title>Blog</title>
   </head>
 <!--------------------------------------------------导航-------------------------------------------------------->
   <body class="bg-light">
@@ -86,9 +86,9 @@
 <main role="main" class="container-fluid">
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../index.html">V2Ray Nginx+WS+TLS安装</a></div></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../index.html">Nginx+WS+TLS+V2Ray服务端安装</a></div></div>
 <pre></pre>
-<span class="codetext" >1. 需要注册一个域名，然后把域名指向到自己的VPS的IP。(免费域名注册：<a href="https://www.freenom.com/" target="_blank">https://www.freenom.com/</a>)</span>
+<span class="codetext" >1. 需要注册一个域名，然后把域名指向到自己的VPS的IP。(免费域名注册：<a href="https://www.freenom.com/" target="_blank">https://freenom.com</a>  顶级域名注册：<a href="https://namesilo.com" target="_blank">https://namesilo.com</a>)</span>
 <pre>user@4790:~$ ping -c 4 qiqing.ga
 PING qiqing.ga (45.76.97.209) 56(84) bytes of data.
 64 bytes from 45.76.97.209.vultr.com (45.76.97.209): icmp_seq=1 ttl=48 time=306 ms
@@ -96,24 +96,50 @@ PING qiqing.ga (45.76.97.209) 56(84) bytes of data.
 64 bytes from 45.76.97.209.vultr.com (45.76.97.209): icmp_seq=3 ttl=48 time=307 ms
 64 bytes from 45.76.97.209.vultr.com (45.76.97.209): icmp_seq=4 ttl=48 time=301 ms
 </pre>
+
 <span class="codetext" >2. 用ssh链接自己的VPS，自动安装V2Ray Nginx+WS+TLS</span>
 <pre>bash <(curl -L https://raw.githubusercontent.com/yuukuun/v2fly/main/v2fly.sh)</pre>
 
+<span class="codetext" >3. 输入域名</span>
+<pre>Please inter domain : qiqing.ga</pre>
 
-2. 第二步 用ssh链接自己的VPS。
-3. 第三步 安装：
-
+<span class="codetext" >4. 安装成功</span>
 <pre>
+● nginx.service - nginx
+   Loaded: loaded (/etc/systemd/system/nginx.service; enabled; vendor preset: disabled)
+   Active: active (running) since Sun 2020-10-18 01:40:36 UTC; 495ms ago
+ Main PID: 18170 (nginx)
+    Tasks: 2 (limit: 5048)
+   Memory: 1.9M
+   CGroup: /system.slice/nginx.service
+           ├─18170 nginx: master process /usr/local/nginx/sbin/nginx
+           └─18172 nginx: worker process
+
+● v2ray.service - V2Ray Service
+   Loaded: loaded (/etc/systemd/system/v2ray.service; enabled; vendor preset: disabled)
+  Drop-In: /etc/systemd/system/v2ray.service.d
+           └─10-donot_touch_single_conf.conf
+   Active: active (running) since Sun 2020-10-18 01:40:36 UTC; 276ms ago
+     Docs: https://www.v2fly.org/
+ Main PID: 18193 (v2ray)
+    Tasks: 6 (limit: 5048)
+   Memory: 9.9M
 
 </pre>
+
+<span class="codetext" >5. 把刚才输入的域名用浏览器打开，就可以看到v2ray客户端和参数。(1)电脑端参数配置好直接下载就能用。(2)Android客户端安装后手动暑输入参数。(3)苹果IOS客户端需要美国区的帐号下载安装和参数配置。</span>
+<img src="" class="">
+
+
 
 <span class="codetext" ></span>
 <pre></pre>
 
+
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <div class="up"><a href="#top" target="_self"><img src="../css/top.png" class="img-fluid" alt="Responsive image"></a></div> <!-- 回到顶部  -->
-<div class="row"><hr></div>
+<div class="row hou"><hr></div>
 </main>
 
     <!-- Optional JavaScript -->
