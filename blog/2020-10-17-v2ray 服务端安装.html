@@ -86,15 +86,29 @@
 <main role="main" class="container-fluid">
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../index.html">标题</a></div></div>
-<span class="codetext" >
-v2ray的web + nginx伪装模式，需要注册一个域名。(免费域名注册：<a href="https://www.freenom.com/" target="_blank">https://www.freenom.com/</a>)
-</span>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../index.html">V2Ray Nginx+WS+TLS安装</a></div></div>
+<pre></pre>
+<span class="codetext" >1. 需要注册一个域名，然后把域名指向到自己的VPS的IP。(免费域名注册：<a href="https://www.freenom.com/" target="_blank">https://www.freenom.com/</a>)</span>
+<pre>user@4790:~$ ping -c 4 qiqing.ga
+PING qiqing.ga (45.76.97.209) 56(84) bytes of data.
+64 bytes from 45.76.97.209.vultr.com (45.76.97.209): icmp_seq=1 ttl=48 time=306 ms
+64 bytes from 45.76.97.209.vultr.com (45.76.97.209): icmp_seq=2 ttl=48 time=315 ms
+64 bytes from 45.76.97.209.vultr.com (45.76.97.209): icmp_seq=3 ttl=48 time=307 ms
+64 bytes from 45.76.97.209.vultr.com (45.76.97.209): icmp_seq=4 ttl=48 time=301 ms
+</pre>
+<span class="codetext" >2. 用ssh链接自己的VPS，自动安装V2Ray Nginx+WS+TLS</span>
+<pre>bash <(curl -L https://raw.githubusercontent.com/yuukuun/v2fly/main/v2fly.sh)</pre>
+
+
+2. 第二步 用ssh链接自己的VPS。
+3. 第三步 安装：
+
 <pre>
-wget -c https://raw.githubusercontent.com/yuukuun/v2fly/main/v2fly.sh && chmod +x v2fly.sh && bash v2fly.sh
+
 </pre>
 
-
+<span class="codetext" ></span>
+<pre></pre>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
