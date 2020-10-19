@@ -1,6 +1,6 @@
 <?php 
 //输入密码后访问本页内容
-$password = "123456";
+$password = "eching";
 //这里是密码 
 $p = "";
 if(isset($_COOKIE["isview"]) and $_COOKIE["isview"] == $password) {
