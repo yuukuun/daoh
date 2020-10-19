@@ -43,7 +43,7 @@
       <li class="nav-item"><a class="nav-link" href="../lang/index.html">Lang</a></li>
       <li class="nav-item"><a class="nav-link" href="../index.html">软件</a></li>
       <li class="nav-item"><a class="nav-link" href="../site.html">网页</a></li>
-<li class="nav-item active"><a class="nav-link" href="../blog.html">易经</a></li>
+<li class="nav-item active"><a class="nav-link" href="../ejing.html">易经</a></li>
       <li class="nav-item"><a class="nav-link" href="../m/index.html">音乐</a></li>
       <li class="nav-item"><a class="nav-link" href="../head.html">头部</a></li>
       <li class="nav-item"><a class="nav-link" href="../women.html">女装</a></li>
@@ -74,7 +74,7 @@ $temp=<<<EOT
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------------->
-<h1><a href="../blog.html">盟軍未來卅年對中國要做的目標</a></h1><pre class="texts"><hr>
+<h1><a href="../blog.html">盟軍未來卅年對中國要做的目標</a></h1><span class="texts"><hr>
 妙寄子 2018/9/9
 
   就易經命理場景的分析，中國的未來卅年，中國的傳統產業會增長。但是，在高科技領域，中國會被限制在某些範圍之內。這是在命理分析中，看到的場景。
@@ -97,7 +97,7 @@ echo $temp;
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-<hr></pre>
+<hr></span>
 <div class="up"><a href="#top" target="_self"><img src="../css/top.png" class="img-fluid" alt="Responsive image"></a></div> <!-- 回到顶部  -->
 <div class="row hou"><hr></div>
 </main>

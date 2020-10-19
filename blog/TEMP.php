@@ -43,7 +43,7 @@
       <li class="nav-item"><a class="nav-link" href="../lang/index.html">Lang</a></li>
       <li class="nav-item"><a class="nav-link" href="../index.html">软件</a></li>
       <li class="nav-item"><a class="nav-link" href="../site.html">网页</a></li>
-<li class="nav-item active"><a class="nav-link" href="../blog.html">易经</a></li>
+<li class="nav-item active"><a class="nav-link" href="../ejing.html">易经</a></li>
       <li class="nav-item"><a class="nav-link" href="../m/index.html">音乐</a></li>
       <li class="nav-item"><a class="nav-link" href="../head.html">头部</a></li>
       <li class="nav-item"><a class="nav-link" href="../women.html">女装</a></li>
@@ -74,7 +74,7 @@ $temp=<<<EOT
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------------->
-<h1><a href="../blog.html">############################</a></h1><pre class="texts"><hr>
+<h1><a href="../blog.html">############################</a></h1><span class="texts"><hr>
 ############################
 ############################
 ############################
@@ -89,7 +89,7 @@ echo $temp;
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-<hr></pre>
+<hr></span>
 <div class="up"><a href="#top" target="_self"><img src="../css/top.png" class="img-fluid" alt="Responsive image"></a></div> <!-- 回到顶部  -->
 <div class="row hou"><hr></div>
 </main>

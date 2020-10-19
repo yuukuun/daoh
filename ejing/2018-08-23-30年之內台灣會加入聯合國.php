@@ -43,7 +43,7 @@
       <li class="nav-item"><a class="nav-link" href="../lang/index.html">Lang</a></li>
       <li class="nav-item"><a class="nav-link" href="../index.html">软件</a></li>
       <li class="nav-item"><a class="nav-link" href="../site.html">网页</a></li>
-<li class="nav-item active"><a class="nav-link" href="../blog.html">易经</a></li>
+<li class="nav-item active"><a class="nav-link" href="../ejing.html">易经</a></li>
       <li class="nav-item"><a class="nav-link" href="../m/index.html">音乐</a></li>
       <li class="nav-item"><a class="nav-link" href="../head.html">头部</a></li>
       <li class="nav-item"><a class="nav-link" href="../women.html">女装</a></li>
@@ -73,7 +73,7 @@
 $temp=<<<EOT
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------------->
-<h1><a href="../blog.html">30年之內台灣會加入聯合國</a></h1><pre class="texts"><hr>
+<h1><a href="../blog.html">30年之內台灣會加入聯合國</a></h1><span class="texts"><hr>
 妙寄子 2018/8/23
   氣候暖化，因此，颱風生成地區和路線也改變。因此，台灣未來面臨颱風的災害會少很多。
   就台灣的天地人卦而言，是【坎卦】轉向【渙卦】。這個渙卦，至少維持50年以上。
@@ -101,7 +101,7 @@ echo $temp;
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-<hr></pre>
+<hr></span>
 <div class="up"><a href="#top" target="_self"><img src="../css/top.png" class="img-fluid" alt="Responsive image"></a></div> <!-- 回到顶部  -->
 <div class="row hou"><hr></div>
 </main>

@@ -43,7 +43,7 @@
       <li class="nav-item"><a class="nav-link" href="../lang/index.html">Lang</a></li>
       <li class="nav-item"><a class="nav-link" href="../index.html">软件</a></li>
       <li class="nav-item"><a class="nav-link" href="../site.html">网页</a></li>
-<li class="nav-item active"><a class="nav-link" href="../blog.html">易经</a></li>
+<li class="nav-item active"><a class="nav-link" href="../ejing.html">易经</a></li>
       <li class="nav-item"><a class="nav-link" href="../m/index.html">音乐</a></li>
       <li class="nav-item"><a class="nav-link" href="../head.html">头部</a></li>
       <li class="nav-item"><a class="nav-link" href="../women.html">女装</a></li>
@@ -73,7 +73,7 @@
 $temp=<<<EOT
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------------->
-<h1><a href="../blog.html">中國分裂已成定局</a></h1><pre class="texts"><hr>
+<h1><a href="../blog.html">中國分裂已成定局</a></h1><span class="texts"><hr>
 妙寄子 2018/8/15
 
   註:未來，我會在這個中國分裂的大趨勢之下，立一隻卦，看它的未來。這個未來情境裡，必然是包含台灣獨立、香港獨立、上海獨立、滿州國、新疆、西藏等等的政治發展命運。這是一隻非常重要的有關中國未來的預言。大家敬請期待 !!!
@@ -104,7 +104,7 @@ echo $temp;
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-<hr></pre>
+<hr></span>
 <div class="up"><a href="#top" target="_self"><img src="../css/top.png" class="img-fluid" alt="Responsive image"></a></div> <!-- 回到顶部  -->
 <div class="row hou"><hr></div>
 </main>

@@ -43,7 +43,7 @@
       <li class="nav-item"><a class="nav-link" href="../lang/index.html">Lang</a></li>
       <li class="nav-item"><a class="nav-link" href="../index.html">软件</a></li>
       <li class="nav-item"><a class="nav-link" href="../site.html">网页</a></li>
-<li class="nav-item active"><a class="nav-link" href="../blog.html">易经</a></li>
+<li class="nav-item active"><a class="nav-link" href="../ejing.html">易经</a></li>
       <li class="nav-item"><a class="nav-link" href="../m/index.html">音乐</a></li>
       <li class="nav-item"><a class="nav-link" href="../head.html">头部</a></li>
       <li class="nav-item"><a class="nav-link" href="../women.html">女装</a></li>
@@ -73,7 +73,7 @@
 $temp=<<<EOT
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------------->
-<h1><a href="../blog.html">日本的國家轉型格局-加排流年</a></h1><pre class="texts"><hr>
+<h1><a href="../blog.html">日本的國家轉型格局-加排流年</a></h1><span class="texts"><hr>
 總論:
   預言:日本會大力輸出他的技術以換取政治勢力，政治勢力的核心就是核子武器和各國承認的勢力範圍(台灣必然是在日本的勢力範圍內了)。吉。堅守立場而獲利。所以，日本會讓自己變成國際道德行為的指標和改良自己的風俗習慣。
   2013-2015 預言:廢止非戰憲法成為日本國內民意。這個廢止非戰憲法的光鮮理由，會是未來日本國際作為的行為準則的標竿。吉。
@@ -154,7 +154,7 @@ echo $temp;
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-<hr></pre>
+<hr></span>
 <div class="up"><a href="#top" target="_self"><img src="../css/top.png" class="img-fluid" alt="Responsive image"></a></div> <!-- 回到顶部  -->
 <div class="row hou"><hr></div>
 </main>
