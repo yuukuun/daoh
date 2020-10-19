@@ -115,9 +115,9 @@ body {
 /*ejing blog文本*/
 .texts {
   /*background-color: red;*/
-  font: 20px/35px arial,sans-serif; 
-  word-spacing: 20px;
-  letter-spacing: 3px;
+  font: 22px/35px arial,sans-serif; 
+  word-spacing: 16px;
+  letter-spacing: 2px;
   white-space: pre-wrap;           /* css-3 */
   white-space: -moz-pre-wrap;      /* Mozilla, since 1999 */
   white-space: -pre-wrap;          /* Opera 4-6 */
