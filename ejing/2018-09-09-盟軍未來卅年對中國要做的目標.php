@@ -29,7 +29,7 @@
     <title>Blog</title>
   </head>
 <!--------------------------------------------------导航-------------------------------------------------------->
-  <body class="bg-light">
+  <body class="bg-light" id="ups" name="ups">
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
   <a class="navbar-brand mr-auto mr-lg-0" href="#">&nbsp;</a>
   <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
@@ -98,7 +98,6 @@ echo $temp;
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <hr></span>
-<div class="up"><a href="#top" target="_self"><img src="../css/top.png" class="img-fluid" alt="Responsive image"></a></div> <!-- 回到顶部  -->
 <div class="row hou"><hr></div>
 </main>
 
@@ -108,5 +107,7 @@ echo $temp;
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="../css/offcanvas.js"></script>
+<div class="goTop" id="js-go_top"><a href="#ups"><img src="../css/icon_top.png" alt="回到顶部图片"></a></div>
+<script src="../css/GoToTop.js"></script>
   </body>
 </html>
