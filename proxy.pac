@@ -98,6 +98,7 @@ var rules = [
             "cloudcone.com", 
             "cloudflare.com", 
             "qiqing.cf", 
+            "xiin123.com", 
             "docker.com", 
             "dubox.com", 
             "pixnet.net", 
