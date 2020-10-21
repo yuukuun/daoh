@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<!--------------------------------------------------头部-------------------------------------------------------->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="../css/offcanvas.css" rel="stylesheet">
+    <title>Blog</title>
+  </head>
+<!--------------------------------------------------导航-------------------------------------------------------->
+  <body class="bg-light" id="ups" name="ups">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+  <a class="navbar-brand mr-auto mr-lg-0" href="#">&nbsp;</a>
+  <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <!-- <li class="nav-item active"><a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a></li> -->
+ <li class="nav-item"><a class="nav-link" href="../index.html">博客</a></li>
+      <li class="nav-item"><a class="nav-link" href="../lang/index.html">Lang</a></li>
+      <li class="nav-item active"><a class="nav-link" href="../soft.html">软件</a></li>
+      <li class="nav-item"><a class="nav-link" href="../site.html">导航</a></li>
+<li class="nav-item"><a class="nav-link" href="../ejing.html">易经</a></li>
+      <li class="nav-item"><a class="nav-link" href="../m/index.html">音乐</a></li>
+ <li class="nav-item"><a class="nav-link" href="#">|</a></li>
+      <li class="nav-item"><a class="nav-link" href="../head.html">头部</a></li>
+      <li class="nav-item"><a class="nav-link" href="../women.html">女装</a></li>
+      <li class="nav-item"><a class="nav-link" href="../man.html">男装</a></li>
+      <li class="nav-item"><a class="nav-link" href="../ku.html">裤子</a></li>
+      <li class="nav-item"><a class="nav-link" href="../bags.html">包</a></li>
+      <li class="nav-item"><a class="nav-link" href="../child.html">儿童</a></li>
+      <li class="nav-item"><a class="nav-link" href="../shoes.html">鞋</a></li>
+      <li class="nav-item"><a class="nav-link" href="../sport.html">运动</a></li>
+      <li class="nav-item"><a class="nav-link" href="../toy.html">玩具</a></li>
+      <li class="nav-item"><a class="nav-link" href="../phone.html">手机</a></li>
+      <li class="nav-item"><a class="nav-link" href="../pc.html">PC</a></li>
+      <li class="nav-item"><a class="nav-link" href="../dian.html">小电器</a></li>
+      <li class="nav-item"><a class="nav-link" href="../home.html">居家</a></li>
+      <li class="nav-item"><a class="nav-link" href="../kitchen.html">厨房</a></li>
+      <li class="nav-item"><a class="nav-link" href="../car.html">汽车</a></li>
+      <li class="nav-item"><a class="nav-link" href="../medi.html">医药</a></li>
+      <li class="nav-item"><a class="nav-link" href="../indus.html">工业</a></li>
+      <li class="nav-item"><a class="nav-link" href="../ray.html">光</a></li>
+    </ul>
+  </div>
+</nav>
+<!--------------------------------------------------二级导航-------------------------------------------------------->
+<!--------------------------------------------------内容-------------------------------------------------------->
+<main role="main" class="container"><hr>
+<!---------------------------------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------->
+<h1><a href="../soft.html">x-plane-11导航文件安装与更新</a></h1><span class="texts"><hr>
+很多飞友都在发帖问X-Plane11的导航文件如何安装与更新，我在这里做一个整理贴：
+
+  首先，在X-Plane11里导航数据文件分成两大类：X-Plane11系统默认导航数据文件；机模自带导航数据文件。
+
+  1）X-Plane11系统运行的导航数据全部依赖于X-Plane11系统默认的导航数据，比如X-Plane11地图上看到的所有导航信息，所有X-Plane11默认地景机场的ILS/VOR等导航信息（第三方地景可以根据需要修改机场的ILS/VOR数据，并且保存在机场地景包里，如果没有更改，则还是使用X-Plane11系统的导航数据文件）。大部分的默认机模例如默认的Cessna172SP，B737-800等和第三方简易机模（不做自己的FMC，而直接内嵌X-Plane11系统内置的FMC）也都使用X-Plane11系统默认的导航数据文件。Zibo的B737-800虽然重新做了一个FMC插件，但是仍然使用的是X-Plane11默认的导航数据文件。
+  2）第三方机模（大部分的收费机模）都会重新自定义一个新插件的FMC/FMS，因此就有可能使用独立的导航数据文件用于这个自定义的插件FMC。例如IXEG737-300，JarA320/A330，EADTx737项目的x737RMC/UFMC，以及第三方插件X-FMC都有自己独立的导航数据文件。这些独立的导航数据文件是用于这个FMC使用的，机模自动驾驶将会根据这个FMC里的导航数据飞行。
+
+ 因此导航数据文件安装及更新必须保证X-Plane11系统默认和机模FMC两个同步，否则就有可能出现飞机（尤其是第三方的大型客机机模）FMC显示的数据与X-Plane11不一致，比如机场降落的时候，就有可能因为两者数据不一致导致飞机对不准跑道，或者干脆飞机FMC上有的导航点或者ILS信息，但是机场上没有。
+  以下就对这些导航数据文件安装及更新逐一进行说明，由于不同机模的导航数据安装更新位置不同，所以我会按机模进行逐一说明。由于不是所有的机模我都经常使用，因此如果有错误或者遗漏的地方，欢迎飞友们指正和完善，我自己也会不定期进行更新。
+我这里的导航数据都是采用Navigraph发布的版本。
+  1、X-Plane11系统默认导航数据：系统默认导航数据安装在“X-Plane11\CustomData\”目录下，将下载的Navigraph导航数据文件中XPlane11_Native_****.zip文件全部解压缩到这个目录中，\Customdata\目录下应该至少包括以下几个文件和目录：earth_nav.dat，earth_awy.dat，earth_fix.dat以及CIFP/目录。CIFP目录下是所有机场的导航数据，一般每个机场都有一个.txt文件，文件名就是机场的ICAO编号，例如ZBAA.txt就是北京首都国际机场的导航数据；更新导航数据就是直接覆盖原来\CustomScenery\目录下的所有数据文件（或者先删除，然后重新解压缩复制）；
+  2、X-FMC插件导航数据：X-FMC有自己独立的导航数据文件，安装在“X-Plane11\Resources\plugins\XFMC\X-FMCnavdata\”目录下，安装方案也是把下载的Navigraph中x-fmc_native_****.zip解压缩到X-FMCnavdata\下即可，这个目录下应该包含至少一下几个文件和目录：Airports.txt，ATS.txt，Navaids.txt，Waypoints.txt，cycle_info.txt以及SIDs\和Stars\两个目录；更新导航数据同样也是直接覆盖原来X-FMCnavdata\下的所有文件；
+  3、EADTx737-800/x737-700机模：该机模支持X-FMC，但是同时也有一个收费的内嵌FMC插件。737FMC，x737FMC的导航数据安装在这个目录下：“X-Plane11\CustomScenery\UFMC\”；直接把Navigraph中的jc_x737fmc_native_****.zip解压缩到这个目录下就好了，\UFMC\目录下至少包含以下几个文件和目录：3个Earth_*.dat的文件和3个UFMC_*.dat的文件以及Flightplans\目录，其中Earth_*.dat文件与X-Plane11系统默认的导航数据文件名完全相同，因此千万不要覆盖错了目录，那样就会造成X-Plane11系统的导航数据错误；FlightPlans目录下用于保存在x737FMC中生成的公司航路（Co-Route）飞行计划。更新导航数据文件则直接覆盖\UFMC\下的全部文件即可。特别补充一下，x737FMC插件的安装目录是在“X-Plane11\Resources\plugins\”，但是导航数据文件不在这个目录下；
+  4、IEXG737-300机模：该机模有自己的内嵌FMC，因此也使用独立的导航数据，导航数据安装在机模目录下的fmc_data\目录中，安装方案也是把下载的Navigraph中ixeg737classic_native_****.zip解压缩到fmc_data\下即可，该目录下至少包含以下文件和目录：NavData\以及SIDSTAR\两个目录；更新导航数据文件就直接覆盖fmc_data\下的全部文件即可；
+  5、JarDesignA320/A330机模：这两个机模都是JarDesign开发的，都有各自独立的内嵌FMC，也使用各自独立的导航数据，导航数据安装在机模目录下的Navdata\目录中，安装方案也是把下载的Navigraph中jardesign_a320neo_native_****.zip或jardesign_a330_native_****.zip解压缩到各自的Navdata\下即可，该目录下至少包含以下文件和目录：Airports.txt，ATS.txt，Navaids.txt,Waypoints.txt,cycle_info.txt以及PROC\两个目录；更新导航数据文件就直接覆盖Navdata\下的全部文件即可。
+  6、SSG 747-8机模：jc_ufmc_native_1901解压到\X-Plane 11\Custom Data\UFMC目录即可。
+
+<!-- (转自：<a href="###" target="_blank">###</a>) -->
+<hr></span>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<div class="row hou"><hr></div>
+</main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="../css/offcanvas.js"></script>
+<div class="goTop" id="js-go_top"><a href="#ups"><img src="../css/icon_top.png" alt="回到顶部图片"></a></div>
+<script src="../css/GoToTop.js"></script>
+  </body>
+</html>
