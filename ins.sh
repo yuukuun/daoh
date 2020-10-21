@@ -34,9 +34,14 @@ case $key in
 
 6)	wget "$sources"bash/NginxProxy.sh && chmod +x *.sh && bash NginxProxy.sh 	;;
 7)	wget "$sources"bash/MariaDB.sh && chmod +x *.sh && bash MariaDB.sh 	;;
-8)	wget "$sources"bash/v2flyServer.sh && chmod +x *.sh && bash v2flyServer.sh 	;;
-9)	wget "$sources"bash/v2flyClient.sh  && chmod +x *.sh && bash v2flyClient.sh 	;;
-
+8)	
+	wget "$sources"bash/install-release.sh && chmod +x *.sh && bash install-release.sh	
+	wget "$sources"bash/v2flyServer.sh && chmod +x *.sh && bash v2flyServer.sh 	
+;;
+9)	
+	wget "$sources"bash/install-release.sh && chmod +x *.sh && bash install-release.sh	
+	wget "$sources"bash/v2flyClient.sh  && chmod +x *.sh && bash v2flyClient.sh 	
+;;
 50)	wget "$sources"bash/Chrome.sh && chmod +x *.sh && bash Chrome.sh 	;;
 51)	wget "$sources"bash/teamViewr.sh && chmod +x *.sh && bash teamViewr.sh 	;;
 *)	echo "输入错误!"	;;	
