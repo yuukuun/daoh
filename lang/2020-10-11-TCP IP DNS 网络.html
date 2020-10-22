@@ -100,12 +100,13 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">2020-10-11-TCP/IP DNS 网络</a></div></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="lang.html">2020-10-11-TCP/IP DNS 网络</a></div></div>
 <div class="row"><span class="txt">
 https://www.bilibili.com/video/av9876107  ( 重要章节：37.38.49.50.53.54  )
 数据包发送：应用层是提供数据文件=>传输层是对数据分段和编号 =>网络层是对添加目标IP和源IP=>数据链路层是添加MAC地址和校验码=>物理层是变成比特流传递。 （局域网通信是基于MAC地址）
 数据包接受：物理层=>数据链路层=>网络层=>传输层=>应用层
-<pre><code>
+</span></div>
+<div class="row"><pre><code>
 TCPdump：
 tcpdump -c 10 -w outfile.txt  ###写入到文件
 tcpdump -r outfile.txt  ###读取文件
@@ -114,7 +115,7 @@ tcpdump -i eth0   ###显示指定网卡
  
 wireshark：
 sudo apt install wireshark
-</code></pre>
+</code></pre></div>
 ll /usr/bin/dumpcap可以看到用户组名字，把当前用户添加到dumpcap的用户组sudo usermod -a -G wireshark user就可以有权限操作了。
 
 应用层协议：
@@ -164,7 +165,7 @@ TCP UDP 协议等等。对数据分段和编号和添加TCP或UDP头。
 全双工模式收发都是等同速度，如100m的全双工是下载上传同时进行都是100m。10M和100M带宽用网线的四根线，1000M带宽用网线的八根线。交换机和电脑连接用直通线序，两台计算机互联就用交叉线相连。(不该过)
 
   网络编程分C/S架构(QQ)和B/S架构(HTTP)。
-<pre><code>
+<div class="row"><pre><code>
 ARP响应级别arp-ignore：
 0 只要本机配有相应ip就相应。
 1 仅在请求的目的地址配置在请求到达网络接口上时候才响应。
@@ -172,7 +173,7 @@ ARP通告行为arp-announce：
 0 本机任何网络接口上任何地址向外通告。
 1 尽可能的避免向目标网络通告与其他网络不匹配的信息表。
 2 仅目标网络通告与其网络相匹配的地址信息。
-</code></pre>
+</code></pre></div>
 网络安全：
   非对称加密：对文件用公钥加密，用私钥解密（可以对换）。公钥可以公开。非对称加密缺点效率底。
   签名：签名是类似老板给员工签名文件去另钱一样，防止抵赖，确保不能被修改。计算机实现文件通过散列函数算出摘要，把文件和摘要通过公钥加密传送出去。收到摘要和文件后也通过散列函数求出摘要，然后比较两个摘要对比来判断文件时候被改动过。
@@ -189,8 +190,8 @@ ip地址:
   客户端浏览器访问baidu.com时候首先访问优先级是本地hosts然后本地缓存在后就是DNS服务器，如果DNS服务器没有解析，DNS服务器访问根域DNS服务器，根域DNS服务器响应给DNS服务器二级域名(.com)的地址，DNS服务器在访问二级服务器，找到对应解析地址。这叫分布式DNS服务器。服务端口UDP53，数据同步端口TCP53。
 
 安装：
-<pre><code>yum install -y bind(服务名：named)</code></pre>
-<pre><code>
+<div class="row"><pre><code>yum install -y bind(服务名：named)</code></pre></div>
+<div class="row"><pre><code>
 主配置：
 vim /etc/named.conf ###主配置文件
 listen-on port 53 { 127.0.0.1; };   ###监听的网卡地址
@@ -245,9 +246,9 @@ $TTL 1D
         NS      dns.test.com.
 44      PTR     dns.test.com.     ;反向解析的域，住com之后有点
 55      PTR     www.test.com.     ;反向解析的域，住com之后有点
-</code></pre>
+</code></pre></div>
 主+备份服务器：
-<pre><code>
+<div class="row"><pre><code>
 主服务器区域配置：
 sudo vim /etc/named.rfc1912.zones 
  
@@ -264,9 +265,9 @@ zone "test.com" IN {    ###正向解析的域
         file "test.com.localhost"; ###解析的文件在/var/named/下
         allow-update { none; }; ###这里写备份服务器的ip
 };
-</code></pre>
+</code></pre></div>
 DNS缓存服务器：
-<pre><code>
+<div class="row"><pre><code>
 安装：
 yum install -y dnsmasq
 配置：
@@ -277,9 +278,9 @@ cache-size=15000     ###缓存数目
 启动：
 systemctl start dnsmasq
 systemctl enable dnsmasq
-</code></pre>
+</code></pre></div>
 
-</span></div>
+
 
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
