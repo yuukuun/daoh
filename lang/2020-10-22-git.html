@@ -100,9 +100,53 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang/index.html">#####</a></div></div>
-<div class="row"><span class="txt">#####</span></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang/index.html">Git</a></div></div>
 
+<div class="row"><span class="txt">git代理：</span></div>
+<div class="row"><pre><code>
+###代理 vim .ssh/config #ssh，rsync都可以总代理
+Host github.com 11.22.33.44
+ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
+#ProxyCommand ncat --proxy-type socks5 --proxy 127.0.0.1:1080 %h %p
+ServerAliveInterval  20
+###每20秒链接一次
+</code></pre></div>
+
+<div class="row"><span class="txt">git命令：</span></div>
+<div class="row"><pre><code>
+###配置
+git config --global user.name "username"    ###设置用户名
+git config --global user.email "user@gmail.com"    ###设置邮箱
+ssh -T -p 22 git@github.com -i ~/.ssh/id_rsa    ###测试
+
+###  这里修改状态
+git status -sb ###本地与远程是否一致
+git rm --f centos7Set.sh ###删除
+git add * ###它能stages所有文件，包括之前删除的痕迹
+git add . ###只能stages新文件和被修改的文件,不会stages已被删除的文件
+git commit -m "$(date +%Y.%m.%d-%H:%M)"
+git branch -d name.txt  ###删除本地分支
+git push origin --delete name.txt ###删除远程分支
+git rm -r --cached .  ###清楚缓存
+
+### 忽略上传的文件目录
+vim .gitignore
+
+m   #忽略m目录
+soft #忽略soft目录
+backup #忽略backup目录
+
+###本地手动删除，在到同步远程
+git add . && git status -sb && git commit -m "$(date +%Y.%m.%d-%H:%M)" && git push
+</code></pre></div>
+
+<div class="row"><span class="txt">#####</span></div>
+<div class="row"><pre><code>#####</code></pre></div>
+
+<div class="row"><span class="txt">#####</span></div>
+<div class="row"><pre><code>#####</code></pre></div>
+
+<div class="row"><span class="txt">#####</span></div>
 <div class="row"><pre><code>#####</code></pre></div>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->

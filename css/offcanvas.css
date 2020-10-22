@@ -98,7 +98,9 @@ body {
 /*******************************代码复制***********************************/
 /*代码文本*/
 .txt {
-  font: 17px arial,sans-serif; 
+  font: 16px/22px arial,sans-serif; 
+  word-spacing: 14px;
+  letter-spacing: 1px;
   white-space: pre-wrap;           /* css-3 */
   white-space: -moz-pre-wrap;      /* Mozilla, since 1999 */
   white-space: -pre-wrap;          /* Opera 4-6 */

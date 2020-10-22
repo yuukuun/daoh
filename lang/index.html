@@ -98,6 +98,9 @@
 <div class="row"><div class="col-xs-12 col-md-12 btit">|</div></div>
 <div class="row">
 <div class="col-12 col-md-6 tit"><a href="2020-10-17-Nginx+WS+TLS+V2Ray服务端安装.html">Nginx+WS+TLS+V2Ray 服务端安装</a></div>
+<div class="col-12 col-md-6 tit"><a href="2020-10-22-mysql命令.html">Mysql命令</a></div>
+<div class="col-12 col-md-6 tit"><a href="2020-10-22-git.html">git</a></div>
+<div class="col-12 col-md-6 tit"><a href="2020-10-22-ssl.html">ssl</a></div>
 
 
 
@@ -145,35 +148,7 @@ rsync -av -e 'ssh root@11.22.33.44 -p 22 -i ~/.ssh/id_rsa' --exclude={'目录',}
 
 </pre></code></div>
 
-<!---------------------------------------------------------------------------------------------------------------------------->
-<!---------------------------------------------------------------------------------------------------------------------------->
-<div class="row"><div class="col-xs-12 col-md-12 btit">git安装设置</div></div>
-<div class="row"><pre><code>
-###配置
-ssh -T -p 22 git@github.com -i ~/.ssh/id_rsa    ###测试
-git config --global user.name "username"    ###设置用户名
-git config --global user.email "user@gmail.com"    ###设置邮箱
 
-###  <a href="https://github.com/yuukuun/tool/commits/master/" target="_blank">这里修改状态</a>
-git status -sb ###本地与远程是否一致
-git rm --f centos7Set.sh ###删除
-git add * ###它能stages所有文件，包括之前删除的痕迹
-git add . ###只能stages新文件和被修改的文件,不会stages已被删除的文件
-git commit -m "$(date +%Y.%m.%d-%H:%M)"
-git branch -d name.txt  ###删除本地分支
-git push origin --delete name.txt ###删除远程分支
-git rm -r --cached .  ###清楚缓存
-
-### 忽略上传的文件目录
-vim .gitignore
-
-m   #忽略m目录
-soft #忽略soft目录
-backup #忽略backup目录
-
-###本地手动删除，在到同步远程
-git add . && git status -sb && git commit -m "$(date +%Y.%m.%d-%H:%M)" && git push
-</pre></code></div>
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 <div class="row"><div class="col-xs-12 col-md-12 btit">git安装设置</div></div>
@@ -200,66 +175,7 @@ firewall-cmd --runtime-to-permanent
 firewall-cmd --reload 
 </pre></code></div>
 
-<div class="row"><div class="col-xs-12 col-md-12 btit">https证书，ssl证书， <a href="https://certbot.eff.org/" target="_blank" >Let’s Encrypt证书</a>:</div></div>
-<div class="row"><span class="txt">certbot</span></div>
-<div class="row"><pre><code>
-###安装。根据官方安装
-yum install -y certbot python2-certbot-nginx
- 
-###出错就解决
-sudo yum remove epel-release
-sudo yum install -y epel-release
-pip install --upgrade --force-reinstall 'requests==2.6.0' urllib3
- 
-###单域名证书
-certbot certonly --webroot -w /usr/local/nginx/html/ -d $url -m 0@yahoo.com --agree-tos --test-cert -n ### --test-cert测试模式 -n不交互
- 
-###通配符域名证书
-certbot -d baidu.cn -d "*.baidu.cn" --manual --preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory certonly \
--m 123@gmail.com --agree-tos
- 
-###自动通配符证书，需要域名验证
-wget https://dl.eff.org/certbot-auto && chmod a+x certbot-auto
-./certbot-auto -d "*.mgleek.cn" --manual --preferred-challenges dns-01 certonly -m 1233@qq.com --agree-tos \
---server https://acme-v02.api.letsencrypt.org/directory
- 
-###续费
-echo '5 4 * * 2 /usr/bin/certbot renew --dry-run "/usr/local/nginx/sbin/nginx -s reload"' >> /var/spool/cron/root
-###删除
-certbot certificates
-certbot delete --cert-name example.com
-</pre></code></div>
 
-<div class="row"><span class="txt">acme.sh</span></div>
-<div class="row"><pre><code>
-1.安装：
-wget -O -  https://get.acme.sh | sh
-acme.sh -h  ###检查
-~/.acme.sh/dnsapi/  ###支持的DNS
- 
-2.DNS解析添加KEY：
-阿里云：https://ak-console.aliyun.com/#/accesskey
-~/.bashrc文件中添加阿里云的“AccessKey ID”和“Access Key Secret”
-export Ali_Key="sdfsdfsdfljlbjkljlkjsdfoiwje"
-export Ali_Secret="jlsdflanljkljlfdsaklkjflsa"
- 
-CloundFlare获取证书：MyProfile中Global API key和Origin API key
-~/.bashrc文件中添加这个两个变量
-export [email protected]
-export CF_Key=85302dsiorw3oisjdkf899234sdf72dfdb46
- 
-3.安装证书：
-acme.sh --issue --dns dns_cf -d domain.com -d '*.domain.com'   
-### 制定DNS和域名，dns_cf是CloudFlare
- 
-4.拷贝证书到nginx目录
-acme.sh --install-cert -d 'domain.com' --key-file /usr/local/nginx/ssl/domain.com/private.pem --fullchain-file /usr/local/nginx/ssl/domain.com/fullchain.pem \
---reloadcmd "nginx -s reload"
- 
-5.自动续期
-0 0 * * * "/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" >> /var/log/acme.sh-auto-renew.log
-acme.sh --cron  ###续期情
-</pre></code></div>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
