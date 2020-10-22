@@ -6,11 +6,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    
     <!-- Bootstrap CSS -->
-    <link href="../css/offcanvas.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.1/styles/default.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.1/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script>
-
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -26,7 +27,9 @@
         }
       }
     </style>
-    <title>Linux</title>
+    <!-- Custom styles for this template -->
+    <link href="../css/offcanvas.css" rel="stylesheet">
+    <title>go</title>
   </head>
 <!--------------------------------------------------导航-------------------------------------------------------->
   <body class="bg-light" id="ups" name="ups">
@@ -40,7 +43,8 @@
     <ul class="navbar-nav mr-auto">
       <!-- <li class="nav-item active"><a class="nav-link" href="../#">Dashboard <span class="sr-only">(current)</span></div></a></li> -->
  <li class="nav-item"><a class="nav-link" href="../index.html">博客</a></li>
-      <li class="nav-item active"><a class="nav-link" href="#">Lang</a></li>
+      <li class="nav-item active"><a class="nav-link" href="index.html">Lang</a></li>
+    <!--   <li class="nav-item active"><a class="nav-link" href="../go.html">Go</a></li> -->
       <li class="nav-item"><a class="nav-link" href="../soft.html">软件</a></li>
       <li class="nav-item"><a class="nav-link" href="../site.html">导航</a></li>
 <li class="nav-item"><a class="nav-link" href="../ejing.html">易经</a></li>
@@ -66,7 +70,7 @@
       <li class="nav-item"><a class="nav-link" href="../ray.html">光</a></li>
 
 
-    <!--   <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="#">Action</a>
@@ -75,9 +79,9 @@
         </div>
       </li> -->
     </ul>
-    <!-- <form class="form-inline my-2 my-lg-0">
+   <!--  <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form> -->
   </div>
 </nav>
@@ -95,85 +99,70 @@
 <main role="main" class="container">
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang/index.html">目录</a></div></div>
-<div class="row">
-<div class="col-12 col-md-6 tit"><a href="2020-10-22-美国的机房.html">美国的机房</a></div>
-<div class="col-12 col-md-6 tit"><a href="2020-10-11-计算机硬件.html">计算机硬件</a></div>
-<div class="col-12 col-md-6 tit"><a href="2020-10-11-TCP IP DNS 网络.html">TCP/IP DNS 网络</a></div>
-<div class="col-12 col-md-6 tit"><a href="2020-10-22-dhcp服务安装配置.html">dhcp 服务安装配置</a></div>
-<div class="col-12 col-md-6 tit"><a href="2020-10-17-Nginx+WS+TLS+V2Ray服务端安装.html">Nginx+WS+TLS+V2Ray 服务端安装</a></div>
-<div class="col-12 col-md-6 tit"><a href="2020-10-22-mysql命令.html">Mysql Mysql命令</a></div>
-<div class="col-12 col-md-6 tit"><a href="2020-10-22-git.html">git git clone</a></div>
-<div class="col-12 col-md-6 tit"><a href="2020-10-22-ssl.html">SSL HTTPS certbot</a></div>
 
-<div class="col-12 col-md-12 tit"><a >.</a></div>
-<div class="col-6 col-md-3 tit"><a href="2020-10-22-ssl.html" href="../bash/nginx.conf" target="_blank">nginx conf 7</a></div>
-<div class="col-6 col-md-3 tit"><a href="2020-10-22-ssl.html" href="../bash/nginxSSL.conf" target="_blank">nginxSSL 7</a></div>
-<div class="col-6 col-md-3 tit"><a href="2020-10-22-ssl.html" href="../bash/nginxSSL.conf" target="_blank">nginxProxy 7</a></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang/index.html">计算机硬件</a></div></div>
+<div class="row"><span class="txt">
+计算机：
+  计算机底层都是电路开关，开就1,关就0。处理器（运算和控制），存储器，输入设备，输出设备。
+  计算器：CPU主要由运算器和控制组成，CPU的频率GHz，1Hz是每秒一脉冲电压。
+  内存：计算机底层都是电路开关，开就1,关就0。bit是最小单位只能存1和0。byte(字节)=8bit是最小存储单位
+</span></div>
+<div class="row"><pre><code>
+BIOS：开机启动的第一个程序。
+MBR：硬盘上第一个扇区内的引导加载程序。
+Boot Loader 引导加载程序：读取内核的程序，操作系统安装在MBR的程序。
+内核文件：开始操作系统的功能
+# BISO是集成在主板上程序。CMOS是记录硬件参数的存储器。
+# Boot Loader 也可以安装在每个分区的引导扇区。先装windows，在装linux。
+</code></pre></div>
 
-</div>
-<!---------------------------------------------------------------------------------------------------------------------------->
+<div class="row"><pre><code>
+硬盘包含多个磁盘，每个磁盘两面有读写磁头，磁盘从下往上从0开始编号。
+磁头在磁盘上一圈成为一个磁道(Track)，磁道又分多个扇区(Sector)，扇区通常512字节，多磁盘的磁道构成柱面。
+第一扇区记录主引导分区MBR[446bytes]和分区表[64bytes]。
+以柱面为单位分成主分区和扩展分区总共四个。扩展分只能有一个，扩展分区可以分成逻辑分区。
+主分区和扩展分区[1-4]。逻辑分区[5-]，主和逻辑分区可以格式化。依据分区表写入数据到分区，
+分区格式化后文件系统前面有个启动扇区，可以安装引导装载程序。
+Linux 的挂载就是磁盘分区的数据放在该目录下。
+</code></pre></div>
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang/index.html">Linux</a></div></div>
-<div class="row">
-<pre><code>wget https://raw.githubusercontent.com/yuukuun/daoh/main/ins.sh && chmod +x ins.sh && ./ins.sh</pre></code>
-<pre><code>git add . && git status -sb && git commit -m "$(date +%Y.%m.%d-%H:%M)" && git push</pre></code>
-</div>
+<div class="row"><span class="txt">内存：所有代码在内存中运行，内存只识别二进制。字节是最小存储单元长度是8bit。</span></div>
+<div class="row"><pre><code>
+0开头八进制
+0x开头十六进制</code></pre></div>
 
-<div class="row">
-<pre><code>
-###快捷键
-Ctrl + C    #强制终止
-Ctrl + L    #清屏
-Ctrl + U    #光标前剪切，删除
-Ctrl + Y    #粘贴
-Ctrl + R    #历史命令查询
+<div class="row"><span class="txt">分区和格式化：</span></div>
+<div class="row"><pre><code>
+fdisk -l /dev/sda  #显示所有分区
+fdisk /dev/sda    # n:添加 d:删除 p:打印 w:写入 q:退出
+mkfs.ext4 /dev/sda3    #格式化 sda3分区
 
-sed -i '/site.html/a\ssssssssssss' *.html
-sed -i '/对配内容/a \新内容' *.html  ###对配内容后行插入
-sed -i '/对配内容/d' *.html  ###对配内容行删除
-sed -i 's/ejing.html">博客/ejing.html">易经/g' *.html   ###分隔符 % / !
-sed -i 's/href="..\/soft.html">软件/href="..\/index.html">软件/g' *.html 
+###vim /etc/fstab
+###vls -l /dev/disk/by-uuid/    #查看UUID
+ 
+UUID=16ce3736-1f0c-41a2-846f-418d860dd4ae /  xfs     defaults        0 0
+UUID=9813b792-d43f-4073-b15d-044346903357 swap swap    defaults        0 0
+</code></pre></div>
 
-###代理 vim .ssh/config #ssh，rsync都可以总代理
-Host github.com 11.22.33.44
-ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
-#ProxyCommand ncat --proxy-type socks5 --proxy 127.0.0.1:1080 %h %p
-ServerAliveInterval  20 ###每20秒链接一次
+<div class="row"><span class="txt">centos 7 引导windows10：</span></div>
+<div class="row"><pre><code>
+sudo vim /boot/grub2/grub.cfg    #启动引导文件
 
-ssh root@11.22.33.44 -p 22 ~/.ssh/id_rsa
-rsync -av -e 'ssh root@11.22.33.44 -p 22 -i ~/.ssh/id_rsa' --exclude={'目录',} /root/* root@:/root/ ###--exclude={'目录',}排除目录
-</pre></code>
-firewall防火墙：
-<pre><code>
-firewall-cmd --state                ###状态
-systemctl start firewalld.service    ###启动防火墙
-firewall-cmd --add-service=https    ###添加服务https
-firewall-cmd --add-port=8080/tcp    ###添加端口8080
-firewall-cmd --add-rich="rule family=ipv4 source address=6.6.6.6 drop" ###ip丢弃
-firewall-cmd --runtime-to-permanent
-firewall-cmd --reload 
-</pre></code>
-循环：
-<pre><code>
-temp=$(cat /etc/redhat-release)
-if [[ "$temp" == "CentOS Linux release 8"* ]]; then
-  echo "CentOS 8"
-elif [[ "$temp" == "CentOS Linux release 7"* ]];then
-  echo "CentOS 7"
-else
-  echo "##### CentOS error !!! #####"
-fi
-</pre></code>
+menuentry "Windows10" {    #首行添加
+    insmod ntfs
+    set root=(hd0,1)    #hd0,1 第一块儿硬盘，第一个分区
+    chainloader +1
+}
 
+sudo grub2-set-default "Windows10" && sudo grub2-editenv list  #设置默认windows10,查看启动列表
+</code></pre></div>
 
-</div>
+<div class="row"><span class="txt">#####</span></div>
+<div class="row"><pre><code>#####</code></pre></div>
 
-
-<!-- </span></div> --><!---------------------------------------------------------------------------------------------------------------------------->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-<div class="row hou"><hr></div>
+<div class="row"><hr></div>
 </main>
 
     <!-- Optional JavaScript -->
@@ -184,5 +173,6 @@ fi
     <script src="../css/offcanvas.js"></script>
 <div class="goTop" id="js-go_top"><a href="#ups"><img src="../css/icon_top.png" alt="回到顶部图片"></a></div>
 <script src="../css/GoToTop.js"></script>
+
   </body>
 </html>
