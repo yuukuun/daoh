@@ -8,6 +8,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.1/styles/default.min.css"> <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.1/highlight.min.js"></script> <script>hljs.initHighlightingOnLoad();</script> 
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -90,24 +92,24 @@
 <div class="row"><span class="txt">VPS推荐：<a href="https://stock.bwg.net/" target="_blank">&nbsp;&nbsp;帮瓦工</a><a href="https://www.vultr.com/?ref=7009560" target="_blank">&nbsp;&nbsp;Vultr</a><a href="https://cloudcone.com" target="_blank">&nbsp;&nbsp;CloudCone</a>&nbsp;&nbsp;|&nbsp;&nbsp;免费域名：<a href="https://www.freenom.com/" target="_blank">https://freenom.com</a>&nbsp;&nbsp;收费：<a href="https://namesilo.com" target="_blank">https://namesilo.com</a>
 
 </span></div>
-<!-- <div class="row"><pre></pre></div> -->
+<!-- <div class="row"><pre><code></pre></code></div> -->
 <!-- <div class="row"><span class="txt">1. 需要注册一个域名，然后把域名指向到自己的VPS的IP。(免费域名注册：<a href="https://www.freenom.com/" target="_blank">https://freenom.com</a>  顶级域名注册：<a href="https://namesilo.com" target="_blank">https://namesilo.com</a>)</span></div>
-<div class="row"><pre>user@4790:~$ ping -c 4 qiqing.ga
+<div class="row"><pre><code>user@4790:~$ ping -c 4 qiqing.ga
 PING qiqing.ga (45.76.97.209) 56(84) bytes of data.
 64 bytes from 45.76.97.209.vultr.com (45.76.97.209): icmp_seq=1 ttl=48 time=306 ms
 64 bytes from 45.76.97.209.vultr.com (45.76.97.209): icmp_seq=2 ttl=48 time=315 ms
 64 bytes from 45.76.97.209.vultr.com (45.76.97.209): icmp_seq=3 ttl=48 time=307 ms
 64 bytes from 45.76.97.209.vultr.com (45.76.97.209): icmp_seq=4 ttl=48 time=301 ms
-</pre></div> -->
+</pre></code></div> -->
 
 <div class="row"><span class="txt">1. 用ssh链接自己的VPS，自动安装V2Ray Nginx+WS+TLS</span></div>
-<div class="row"><pre>bash <(curl -L https://raw.githubusercontent.com/yuukuun/v2fly/main/v2fly.sh)</pre></div>
+<div class="row"><pre><code>bash <(curl -L https://raw.githubusercontent.com/yuukuun/v2fly/main/v2fly.sh)</pre></code></div>
 
 <div class="row"><span class="txt">2. 输入域名</span></div>
-<div class="row"><pre>请输入自己的域名 : qiqing.ga</pre></div>
+<div class="row"><pre><code>请输入自己的域名 : qiqing.ga</pre></code></div>
 
 <div class="row"><span class="txt">3. 安装成功</span></div>
-<div class="row"><pre>
+<div class="row"><pre><code>
 ● nginx.service - nginx
    Loaded: loaded (/etc/systemd/system/nginx.service; enabled; vendor preset: disabled)
    Active: active (running) since Sun 2020-10-18 01:40:36 UTC; 495ms ago
@@ -128,7 +130,7 @@ PING qiqing.ga (45.76.97.209) 56(84) bytes of data.
     Tasks: 6 (limit: 5048)
    Memory: 9.9M
 
-</pre></div>
+</pre></code></div>
 
 <div class="row"><span class="txt">
 4. 把刚才输入的域名用浏览器打开，就可以看到v2ray客户端和参数。(1)电脑端参数配置好直接下载就能用。(2)Android客户端安装后手动暑输入参数。(3)苹果IOS客户端需要美国区的帐号下载安装和参数配置。(如果客户端连接出错，把服务器和客户端时间同步的！)</span></div><br>
@@ -139,7 +141,7 @@ PING qiqing.ga (45.76.97.209) 56(84) bytes of data.
 
 <!-- 
 <div class="row"><span class="txt"></span></div>
-<div class="row"><pre></pre></div>
+<div class="row"><pre><code></pre></code></div>
  -->
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->

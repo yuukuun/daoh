@@ -6,8 +6,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -99,24 +103,24 @@
 <div class="row"><span class="txt">
   go通过包名字管理的，文件第一行定义包名package util。导入包时候相对目录路径（import "./www"）或者在src目录下（import "fmt"）。包名=》函数（首字母大写跨跨包）或变量。包定义必须在首行，包名不可重复。对象编程(MVC):设计结构体图时候MCV步骤,编写代码顺序是VCM。
 可以一个目录一个包。</span></div>
-<div class="row"><pre>
+<div class="row"><pre><code>
 go run FILE.go    //运行
 go build FILE.go //编译
-</pre></div>
+</code></pre></div>
 
 <div class="row"><span class="txt">变量：变量是内存局部空间的定义。go语言基本数据类型和数组是值传递，函数也是数据类型。</span></div>
-<div class="row"><pre>
+<div class="row"><pre><code>
 //////变量//////
 var i int = 25
 var m = "string"( m := "string" )//go 可以进行类型推到，自己判断类型。
 var m,n,l int //定义多个变量
 var m,n,l = 45,"string",65.89 ( m,n,l := 45,"string",65.89 )
-</pre></div>
+</code></pre></div>
 
 <div class="row"><span class="txt">数组：go语言基本数据类型和数组是值传递，函数也是数据类型。函数递归：递归是函数本身在栈中调用自己本身。
 递归必须跳出递归的条件逼近，要么是死循环。（栈是先进后出）当一个函数结束或遇到return时候函数本身被销毁。谁调用函数返回给谁！数组是连续内存空间，第一元素地址就本数组地址，元素间隔元素类型决定。数组是同一类型数据和集。数组长度定义了不能改变，长度也是数组类型的部分。切片是动态数组，
 数组的引用，是引用类型。底层数组的长度是指定的容量。</span></div>
-<div class="row"><pre>
+<div class="row"><pre><code>
 //数组
 var arr [3]int = [3]int{5,4,8}
 var arr = [3]int{5,4,8}
@@ -126,10 +130,10 @@ var arr = [...]int{1:5,0:4,2:8}
 var sli []int = make([]int,10,12)     //初始化切片，长度是10,容量是12
 slice := append([]int{1,2,3},4,5,6)   //切片追加元素
 sli = append(sli[:i],sli[i+1:]...)    //sli[i]删除
-</pre></div>
+</code></pre></div>
 
 <div class="row"><span class="txt">结构体：结构体是自定义数据类型，结构体的字段（属性）基本数据类型，指针，切片，map 结构体的变量是代表具</span></div>
-<div class="row"><pre>
+<div class="row"><pre><code>
 type A struct {}  //定义结构体
 type B struct { A }    //B继承A
 
@@ -137,10 +141,10 @@ var person1 Person
 person2 := Person{}
 var person3 *Person = new(Person)
 var person4 *Person = &Person{}
-</pre></div>
+</code></pre></div>
 
 <div class="row"><div class="col-xs-12 col-md-12 btit">go函数</div></div><!-- ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！ -->
-<span class="codetext">文件：</span></div><div class="row"><pre>
+<div class="row"><span class="txt">文件：</span></div><div class="row"><pre><code>
 close(ch1)  //关闭管道
 recover()   //捕获panic崩溃信息
 time.Sleep(time.Second) //暂停一秒
@@ -156,8 +160,8 @@ reader := bufio.NewReader(os.Stdin) //os.Stdin标准如
 reader.ReadString('\n')     //输入获取
 conn.Write([]byte(line))    //写入到conn
 strings.Trim(a," \t\n")     //a变量的空格tab回车去掉
-</pre></div>
-<span class="codetext">文件：</span></div><div class="row"><pre>
+</code></pre></div>
+<div class="row"><span class="txt">文件：</span></div><div class="row"><pre><code>
 os.Open("/home/user/test.txt")    //打开文件
 reader := bufio.NewReader(file)    //创建缓存reader对象
 reader.ReadString('\n')        //打开文件
@@ -165,24 +169,24 @@ reader.ReadString('\n')        //打开文件
 os.OpenFile("/home/user/sss.txt",os.O_WRONLY | os.O_CREATE,0777)    //创建文件
 bufio.NewWriter(file)    //创建缓冲对象
 writer.WriteString("hello")    //往缓冲对象中写入数据
-</pre></div>
-<span class="codetext">外部命令exec：</span></div><div class="row"><pre>
+</code></pre></div>
+<div class="row"><span class="txt">外部命令exec：</span></div><div class="row"><pre><code>
 cmd := exec.Command("ls","-a","-l")
 out,_ := cmd.Output()
 fmt.Println(string(out))
-</pre></div>
-<span class="codetext">网络：</span></div><div class="row"><pre>
+</code></pre></div>
+<div class="row"><span class="txt">网络：</span></div><div class="row"><pre><code>
 net.Listen("tcp","0.0.0.0:88")    //服务端监听tcp 88端口
 net.Dial("tcp","127.0.0.1:88")  //连接服务器tcp 88端口
-</pre></div>
-<span class="codetext">重定向：</span></div><div class="row"><pre>
+</code></pre></div>
+<div class="row"><span class="txt">重定向：</span></div><div class="row"><pre><code>
 func nginx2(w http.ResponseWriter,r *http.Request){
         //重定向，必须w.Header()前面。然后是WriteHeader
   w.Header().Set("Location","https://www.baidu.com/")
   w.WriteHeader(302)
 }
-</pre></div>
-<span class="codetext">模板引擎：</span></div><div class="row"><pre>
+</code></pre></div>
+<div class="row"><span class="txt">模板引擎：</span></div><div class="row"><pre><code>
 import "net/http"
 import "html/template"
  
@@ -207,8 +211,8 @@ func main(){
     //监听端口和调用默认的fuyouqi
     http.ListenAndServe(":8080",nil)
 }
-</pre></div>
-<span class="codetext">动作：</span></div><div class="row"><pre>
+</code></pre></div>
+<div class="row"><span class="txt">动作：</span></div><div class="row"><pre><code>
 t.Execute(w,"www")  //www惨素被传到'.'那里
 {{if .}}执行1{{else}} //条件成立执行1
 {{if .}}执行1{{else}}执行2{{end}} //条件成立执行1，否则是执行2
@@ -216,8 +220,8 @@ t.Execute(w,"www")  //www惨素被传到'.'那里
 {{template "content"}}  //引入内容
 {{block "content".}}内容{{end}}   //引入文件默认内容
 {{define "content"}} 菩萨 {{end}} //引入文件定义，可以是html文件
-</pre></div>
-<span class="codetext">表单：</span></div><div class="row"><pre>
+</code></pre></div>
+<div class="row"><span class="txt">表单：</span></div><div class="row"><pre><code>
 package main
 import (
   "fmt"
@@ -235,8 +239,8 @@ func main(){
   http.HandleFunc("/",nginx)
   http.ListenAndServe(":8080",nil)
 }
-</pre></div>
-<span class="codetext">数据库mysql：</span></div><div class="row"><pre>
+</code></pre></div>
+<div class="row"><span class="txt">数据库mysql：</span></div><div class="row"><pre><code>
 package utils
 import (
     "database/sql"
@@ -261,8 +265,8 @@ row.Scan(&id,&username,&password,&email) //获取字段
 sql := "select * from users"
 rows := DB.Query(sqlStr)
 rows.Scan(&id,&username,&password,&email)
-</pre></div>
-<span class="codetext">数据库redis：</span></div><div class="row"><pre>
+</code></pre></div>
+<div class="row"><span class="txt">数据库redis：</span></div><div class="row"><pre><code>
 import "github.com/gomodule/redigo/redis"
  
 var pool *redis.Pool //连接池
@@ -277,11 +281,11 @@ pool = &redis.Pool {  //获取结构体地址的
 conn := pool.Get()      //从连接池获取链接
 conn.Do("mset","name","qiqi","age","25")    //写入数据到redis
 redis.String(conn.Do("get","name"))    //读取Redis转成string 字符串使用redis.Strings
-</pre></div>
+</code></pre></div>
 <div class="row"><div class="col-xs-12 col-md-12 btit">go函数</div></div>
-<span class="codetext">#####</span></div><div class="row"><pre>
+<div class="row"><span class="txt">#####</span></div>
 
-</pre></div>
+<div class="row"><pre><code></code></pre></div>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
@@ -296,5 +300,6 @@ redis.String(conn.Do("get","name"))    //读取Redis转成string 字符串使用
     <script src="../css/offcanvas.js"></script>
 <div class="goTop" id="js-go_top"><a href="#ups"><img src="../css/icon_top.png" alt="回到顶部图片"></a></div>
 <script src="../css/GoToTop.js"></script>
+
   </body>
 </html>

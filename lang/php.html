@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.1/styles/default.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.1/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script>
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -99,7 +100,7 @@
 <div class="row"><span  class="txt">  
 php的很多功能需要相应的应用库，比如更好的图形支持就安装GD库。php5.6.2最稳定。集成开发工具：zend stdio 和 netbean 。前端notepad++ editplus。
 </span></div>
-<div class="row"><pre>
+<div class="row"><pre><code>
 //php.ini
     ;显示错误信息  
     display_errors = On  
@@ -118,7 +119,7 @@ php的很多功能需要相应的应用库，比如更好的图形支持就安�
     require_once 'a.php';    //require_once只能单次引入php文件，文件不存在退出程序
     include 'a.php';    //重复引入单个文件，文件不存在继续执行程序。
     include_once 'a.php';    //只能引入一次单个文件，文件不存在继续执行程序。
-</pre></div>
+</pre></code></div>
 
 <div class="row"><span  class="txt">
 变量：
@@ -131,7 +132,7 @@ php的很多功能需要相应的应用库，比如更好的图形支持就安�
 静态函数也叫类的方法，我们操作静态属性可以使用静态函数操作，使用静态函数在没有实例化对象的情况下使用。
 静态方法中不能调用非静态属性。普通成员函数，可以访问静态属性
 </span></div>
-<div class="row"><pre>
+<div class="row"><pre><code>
 类定义：
 类中直接声明的变量叫成员属性。
 class 类名{
@@ -169,7 +170,7 @@ self::StaticFunctionName(); ( $this->StaticFunctionName(); )  //类内静态函�
 $this->MyFunction();
 FatherClassName::MyFunction();
 parent::MyFunction();(parent::__construct();)
-</pre></div>
+</pre></code></div>
 <div class="row"><span class="txt">
 函数：
 1.构造函数没有返回值
@@ -179,7 +180,7 @@ parent::MyFunction();(parent::__construct();)
 5.如果该类定义构造函数后默认的构造方法被覆盖。
 6.构造方法的默认修饰符是 public
 </span></div>
-<div class="row"><pre>
+<div class="row"><pre><code>
 __FILE__     //获取文件名
 __LINE__     //获取当前行数
 __FUNCION__  //当前函数名
@@ -202,10 +203,10 @@ is_callable($a);    //是否函数名
 unset($a)       //删除变量
 empty($a)       //是否空
 var_dump($a)    //输出类型
-</pre></div>
+</pre></code></div>
 
 <div class="row"><span class="txt"></span></div>
-<div class="row"><pre></pre></div>
+<div class="row"><pre><code></pre></code></div>
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <div class="row"><hr></div>

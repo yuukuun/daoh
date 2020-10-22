@@ -136,15 +136,12 @@ body {
 */
     position: relative;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 6px;
+    border-radius: 7px;
+    padding: 14px;
   /*  background-color: #f1fff6;*/
 /*    color: #D3D7CF;*/
-
-    /*
     background-color: #2E3436;
-    color: #D3D7CF;*/
-    background-color: #f0f0f0;
+    color: #D3D7CF;
     width: 100%;
 }
 pre .btn-pre-copy{

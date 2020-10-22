@@ -9,6 +9,8 @@
     <!-- Bootstrap CSS -->
     <link href="../css/offcanvas.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.1/styles/default.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.1/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script>
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -102,14 +104,14 @@
 
 </div>
 
-<div class="row"><pre>621b99bc-1230-4f20-8438-04ff5f1edd8f</pre></div>
-<div class="row"><pre>wget https://raw.githubusercontent.com/yuukuun/daoh/main/ins.sh && chmod +x ins.sh && ./ins.sh</pre></div>
-<div class="row"><pre>git add . && git status -sb && git commit -m "$(date +%Y.%m.%d-%H:%M)" && git push</pre></div>
+<div class="row"><pre><code>621b99bc-1230-4f20-8438-04ff5f1edd8f</pre></code></div>
+<div class="row"><pre><code>wget https://raw.githubusercontent.com/yuukuun/daoh/main/ins.sh && chmod +x ins.sh && ./ins.sh</pre></code></div>
+<div class="row"><pre><code>git add . && git status -sb && git commit -m "$(date +%Y.%m.%d-%H:%M)" && git push</pre></code></div>
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 <div class="row"><div class="col-xs-12 col-md-12 btit">Linux配置</div></div>
 
-<div class="row"><pre>
+<div class="row"><pre><code>
 ###快捷键
 Ctrl + C    #强制终止
 Ctrl + L    #清屏
@@ -132,12 +134,12 @@ ServerAliveInterval  20 ###每20秒链接一次
 ssh root@11.22.33.44 -p 22 ~/.ssh/id_rsa
 rsync -av -e 'ssh root@11.22.33.44 -p 22 -i ~/.ssh/id_rsa' --exclude={'目录',} /root/* root@:/root/ ###--exclude={'目录',}排除目录
 
-</pre></div>
+</pre></code></div>
 
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 <div class="row"><div class="col-xs-12 col-md-12 btit">git安装设置</div></div>
-<div class="row"><pre>
+<div class="row"><pre><code>
 ###配置
 ssh -T -p 22 git@github.com -i ~/.ssh/id_rsa    ###测试
 git config --global user.name "username"    ###设置用户名
@@ -162,12 +164,12 @@ backup #忽略backup目录
 
 ###本地手动删除，在到同步远程
 git add . && git status -sb && git commit -m "$(date +%Y.%m.%d-%H:%M)" && git push
-</pre></div>
+</pre></code></div>
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 <div class="row"><div class="col-xs-12 col-md-12 btit">git安装设置</div></div>
 <div class="row"><span class="txt">if语句</span></div>
-<div class="row"><pre>
+<div class="row"><pre><code>
 temp=$(cat /etc/redhat-release)
 if [[ "$temp" == "CentOS Linux release 8"* ]]; then
         echo "CentOS 8"
@@ -176,10 +178,10 @@ elif [[ "$temp" == "CentOS Linux release 7"* ]];then
 else
     echo "##### CentOS error !!! #####"
 fi
-</pre></div>
+</pre></code></div>
 
 <div class="row"><span class="txt">firewall防火墙</span></div>
-<div class="row"><pre>
+<div class="row"><pre><code>
 firewall-cmd --state                ###状态
 systemctl start firewalld.service    ###启动防火墙
 firewall-cmd --add-service=https    ###添加服务https
@@ -187,11 +189,11 @@ firewall-cmd --add-port=8080/tcp    ###添加端口8080
 firewall-cmd --add-rich="rule family=ipv4 source address=6.6.6.6 drop" ###ip丢弃
 firewall-cmd --runtime-to-permanent
 firewall-cmd --reload 
-</pre></div>
+</pre></code></div>
 
 <div class="row"><div class="col-xs-12 col-md-12 btit">https证书，ssl证书， <a href="https://certbot.eff.org/" target="_blank" >Let’s Encrypt证书</a>:</div></div>
 <div class="row"><span class="txt">certbot</span></div>
-<div class="row"><pre>
+<div class="row"><pre><code>
 ###安装。根据官方安装
 yum install -y certbot python2-certbot-nginx
  
@@ -217,10 +219,10 @@ echo '5 4 * * 2 /usr/bin/certbot renew --dry-run "/usr/local/nginx/sbin/nginx -s
 ###删除
 certbot certificates
 certbot delete --cert-name example.com
-</pre></div>
+</pre></code></div>
 
 <div class="row"><span class="txt">acme.sh</span></div>
-<div class="row"><pre>
+<div class="row"><pre><code>
 1.安装：
 wget -O -  https://get.acme.sh | sh
 acme.sh -h  ###检查
@@ -248,7 +250,7 @@ acme.sh --install-cert -d 'domain.com' --key-file /usr/local/nginx/ssl/domain.co
 5.自动续期
 0 0 * * * "/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" >> /var/log/acme.sh-auto-renew.log
 acme.sh --cron  ###续期情
-</pre></div>
+</pre></code></div>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
