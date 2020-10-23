@@ -200,7 +200,7 @@ cat >/usr/local/nginx/html/index.html<<-EOF
     <table class="table table-striped table-bordered table-hover">
       <tr><th>属性</tH><th>参数</th></tr>
       <tr><td>协议：</td><td>vmess</td></tr>
-      <tr><td>域名地址：</td><td>$url</td></tr>
+      <tr><td>域名地址：</td><td>$urls</td></tr>
       <tr><td>UUID：</td><td>$uuid</td></tr>
       <tr><td>端口：</td><td>443</td></tr>
       <tr><td>额外ID：</td><td>64</td></tr>
@@ -223,6 +223,8 @@ EOF
 
 
 read -p "请输入域名：" urls
+read -p "请选择数字：" key
+
 case $key in
 1)	
 v2rayServer
@@ -233,3 +235,9 @@ v2rayClient
 ;;
 *)	echo "v2ray错误!"	;;	
 esac
+
+systemctl restart nginx.service
+
+systemctl restart v2ray.service
+systemctl enable v2ray.service
+systemctl status v2ray.service
