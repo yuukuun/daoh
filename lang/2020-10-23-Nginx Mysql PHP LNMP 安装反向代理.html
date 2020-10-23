@@ -111,6 +111,8 @@
 <div class="row"><span class="txt">nginx-1.15.8 安装：</span></div>
 <div class="row"><pre><code>
 #!/bin/bash
+### centos8 centos7 
+
 cd /tmp
 ### 初始化 ### 
 #read -p "请输入域名：" url
@@ -206,6 +208,8 @@ systemctl status nginx.service
 
 <div class="row"><span class="txt">安装MariaDB10.1:</span></div>
 <div class="row"><pre><code>
+#!/bin/bash
+
 ###初始化：
 vim /etc/yum.repos.d/Mariadb.repo    ###添加repo源
  
@@ -216,7 +220,8 @@ name = MariaDB
 baseurl = http://yum.mariadb.org/10.1/centos7-amd64
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
- 
+</code></pre></div>
+<div class="row"><pre><code>
 #安装：
 yum -y install MariaDB-server MariaDB-client
  
