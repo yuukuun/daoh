@@ -209,7 +209,7 @@ systemctl status nginx.service
 <div class="row"><span class="txt">certbot安装与SSL配置:</span></div>
 <div class="row"><pre><code>
 #!/bin/bash
-### centos 7 centos8
+### centos 7 centos8 ssl 配置手动输入
 read -p "请输入域名：" urls
 read -p "请输入邮箱：" emails
 
@@ -227,11 +227,21 @@ else
      echo "##### Certbot error !!! #####"
 fi
 
-certbot certonly --webroot -w /usr/local/nginx/html/ -d $urls -m $emails --agree-tos -n
+mkdir /usr/local/nginx/$urls
+#certbot certonly --webroot -w /usr/local/nginx/html/ -d $urls -m $emails --agree-tos -n  ###--test-cert测试 -n后台
 
-cat >/usr/local/nginx/conf.d/$urls.conf<<<-EOF
+
+cat >/usr/local/nginx/conf.d/$urls.conf<<-EOF
 server {
-    listen 80 443 ssl http2;
+    listen   80;
+    server_name $urls;
+    root /usr/local/nginx/$urls/;
+    index index.php index.html;
+ #   rewrite ^(.*)$  https://$host$1 permanent;
+}
+###手动输入
+server {
+    listen 443 ssl http2;
     server_name $urls;
     root /usr/local/nginx/$urls/;
     index index.php index.html;
@@ -267,6 +277,14 @@ location / {
         }
 }
 EOF
+
+cp -r /usr/local/nginx/html/* /usr/local/nginx/$urls/
+
+/usr/local/nginx/sbin/nginx -t
+/usr/local/nginx/sbin/nginx -s reload
+systemctl restart nginx.service
+systemctl status nginx.service
+
 </code></pre></div>
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <div class="row"><span class="txt">安装MariaDB10.1:</span></div>
