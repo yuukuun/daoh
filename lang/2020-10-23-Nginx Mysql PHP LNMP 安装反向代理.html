@@ -228,7 +228,7 @@ else
 fi
 
 mkdir /usr/local/nginx/$urls
-#certbot certonly --webroot -w /usr/local/nginx/html/ -d $urls -m $emails --agree-tos -n  ###--test-cert测试 -n后台
+certbot certonly --webroot -w /usr/local/nginx/html/ -d $urls -m $emails --agree-tos -n  ###--test-cert测试 -n后台
 
 
 cat >/usr/local/nginx/conf.d/$urls.conf<<-EOF
@@ -275,7 +275,6 @@ cp -r /usr/local/nginx/html/* /usr/local/nginx/$urls/
 /usr/local/nginx/sbin/nginx -s reload
 systemctl restart nginx.service
 systemctl status nginx.service
-
 </code></pre></div>
 
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
