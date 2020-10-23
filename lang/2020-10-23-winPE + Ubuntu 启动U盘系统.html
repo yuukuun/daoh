@@ -100,70 +100,23 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">SSL HTTPS certbot</a></div></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">winPE + Ubuntu 启动U盘系统</a></div></div>
+<div class="row"><span class="txt">
+1.先用老毛桃U盘启动装机工具制作启动PE启动U盘。
+2.把Ubuntu桌面版的iso镜像改名成ubuntu.iso，在U盘根目录下新建一个文件夹ubuntu。
+3.把casper文件夹里面的initrd.lz和vmlinuz两个文件解压复制出来，放到U盘的ubuntu文件夹里头。
+4.把ubuntu.iso这个文件放到u盘根目录的ubuntu文件夹里。
+5.这里要用到一个工具<a href="../soft/FbinstTool.zip">FbinstTool 1.607(forWindows)</a>我们利用它来修改引导菜单。
+</span></div>
+<div class="row"><pre><code>LANG</code></pre></div>
 
-<div class="row"><span class="txt">certbot:</span></div>
-<div class="row"><pre><code>
-###安装。根据官方安装
-yum remove epel-release
-yum install -y epel-release
-yum install -y certbot python2-certbot-nginx
- 
-###出错就解决
-pip install --upgrade --force-reinstall 'requests==2.6.0' urllib3
- 
-###单域名证书
-certbot certonly --webroot -w /usr/local/nginx/html/ -d baidu.com -m 0@yahoo.com --agree-tos --test-cert -n    ### --test-cert测试模式 -n不交互
- 
-###通配符域名证书
-certbot -d baidu.cn -d '*.baidu.com' --manual --preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory certonly \
--m 123@gmail.com --agree-tos
- 
-###自动通配符证书，需要域名验证
-wget https://dl.eff.org/certbot-auto && chmod a+x certbot-auto
-./certbot-auto -d '*.baidu.com' --manual --preferred-challenges dns-01 certonly -m 1233@qq.com --agree-tos \
---server https://acme-v02.api.letsencrypt.org/directory
- 
-###续费
-echo '5 4 * * 2 /usr/bin/certbot renew --dry-run "/usr/local/nginx/sbin/nginx -s reload"' >> /var/spool/cron/root
-###删除
-certbot certificates
-certbot delete --cert-name example.com
-</code></pre></div>
+<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><pre><code>LANG</code></pre></div>
 
-<div class="row"><span class="txt">acme.sh:</span></div>
-<div class="row"><pre><code>
-1.安装：
-wget -O -  https://get.acme.sh | sh
-acme.sh -h  ###检查
-~/.acme.sh/dnsapi/  ###支持的DNS
- 
-2.DNS解析添加KEY：
-阿里云：https://ak-console.aliyun.com/#/accesskey
-~/.bashrc文件中添加阿里云的“AccessKey ID”和“Access Key Secret”
-export Ali_Key="sdfsdfsdfljlbjkljlkjsdfoiwje"
-export Ali_Secret="jlsdflanljkljlfdsaklkjflsa"
- 
-CloundFlare获取证书：MyProfile中Global API key和Origin API key
-~/.bashrc文件中添加这个两个变量
-export [email protected]
-export CF_Key=85302dsiorw3oisjdkf899234sdf72dfdb46
- 
-3.安装证书：
-acme.sh --issue --dns dns_cf -d domain.com -d '*.domain.com'   
-### 制定DNS和域名，dns_cf是CloudFlare
- 
-4.拷贝证书到nginx目录
-acme.sh --install-cert -d 'domain.com' --key-file /usr/local/nginx/ssl/domain.com/private.pem --fullchain-file /usr/local/nginx/ssl/domain.com/fullchain.pem \
---reloadcmd "nginx -s reload"
- 
-5.自动续期
-0 0 * * * "/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" >> /var/log/acme.sh-auto-renew.log
-acme.sh --cron  ###续期情
-</code></pre></div>
+<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><pre><code>LANG</code></pre></div>
 
-<div class="row"><span class="txt">#####</span></div>
-<div class="row"><pre><code>#####</code></pre></div>
+
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
