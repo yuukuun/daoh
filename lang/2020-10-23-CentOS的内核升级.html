@@ -130,10 +130,13 @@ net.core.default_qdisc = fq
 net.ipv4.tcp_congestion_control = bbr
 sysctl -p ###加载系统参数（正常情况下会输出我们之前加入的内容）
 
-sysctl net.ipv4.tcp_available_congestion_control        ##若输入
-net.ipv4.tcp_available_congestion_control = bbr cubic reno  ##返回这个BBR开启
+##若输入
+sysctl net.ipv4.tcp_available_congestion_control        
+##返回这个BBR开启
+net.ipv4.tcp_available_congestion_control = bbr cubic reno  
 
-lsmod | grep bbr  ##若输入
+##若输入
+lsmod | grep bbr  
 ##返回这个BBR开启
 tcp_bbr                16384  1
 tcp_bbr                20480  0
