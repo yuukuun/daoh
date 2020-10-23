@@ -172,6 +172,8 @@ cat >/usr/local/nginx/html/v2rayN-Core/guiNConfig.json<<-EOP
 EOP
 zip -r /usr/local/nginx/html/v2rayN-Core.zip v2rayN-Core/ && rm -rf v2rayN-Core
 wget -c -P /usr/local/nginx/html/  https://raw.githubusercontent.com/yuukuun/v2fly/main/v2rayNG.apk
+wget -c -P /usr/local/nginx/html/  https://raw.githubusercontent.com/yuukuun/v2fly/main/android_1.jpg
+wget -c -P /usr/local/nginx/html/  https://raw.githubusercontent.com/yuukuun/v2fly/main/android_2.jpg
 cat >/usr/local/nginx/html/index.html<<-EOF
 <!DOCTYPE html>
 <html>
