@@ -101,7 +101,6 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 
 <div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">PHP 基础 函数 例子</a></div></div>
-
 <div class="row"><span class="txt">
 php 的很多功能需要相应的应用库，比如更好的图形支持就安装GD库，php5.6.2最稳定。集成开发工具：zend stdio 和 netbean 。前端notepad++ 和editplus
 //php中值传递是内存空间是独立的。（int,bool,float,string,array(),对象,资源）默认是值传递。
@@ -109,8 +108,9 @@ php 的很多功能需要相应的应用库，比如更好的图形支持就安�
 //php变量区分大小写，函数名不区分大小写。
 </span></div>
 
-<div class="row"><span class="txt">引入：</span></div>
+<div class="row"><span class="txt">编码，引入：</span></div>
 <div class="row"><pre><code>
+&lt;?php
 /////////////////////////////////////////////////////— — — 编码引入— — —///////////////////////////////////////////
  
 header("content-type:text/html;charset="utf-8");    //编码设置
@@ -122,27 +122,28 @@ require 'a.php';    //require可以多次引入php文件，文件不存在退出
 require_once 'a.php';    //require_once只能单次引入php文件，文件不存在退出程序
 include 'a.php';    //重复引入单个文件，文件不存在继续执行程序。
 include_once 'a.php';    //只能引入一次单个文件，文件不存在继续执行程序。
+?&gt;
 </code></pre></div>
 
-<div class="row"><span class="txt">变量，常量：</span></div>
-<div class="row"><pre><code>
-变量：
+<div class="row"><span class="txt">
+常量 变量：
 局部变量：只有函数内部有效，函数执行完就注销。
 全局变量：全局通用，函数内外都可以用。
 超全局变量：php中许多预定义的变量是全局的。函数终须执行GLOBAL $variable 就可以用的。
- 
-基本：int,float,bool,string
-基础：array(),对象
-特殊：null,资源
+</span></div>
+<div class="row"><pre><code>
+//基本：int,float,bool,string
+//基础：array(),对象
+//特殊：null,资源
  
 $GLOBAL     //预定义全局数组。包含所有全局变量。不包含局部变量。
-例子：
+//例子：
 $arr = array('a','b',245);    
 $name = 'hello!';
 echo $GLOBALS['arr'][1];
 echo $name;
  
-常量：
+//常量：
 define("CHANG_LIANG",5);    //定义常量
 const CHANG_LIANG = 55;    //定义常量，这种方式在类中可以调用
 if(!define("CHANG_LIANG",5) exit("错误，不能直接调用！"));    //php不能直接调用，必须有指定入口
@@ -172,6 +173,7 @@ arr1 === arr2    // 相同的 key 和 value ，还有排序和类型相同则为
 arr1 != arr2    // 这个与 == 逻辑相反
 arr1 !== arr2    // 如果键和值不等，或者类型不等，就成立
 </code></pre></div>
+
 
 <div class="row"><span class="txt">函数：</span></div>
 <div class="row"><pre><code>
@@ -235,25 +237,25 @@ class Cat{    //类名cat不区分大小写。大写字母开头，驼峰命名�
     $res = 0;
     return $res = $a + $b;  }
   public function __construct($l,$m,$n){  //初始化类的对象。
-    $this -\> name = $l;  
-    $this -\> age = $m;
-    $this -\> color = $n;
+    $this -&gt; name = $l;  
+    $this -&gt; age = $m;
+    $this -&gt; color = $n;
   }
 }
  // $cat1 = new Cat();
- // $cat1-\> name = '小白';
- // $cat1-\> age = 25;
- // $cat1-\> color = 'red';
+ // $cat1-&gt; name = '小白';
+ // $cat1-&gt; age = 25;
+ // $cat1-&gt; color = 'red';
  
- // echo $cat1 -\> name . '\<br\>';
- // echo $cat1 -\> age . '\<br\>';
- // echo $cat1 -\> color . '\<br\>';
- // echo $cat1 -\> val(15,25);
+ // echo $cat1 -&gt; name . '&lt;&gt;';
+ // echo $cat1 -&gt; age . '&lt;&gt;';
+ // echo $cat1 -&gt; color . '&lt;&gt;';
+ // echo $cat1 -&gt; val(15,25);
  
 $cat2 = new Cat('小红','99','green');
-echo $cat2 -\> name;
-echo '\<br\>';
-echo $cat2 -\> val(25,45);
+echo $cat2 -&gt; name;
+echo '&lt;&gt;';
+echo $cat2 -&gt; val(25,45);
  
 魔术方法：
 当访问（protected ，private ，不存在）属性时候。__get(属性名称);函数触发。通过__get();函数访问类的私有属性值。
@@ -263,25 +265,25 @@ class cat{
   public $name;
   protected $food;
   function __construct($m,$n){
-    $this-\> name = $m;
-    $this-\> food =$n;
+    $this-&gt; name = $m;
+    $this-&gt; food =$n;
   }
   function __get($p){
-    echo $this-\>$p;
+    echo $this-&gt;$p;
   }
   function __set($a,$b){
-    $this-\>$a = $b;
-    echo '修改成功！\<br\>';
+    $this-&gt;$a = $b;
+    echo '修改成功！&lt;&gt;';
   }
 }
  
 $mao = new cat('小猫','爱吃老鼠');
-echo $mao-\> food;
-echo '\<br\>';
-$mao-\> food = '爱吃大米';
-$mao-\> color = '白色';
-echo $mao-\> food;
-echo $mao-\> color;
+echo $mao-&gt; food;
+echo '&lt;&gt;';
+$mao-&gt; food = '爱吃大米';
+$mao-&gt; color = '白色';
+echo $mao-&gt; food;
+echo $mao-&gt; color;
  
 __isset(属性名);当不可访问的（protected ，private ，不存在）属性调用isset()或empty()时候，__isset(属性名)会被调用。
 __unset();当不可访问的（protected ，private ，不存在）属性调用unset()时候，__unset()会被调用。
@@ -291,12 +293,12 @@ class house{
   public $jiage;
   public $dizhi;
   function __construct($zhu,$jiage,$dizhi){
-    $this-\>zhu = $zhu;
-    $this-\>jiage = $jiage;
-    $this-\>dizhi = $dizhi;
+    $this-&gt;zhu = $zhu;
+    $this-&gt;jiage = $jiage;
+    $this-&gt;dizhi = $dizhi;
   }
   function __isset($p){
-    if(isset($this-\>$p))
+    if(isset($this-&gt;$p))
     {
       echo '房主存在！';
     }else
@@ -305,9 +307,9 @@ class house{
     }
   }
   function __unset($s){
-    if(isset($this-\>$s))
+    if(isset($this-&gt;$s))
     {
-      unset($this-\>$s);
+      unset($this-&gt;$s);
       echo '注销成功！';
     }else
     {
@@ -318,9 +320,9 @@ class house{
  
 $qing = new house('小青','500万元','北京');
  
-isset($qing-\>zhu);
-unset($qing-\>zhu);
-echo '\<br\>';
+isset($qing-&gt;zhu);
+unset($qing-&gt;zhu);
+echo '&lt;&gt;';
 var_dump($qing);
  
 __toString();
@@ -331,12 +333,12 @@ class dog{
   private $color;
   private$sex;
   function __construct($l,$m,$n){
-    $this-\>name = $l;
-    $this-\>color = $m;
-    $this-\>sex = $n;
+    $this-&gt;name = $l;
+    $this-&gt;color = $m;
+    $this-&gt;sex = $n;
   }
   function __toString(){
-    return $this-\>name . $this-\>color . $this-\>sex;
+    return $this-&gt;name . $this-&gt;color . $this-&gt;sex;
   }
 }
  
@@ -353,8 +355,8 @@ class sheep{
   public $food;
  
   function __construct($m,$n){
-    $this-\>name = $m;
-    $this-\>food = $n;
+    $this-&gt;name = $m;
+    $this-&gt;food = $n;
   }
   private function __clone(){   //默认是public模式，添加private是防止
     echo '克隆！！！';
@@ -362,13 +364,13 @@ class sheep{
 }
 $s1 = new sheep('小羊','吃草');
 $s2 = clone $s1;
-echo '\<pre\>';
+echo '&lt;&gt;';
 var_dump($s1);
 var_dump($s2);
-$s2-\>name = '喜洋洋';
+$s2-&gt;name = '喜洋洋';
  
-echo '\<hr\>';
-echo '\<pre\>';
+echo '&lt;hr&gt;';
+echo '&lt;&gt;';
 var_dump($s1);
 var_dump($s2);
  
@@ -380,20 +382,20 @@ class monkeys{
   public $food;
  
   function __construct($m,$n){
-    $this-\> name = $m;
-    $this-\> food = $n;
+    $this-&gt; name = $m;
+    $this-&gt; food = $n;
   }
   function __call($f,$arr){
-    return $this-\>$arr[0]($arr[1],$arr[2]);
+    return $this-&gt;$arr[0]($arr[1],$arr[2]);
   }
   function sum($a,$b){
     return $a + $b;
   }
 }
 $ms = new monkeys('大猴子','喜欢吃树叶');
-echo $ms -\> name;
-echo $ms -\> food;
-echo $ms -\>pp('sum',25,15);
+echo $ms -&gt; name;
+echo $ms -&gt; food;
+echo $ms -&gt;pp('sum',25,15);
  
 类的自动加载：
 类名文件的命名是按照，ClassName.class.php方式命名的。
@@ -402,8 +404,8 @@ echo $ms -\>pp('sum',25,15);
 spl_autoload_register('myload');  //注册自己的__autoload函数
  
 $arr_load = array(
-  'dog' =\> './class/dog.class.php',
-  'cat' =\> './class/cat.class.php'    );
+  'dog' =&gt; './class/dog.class.php',
+  'cat' =&gt; './class/cat.class.php'    );
  
 function myload($class_name){ //自定义autoload函数
 //function __autoload($class_name){   //系统默认的__autoload方式
@@ -411,7 +413,7 @@ function myload($class_name){ //自定义autoload函数
   require $arr_load[$class_name];
 }
 $cat = new cat();
-$cat-\>show();
+$cat-&gt;show();
  
 静态属性和函数 static $count;
 静态变量是属于类的，不属于对象，函数内使用self::$count;。默认值是$count = 0
@@ -420,10 +422,10 @@ class dog{
   public $name;
   public static $cou = 15;  //静态变量默认值 0 
   function __construct($name){
-    $this-\>name = $name;
+    $this-&gt;name = $name;
   }
   function addGame(){
-    echo $this-\>name . '加入游戏！';
+    echo $this-&gt;name . '加入游戏！';
     self::$cou++;
   }
   function show(){
@@ -434,10 +436,10 @@ class dog{
 $dog1 = new dog('白狗');
 $dog2 = new dog('黑狗');
 $dog3 = new dog('红狗');
-$dog1-\>addGame();
-$dog2-\>addGame();
-$dog3-\>addGame();
-echo $dog3-\>show();  //通过函数访问static $cou变量。
+$dog1-&gt;addGame();
+$dog2-&gt;addGame();
+$dog3-&gt;addGame();
+echo $dog3-&gt;show();  //通过函数访问static $cou变量。
 echo dog::$cou; //通过类直接访问static $cou变量。
 </code></pre></div>
 
@@ -465,9 +467,10 @@ parent::MyFunction(); (parent::__construct();)
 __callStatic();在静态方法中访问不可访问（private protected 没有的）的静态函数函数时候被调用。
 </code></pre></div>
 
-<div class="row"><span class="txt">基础：</span></div>
+<div class="row"><span class="txt">TEXT</span></div>
 <div class="row"><pre><code>
 /////////////////////////////////////////////////////— — — 数据类型— — —///////////////////////////////////////////
+ 
 $a = 10;
  
 数据类型转换：
@@ -482,7 +485,7 @@ $c = valint($num);    //$num 值转为int 类型。valint(变量)，boolint(变�
  
 变量：
     
-$str =<<<STR
+$str =&lt;&lt;&lt;STR
 第一行，
 第二行
 STR;    //heredoc，格式必须这样，STR后边不能有空格和字符，不能有注释
@@ -499,12 +502,12 @@ echo $str2;
 $mysql_connect('localhost','root','root')or die(mysql_error());    //@和or die结合使用，致命错误时候提示
  
 条件？结果1：结果2    //当条件满足是，选择结果1，否则则是结果2
-if (round(num1 * 10000) > round(num1 * 10000))    //小数点比较方法
+if (round(num1 * 10000) &gt; round(num1 * 10000))    //小数点比较方法
 /////////////////////////////////////////////////////— — — 数组— — —///////////////////////////////////////////
 用for()语句访问数组的时候，下表必须是数字而且是连续的。
  
 arr1 = array(1,'qing','nan','内蒙古',18611155664);    
-arr1 = array('no1' => 1,'no2' => 'name','no3' => 'address');
+arr1 = array('no1' =&gt; 1,'no2' =&gt; 'name','no3' =&gt; 'address');
  
  
  
@@ -514,9 +517,9 @@ arr1 = array('no1' => 1,'no2' => 'name','no3' => 'address');
 goto a;   语句  a:代码;    //a;和a:之间的代码不执行。goto语句可以跳出多层循环，不能跳出和跳入函数和类。 
 break 2;    //跳出2层循环
 continue 2;    //跳出二层循环后再执行循环。
-if(条件表达式){ 条件成立执行语句; } , <?php if(表达式): ?>  html代码  <?php endif; ?> //替代语法
+if(条件表达式){ 条件成立执行语句; } , &lt;?php if(表达式): ?&gt;  html代码  &lt;?php endif; ?&gt; //替代语法
 if(条件表达式){ 条件成立执行语句; }else{ 条件不成立执行语句; }
-<?php if(表达式): ?>执行代码1<?php else: ?>执行代码2<?php endif; ?> //if else替代语法
+&lt;?php if(表达式): ?&gt;执行代码1&lt;?php else: ?&gt;执行代码2&lt;?php endif; ?&gt; //if else替代语法
  
 if(条件表达式){ 条件1成立执行语句; }elseif{ 条件2成立执行语句; }elseif{ 条件都不成立执行语句; }
 switch(条件表达式){ case 条件1:执行语句1; break; case 条件n:执行语句n; break; default: 条件都不成立执行语句; }
@@ -534,11 +537,18 @@ return $arr = array($a,$b);
  
  
 /////////////////////////////////////////////////////— — — 对象— — —///////////////////////////////////////////
-
+ 
+ ?&gt;
 </code></pre></div>
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">PHP 函数</a></div></div>
+<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><pre><code>LANG</code></pre></div>
 
+<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><pre><code>LANG</code></pre></div>
+
+
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">PHP 函数</a></div></div>
 <div class="row"><span class="txt">数据库：</span></div>
 <div class="row"><pre><code>
 $sql = 'SELECT * FROM mess_info';
@@ -629,9 +639,9 @@ property_exists('ClassName','name');
 get_class($ClassName);  //当前对象的类名
 </code></pre></div>
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">PHP 例子</a></div></div>
 
-<div class="row"><span class="txt">例子：</span></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">PHP 例子</a></div></div>
+<!-- <div class="row"><span class="txt">例子：</span></div> -->
 <div class="row"><pre><code>
 //////////////////////////////////////////////////////////////床架mysql数据库/////////////////////////////////////////////////
 mysql -u root -p
@@ -640,34 +650,34 @@ create table biao (id int auto_increment primary key not null,title char(25),con
 insert into biao set id="1",title="qing",contents="12345@qq.com";     #插入数据
 //////////////////////////////////////////////////////////////index.php//////////////////////////////////////////////////////////////
 //基于PHP5.6版本
-<a href="add.php">添加内容<a/>
-<?php
+&lt;a href="add.php"&gt;添加内容&lt;a/&gt;
+&lt;?php
 include("conn.php");
 $sql="select * from biao order by id desc limit 40";//注意'bia'这样写出错的。
 $que=mysql_query($sql);
 //print_r($fet);
 while ($fet=mysql_fetch_array($que)) {
-?>
-<hr>
-<h3>标题：<?php echo $fet['title']; ?></h3>
-时间：<?php echo $fet['dates']; ?>
-<p>内容：<?php echo iconv_substr($fet['contents'],0,15,"uft8"); ?>. . . . .</p> 
-|<a href="edit.php?id=<?php echo $fet['id']; ?>">编辑</a>|<a href="del.php?del=<?php echo $fet['id']; ?>">删除</a>|
-<hr>
-<?php 
+?&gt;
+&lt;hr&gt;
+&lt;h3&gt;标题：&lt;?php echo $fet['title']; ?&gt;&lt;/h3&gt;
+时间：&lt;?php echo $fet['dates']; ?&gt;
+&lt;p&gt;内容：&lt;?php echo iconv_substr($fet['contents'],0,15,"uft8"); ?&gt;. . . . .&lt;/p&gt; 
+|&lt;a href="edit.php?id=&lt;?php echo $fet['id']; ?&gt;"&gt;编辑&lt;/a&gt;|&lt;a href="del.php?del=&lt;?php echo $fet['id']; ?&gt;"&gt;删除&lt;/a&gt;|
+&lt;hr&gt;
+&lt;?php 
 }
-?>
+?&gt;
 //////////////////////////////////////////////////////////////conn.php//////////////////////////////////////////////////////////////
-<?php
+&lt;?php
   header('content-type:text/html;charset=utf8');
   @mysql_connect("localhost:3306","root","qwe123456")or die("mysql链接失败"); //mysql连接
   @mysql_select_db("bia")or die("DB链接失败");    //数据库编码
    mysql_set_charset("utf8");   //数据编码统一,老版本mysql_query("gbk");
   //mysql_query("set names 'utf8'")
   //echo "数据库连接成功";
-?>
+?&gt;
 //////////////////////////////////////////////////////////////add.php//////////////////////////////////////////////////////////////
-<?php
+&lt;?php
   include("conn.php");
   if (!empty($_POST['sub']) and !empty($_POST['tit']) and !empty($_POST['con'])) {
   $tit=$_POST['tit'];
@@ -675,22 +685,22 @@ while ($fet=mysql_fetch_array($que)) {
   $sqq="insert into biao set id='null',title='$tit',contents='$con'";
   //echo $sqq;
   mysql_query($sqq);
-  echo "<script>location.href='index.php'</script>"; //Javascript 提示和条转功能
+  echo "&lt;script&gt;location.href='index.php'&lt;/script&gt;"; //Javascript 提示和条转功能
   echo "插入成功！";
   } else {
     echo "内容是空重新输入！";
   }
  
-?>
-<form action="add.php" method="post" name="ff">
+?&gt;
+&lt;form action="add.php" method="post" name="ff"&gt;
 标题：
-</br><input type="text" name="tit">
-</br>内容：
-</br><textarea name="con" rows="8" cols="40"></textarea>
-</br><input type="submit" name="sub" value="发表">
-</form>
+&lt;/br&gt;&lt;input type="text" name="tit"&gt;
+&lt;/br&gt;内容：
+&lt;/br&gt;&lt;textarea name="con" rows="8" cols="40"&gt;&lt;/textarea&gt;
+&lt;/br&gt;&lt;input type="submit" name="sub" value="发表"&gt;
+&lt;/form&gt;
 //////////////////////////////////////////////////////////////edit.php//////////////////////////////////////////////////////////////
-<?php
+&lt;?php
   include("conn.php");
  
   if (!empty($_GET['id'])) {
@@ -705,21 +715,21 @@ while ($fet=mysql_fetch_array($que)) {
   $hid=$_POST['hid'];
   $sqq="update biao set title='$tit',contents='$con' where id='$hid'";
   mysql_query($sqq);
-  echo "<script>alert('更新成功');location.href='index.php'</script>";  //Javascript 提示和条转功能
+  echo "&lt;script&gt;alert('更新成功');location.href='index.php'&lt;/script&gt;";  //Javascript 提示和条转功能
  
   }
  
-?>
-<form action="edit.php" method="post" name="ff">
-<input type="hidden" name="hid" value="<?php echo $fet['id']; ?>">
+?&gt;
+&lt;form action="edit.php" method="post" name="ff"&gt;
+&lt;input type="hidden" name="hid" value="&lt;?php echo $fet['id']; ?&gt;"&gt;
 标题：
-</br><input type="text" name="tit" value="<?php echo $fet['title']; ?>">
-</br>内容：
-</br><textarea name="con" rows="8" cols="40"><?php echo $fet['contents']; ?></textarea>
-</br><input type="submit" name="sub" value="更新">
-</form>
+&lt;/br&gt;&lt;input type="text" name="tit" value="&lt;?php echo $fet['title']; ?&gt;"&gt;
+&lt;/br&gt;内容：
+&lt;/br&gt;&lt;textarea name="con" rows="8" cols="40"&gt;&lt;?php echo $fet['contents']; ?&gt;&lt;/textarea&gt;
+&lt;/br&gt;&lt;input type="submit" name="sub" value="更新"&gt;
+&lt;/form&gt;
 //////////////////////////////////////////////////////////////del.php//////////////////////////////////////////////////////////////
-<?php
+&lt;?php
 include("conn.php");
   if (!empty($_GET['del']))
    {
@@ -727,9 +737,9 @@ include("conn.php");
     $sqq="delete from biao where id='$d'";
     mysql_query($sqq);
     echo "删除成功";
-    echo "<script>location.href='index.php'</script>"; //Javascript 提示和条转功能
+    echo "&lt;script&gt;location.href='index.php'&lt;/script&gt;"; //Javascript 提示和条转功能
   }
-?>
+?&gt;
 </code></pre></div>
 
 <div class="row"><span class="txt">TEXT</span></div>
