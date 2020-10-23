@@ -100,70 +100,51 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">SSL HTTPS certbot</a></div></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">DHCP 服务安装配置</a></div></div>
 
-<div class="row"><span class="txt">certbot:</span></div>
-<div class="row"><pre><code>
-###安装。根据官方安装
-yum remove epel-release
-yum install -y epel-release
-yum install -y certbot python2-certbot-nginx
- 
-###出错就解决
-pip install --upgrade --force-reinstall 'requests==2.6.0' urllib3
- 
-###单域名证书
-certbot certonly --webroot -w /usr/local/nginx/html/ -d baidu.com -m 0@yahoo.com --agree-tos --test-cert -n    ### --test-cert测试模式 -n不交互
- 
-###通配符域名证书
-certbot -d baidu.cn -d '*.baidu.com' --manual --preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory certonly \
--m 123@gmail.com --agree-tos
- 
-###自动通配符证书，需要域名验证
-wget https://dl.eff.org/certbot-auto && chmod a+x certbot-auto
-./certbot-auto -d '*.baidu.com' --manual --preferred-challenges dns-01 certonly -m 1233@qq.com --agree-tos \
---server https://acme-v02.api.letsencrypt.org/directory
- 
-###续费
-echo '5 4 * * 2 /usr/bin/certbot renew --dry-run "/usr/local/nginx/sbin/nginx -s reload"' >> /var/spool/cron/root
-###删除
-certbot certificates
-certbot delete --cert-name example.com
-</code></pre></div>
+<div class="row">
+安装配置：
+<pre><code>
+关闭防火墙，关闭selinux，关闭虚拟机的DHCP。
+sudo yum install dhcp dhcp-common
+dhcp        ###软件包
+dhcp-common ###命令软件包
+dhcp        ###服务名
+dhcrelay    ###中继服务名
+vim /etc/dhcp/dhcpd.conf             ###配置
+vim /user/share/doc/dhcp***.example  ###配置模板
+UDP 67 ###监听客户端的端口
+UDP 68 ###服务的端口
+</code></pre>
+  DHCP是主机动态分配协议在应用层工作UDP模式，局域网内工作。集中管理，分配网络资源。
+环境准本：
+  防火墙和SElinux关闭，虚拟机的DHCP功能关闭掉。环境主机都设置成NAT模式。DHCP是基于配置文件向外分配资源的服务，配置文件没有正确会，不能启动DHCP服务。
 
-<div class="row"><span class="txt">acme.sh:</span></div>
-<div class="row"><pre><code>
-1.安装：
-wget -O -  https://get.acme.sh | sh
-acme.sh -h  ###检查
-~/.acme.sh/dnsapi/  ###支持的DNS
- 
-2.DNS解析添加KEY：
-阿里云：https://ak-console.aliyun.com/#/accesskey
-~/.bashrc文件中添加阿里云的“AccessKey ID”和“Access Key Secret”
-export Ali_Key="sdfsdfsdfljlbjkljlkjsdfoiwje"
-export Ali_Secret="jlsdflanljkljlfdsaklkjflsa"
- 
-CloundFlare获取证书：MyProfile中Global API key和Origin API key
-~/.bashrc文件中添加这个两个变量
-export [email protected]
-export CF_Key=85302dsiorw3oisjdkf899234sdf72dfdb46
- 
-3.安装证书：
-acme.sh --issue --dns dns_cf -d domain.com -d '*.domain.com'   
-### 制定DNS和域名，dns_cf是CloudFlare
- 
-4.拷贝证书到nginx目录
-acme.sh --install-cert -d 'domain.com' --key-file /usr/local/nginx/ssl/domain.com/private.pem --fullchain-file /usr/local/nginx/ssl/domain.com/fullchain.pem \
---reloadcmd "nginx -s reload"
- 
-5.自动续期
-0 0 * * * "/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" >> /var/log/acme.sh-auto-renew.log
-acme.sh --cron  ###续期情
-</code></pre></div>
+配置文件：
+<pre><code>
+subnet 192.168.1.0 netmask 255.255.255.0 {  ### 声明网段和子网码
+  range 192.168.1.3 192.168.1.254;          ### IP池
+  option domain-name-servers 8.8.8.8;       ###DNS服务器地址
+  option domain-name "internal.example.org";            ###DNS域
+  option routers 192.168.1.1;               ###网关地址
+  option broadcast-address 192.168.1.255;   ###广播地址(可选)
+  default-lease-time 600;                   ###默认续租时间
+  max-lease-time 7200;                      ###最大续租时间
+}
+</code></pre>
+DHCP制定IP分配：
+<pre><code>
+host fantasia {
+  hardware ethernet 08:00:07:26:c0:a5;    ###客户机mac地址。
+  fixed-address 192.168.1.50;    ###被绑定的ip，ip池以外的地址。
+}
+</code></pre>
 
-<div class="row"><span class="txt">#####</span></div>
-<div class="row"><pre><code>#####</code></pre></div>
+
+
+</div>
+
+
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
