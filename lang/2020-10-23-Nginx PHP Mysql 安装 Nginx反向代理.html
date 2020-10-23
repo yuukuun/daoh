@@ -175,7 +175,7 @@ http {
     #gzip  on;
     server { 
       listen       80;
-      server_name  $url;
+      server_name  default;
       root /usr/local/nginx/html/;
       index index.php index.html;
       #rewrite ^(.*)$  https://\$host\$1 permanent; 
@@ -198,6 +198,10 @@ PrivateTmp=true
 [Install]
 WantedBy=multi-user.target
 EOF
+
+systemctl start nginx.service
+systemctl enable nginx.service
+systemctl status nginx.service
 </code></pre></div>
 
 <div class="row"><span class="txt">安装MariaDB10.1:</span></div>
