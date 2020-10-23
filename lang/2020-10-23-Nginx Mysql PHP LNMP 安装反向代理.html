@@ -219,18 +219,16 @@ baseurl = http://yum.mariadb.org/10.1/centos74-amd64
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 EOF
-</code></pre></div>
-<div class="row"><pre><code>
+
 #安装：
 yum -y install MariaDB-server MariaDB-client
- 
 #启动：
 systemctl start mysql.service
 systemctl status mysql.service
- 
 #配置：
 mysql_secure_installation
- 
+</code></pre></div>
+<div class="row"><pre><code>
 #由于一开始安装MariaDB数据库后, root用户默认密码为空, 所以只需要按Enter键
 Enter current password for root (enter for none):
  
