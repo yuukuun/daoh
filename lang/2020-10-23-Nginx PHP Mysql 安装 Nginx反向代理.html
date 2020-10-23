@@ -108,35 +108,32 @@
 <div class="row"><span class="txt">TEXT</span></div>
 <div class="row"><pre><code>LANG</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><span class="txt">nginx-1.15.8 安装：</span></div>
 <div class="row"><pre><code>
 #!/bin/bash
-###支持 CentOS 7/8 系列，Ubuntu 19/18/16 系列
-### curl -O https://yuukuun.github.io/v2ray/insv2n.sh && chmod +x insv2n.sh && ./insv2n.sh
- 
-################################### install nginx ... ################################### 
+
 ### 初始化 ### 
-read -p "请输入域名：" url
-sudo mkdir -p /usr/local/nginx/ssl /usr/local/nginx/conf.d
-sudo sed -i 's/=enforcing/=disabled/g' /etc/selinux/config
+#read -p "请输入域名：" url
+mkdir -p /usr/local/nginx/ssl /usr/local/nginx/conf.d
+sed -i 's/=enforcing/=disabled/g' /etc/selinux/config
 #判断是否redhat系列
 if [[ -f /etc/redhat-release ]]; then
-    sudo systemctl start firewalld
-    sudo firewall-cmd --add-service=http
-    sudo firewall-cmd --add-service=https
-    sudo firewall-cmd --runtime-to-permanent
-    sudo firewall-cmd --reload
-    sudo systemctl enable firewalld 
-    sudo systemctl stop firewalld
-sudo yum install -y gcc gcc-c++ vim libtool zip perl-core zlib-devel wget pcre* unzip automake autoconf make curl
+    systemctl start firewalld
+    firewall-cmd --add-service=http
+    firewall-cmd --add-service=https
+    firewall-cmd --runtime-to-permanent
+    firewall-cmd --reload
+    systemctl enable firewalld 
+    systemctl stop firewalld
+yum install -y gcc gcc-c++ vim libtool zip perl-core zlib-devel wget pcre* unzip automake autoconf make curl
 #判断是否ubuntu系列
 elif [[ -f /etc/lsb-release ]];then 
-    sudo apt-get update 
-    sudo apt-get install curl gcc zip vim wget unzip build-essential libtool zlib1g-dev libpcre3 libpcre3-dev libssl-dev automake autoconf make -y
+    apt-get update 
+    apt-get install curl gcc zip vim wget unzip build-essential libtool zlib1g-dev libpcre3 libpcre3-dev libssl-dev automake autoconf make -y
     wget http://www.cpan.org/src/5.0/perl-5.26.1.tar.gz
     tar -xzf perl-5.26.1.tar.gz
     cd perl-5.26.1
-    sudo mkdir /usr/local/perl
+    mkdir /usr/local/perl
     ./Configure -des -Dprefix=/usr/local/perl
     make && make install
 else
