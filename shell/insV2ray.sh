@@ -220,10 +220,13 @@ cat >/usr/local/nginx/html/index.html<<-EOF
 </html>
 EOF
 }
-
+cp -r /usr/local/nginx/html/ /usr/local/nginx/$urls/
 
 read -p "请输入域名：" urls
-read -p "请选择数字：" key
+
+echo "1. v2ray服务端"
+echo "2. v2ray客户端"
+read -p "请择数字：" key
 
 case $key in
 1)	
