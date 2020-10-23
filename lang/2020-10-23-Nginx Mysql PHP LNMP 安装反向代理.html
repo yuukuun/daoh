@@ -101,13 +101,6 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 
 <div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">Nginx PHP Mysql 安装 Nginx反向代理</a></div></div>
-
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
-
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
-
 <div class="row"><span class="txt">nginx-1.18.0 安装：</span></div>
 <div class="row"><pre><code>
 #!/bin/bash
@@ -542,8 +535,16 @@ http {
  
 location / {proxy_pass  http://myserver;    }
 </code></pre></div>
+<div class="row"><pre><code>
+# 动静分离就是动态内容和静态内容不同服务器进行处理。现在主流方式纯静态资源放在独立服务器上。
+location /image/ {
+     root html;
+     autoindex on;  #自动遍历目录文件
+}
+</code></pre></div>
 
-
+<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><pre><code>LANG</code></pre></div>
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <div class="row"><hr></div>
