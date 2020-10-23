@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.1/styles/default.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.1/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script>
 
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -40,7 +41,7 @@
     <ul class="navbar-nav mr-auto">
       <!-- <li class="nav-item active"><a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></div></a></li> -->
  <li class="nav-item"><a class="nav-link" href="index.html">博客</a></li>
-      <li class="nav-item active" ><a class="nav-link" href="lang.html">Lang</a></li>
+      <li class="nav-item active" ><a class="nav-link" href="lang.php">Lang</a></li>
       <li class="nav-item"><a class="nav-link" href="soft.html">软件</a></li>
       <li class="nav-item"><a class="nav-link" href="site.html">导航</a></li>
 <li class="nav-item"><a class="nav-link" href="ejing.html">易经</a></li>
@@ -93,7 +94,7 @@
 <main role="main" class="container">
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="lang.html">目录</a></div></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="lang.php">目录</a></div></div>
 <div class="row">
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-22-美国的机房.html">美国的机房</a></div>
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-11-计算机硬件.html">计算机硬件</a></div>
@@ -125,7 +126,7 @@
 </div>
 <!---------------------------------------------------------------------------------------------------------------------------->
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="lang.html">Linux</a></div></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="lang.php">Linux</a></div></div>
 <div class="row">
 <pre><code>wget https://raw.githubusercontent.com/yuukuun/daoh/main/ins.sh && chmod +x ins.sh && ./ins.sh</pre></code>
 <pre><code>git add . && git status -sb && git commit -m "$(date +%Y.%m.%d-%H:%M)" && git push</pre></code>
@@ -142,6 +143,16 @@
 
 
 <pre><code>621b99bc-1230-4f20-8438-04ff5f1edd8f</pre></code>
+
+<pre><code>
+
+<!-- <object data="install.html" height="100%" width="100%"></object> -->
+
+<?php require 'ins.sh';   ?>
+
+
+</pre></code>
+
 </div>
 
 <div class="row">

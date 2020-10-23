@@ -40,7 +40,7 @@
     <ul class="navbar-nav mr-auto">
       <!-- <li class="nav-item active"><a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a></li> -->
        <li class="nav-item"><a class="nav-link" href="../index.html">博客</a></li>
-      <li class="nav-item"><a class="nav-link" href="../lang/index.html">Lang</a></li>
+      <li class="nav-item"><a class="nav-link" href="../lang.html">Lang</a></li>
       <li class="nav-item"><a class="nav-link" href="../index.html">软件</a></li>
       <li class="nav-item"><a class="nav-link" href="../site.html">网页</a></li>
 <li class="nav-item active"><a class="nav-link" href="../ejing.html">易经</a></li>
