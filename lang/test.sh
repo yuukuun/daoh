@@ -1,150 +1,76 @@
 #!/bin/bash
-### centos 7 centos8 
+#install php73 (Centso7 Centos 8 OK)
+
+systemctl start firewalld.service   
+firewall-cmd --add-service=http   
+firewall-cmd --add-service=https   
+firewall-cmd --add-port=19631/tcp   
+firewall-cmd --runtime-to-permanent
+firewall-cmd --reload 
+systemctl enable firewalld.service   
+useradd nginx
+usermod -G nginx nginx
 
 function centos7() {
-### 初始化 epel-release### 
-yum remove -y epel-release
-yum install -y epel-release
-yum install -y yum-utils certbot python2-certbot-nginx 
-certbot certonly --webroot -w /usr/local/nginx/html/ -d $urls -m $emails --agree-tos -n ###--test-cert测试 -n后台
+### php73装备： ###
+yum install -y epel-release    ### 安装EPEL源
+yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm    ### 安装REMI源
+yum install -y yum-utils    ### yum 源管理工具
+# php73安装： 
+yum install -y php73-php-fpm php73-php-cli php73-php-bcmath php73-php-gd php73-php-json php73-php-mbstring \
+php73-php-mcrypt php73-php-mysqlnd php73-php-opcache php73-php-pdo php73-php-pecl-crypto php73-php-pecl-mcrypt \
+php73-php-pecl-geoip php73-php-recode php73-php-snmp php73-php-soap php73-php-xmll
+# php73启动： 
+systemctl start php73-php-fpm ###启动
+systemctl status php73-php-fpm ###检查状
+systemctl enable php73-php-fpm ###自启动
 
-cat >/usr/local/nginx/conf.d/$urls.conf<<-EOF
-server {
-    listen       80;
-    server_name $urls;
-    root /usr/local/nginx/$urls/;
-    index index.php index.html;
-    location ~ .php\$ {
-        try_files \$uri =404;
-        root /usr/local/nginx/$urls/;
-        fastcgi_pass 127.0.0.1:9000;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
-        include fastcgi.conf;
-        }
- #rewrite ^(.*)$  https://$host$1 permanent;
-}
-server {
-    listen 443 ssl http2;
-    server_name $urls;
-    root /usr/local/nginx/$urls/;
-    index index.php index.html;
-    ssl_certificate  /etc/letsencrypt/live/$urls/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/$urls/privkey.pem;
-    #TLS 版本控制
-    ssl_protocols   TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-    ssl_ciphers     'TLS13-AES-256-GCM-SHA384:TLS13-CHACHA20-POLY1305-SHA256:TLS13-AES-128-GCM-SHA256:TLS13-AES-128-CCM-8-SHA256:TLS13-AES-128-CCM-SHA256:EECDH+CHACHA20:EECDH+CHACHA20-draft:EECDH+ECDSA+AES128:EECDH+aRSA+AES128:RSA+AES128:EECDH+ECDSA+AES256:EECDH+aRSA+AES256:RSA+AES256:EECDH+ECDSA+3DES:EECDH+aRSA+3DES:RSA+3DES:!MD5';
-    ssl_prefer_server_ciphers   on;
-    # 开启 1.3 0-RTT
-    ssl_early_data  on;
-    ssl_stapling on;
-    ssl_stapling_verify on;
-    #add_header Strict-Transport-Security "max-age=31536000";
-    #access_log /var/log/nginx/access.log combined;
-    location ~ .php\$ {
-        try_files \$uri =404;
-        root /usr/local/nginx/$urls/;
-        fastcgi_pass 127.0.0.1:9000;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
-        include fastcgi.conf;
-        }
-    location /7ba7 {
-        proxy_redirect off;
-        proxy_pass http://127.0.0.1:11234;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_set_header Host \$http_host;
-    }
-    location / {
-       try_files \$uri \$uri/ /index.php?\$args;
-    }
-}
-EOF
+### php73设置： ###
+rpm -qa | grep 'php'
+rpm -ql php73-php-fpm-7.3.6-1.el7.remi.x86_64
+find /etc/opt/remi/php73 -name php.ini
+sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/' /etc/opt/remi/php73/php.ini
+
+sed -i 's/user = apache/user = nginx/' /etc/opt/remi/php73/php-fpm.d/www.conf    
+sed -i 's/group = apache/group = nginx/' /etc/opt/remi/php73/php-fpm.d/www.conf    
+
+systemctl restart php73-php-fpm ###启动
+systemctl status php73-php-fpm ###检查状
 }
 
 function centos8() {
-### 初始化 epel-release### 
-dnf remove -y epel-release
-dnf install -y epel-release
-dnf install -y certbot python3-certbot-nginx
-certbot certonly --webroot -w /usr/local/nginx/html/ -d $urls -m $emails --agree-tos -n  ###--test-cert测试 -n后台
+dnf install -y dnf-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm
+dnf module -y reset php  #重置php模块
+dnf module -y enable php:remi-7.3  #默认设置为remi-7.3版本
+yum -y install php php-mysqlnd php-gd php-xml php-mbstring php-ldap php-pear php-xmlrpc php-zip
+sed -i 's/user = apache/user = nginx/' /etc/php-fpm.d/www.conf  
+sed -i 's/group = apache/group = nginx/' /etc/php-fpm.d/www.conf 
+sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/'  /etc/php.ini
 
-cat >/usr/local/nginx/conf.d/$urls.conf<<-EOF
-server {
-    listen       80;
-    server_name $urls;
-    root /usr/local/nginx/$urls/;
-    index index.php index.html;
-      location ~ \.php\$ {
-        try_files \$uri =404;
-        fastcgi_pass unix:/run/php-fpm/www.sock;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
-        include fastcgi_params;
-        }
- #rewrite ^(.*)$  https://$host$1 permanent;
-}
-server {
-    listen 443 ssl http2;
-    server_name $urls;
-    root /usr/local/nginx/$urls/;
-    index index.php index.html;
-    ssl_certificate  /etc/letsencrypt/live/$urls/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/$urls/privkey.pem;
-    #TLS 版本控制
-    ssl_protocols   TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-    ssl_ciphers     'TLS13-AES-256-GCM-SHA384:TLS13-CHACHA20-POLY1305-SHA256:TLS13-AES-128-GCM-SHA256:TLS13-AES-128-CCM-8-SHA256:TLS13-AES-128-CCM-SHA256:EECDH+CHACHA20:EECDH+CHACHA20-draft:EECDH+ECDSA+AES128:EECDH+aRSA+AES128:RSA+AES128:EECDH+ECDSA+AES256:EECDH+aRSA+AES256:RSA+AES256:EECDH+ECDSA+3DES:EECDH+aRSA+3DES:RSA+3DES:!MD5';
-    ssl_prefer_server_ciphers   on;
-    # 开启 1.3 0-RTT
-    ssl_early_data  on;
-    ssl_stapling on;
-    ssl_stapling_verify on;
-    #add_header Strict-Transport-Security "max-age=31536000";
-    #access_log /var/log/nginx/access.log combined;
-     location ~ \.php\$ {
-        try_files \$uri =404;
-        fastcgi_pass unix:/run/php-fpm/www.sock;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
-        include fastcgi_params;
-        }
-    location /7ba7 {
-        proxy_redirect off;
-        proxy_pass http://127.0.0.1:11234;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_set_header Host \$http_host;
-    }
-    location / {
-       try_files \$uri \$uri/ /index.php?\$args;
-    }
-}
-EOF
+systemctl restart php-fpm ###启动
+
+systemctl enable php-fpm ###自启动
+systemctl status php-fpm ###检查状
 }
 
-read -p "请输入域名：" urls
-read -p "请输入邮箱：" emails
-export urls
-export emails
-
-
+######### centos 8
 temp=$(cat /etc/redhat-release)
 if [[ "$temp" == "CentOS Linux release 8"* ]]; then
-	centos8
-elif [[ "$temp" == "CentOS Linux release 7"* ]]; then
-	centos7
+    centos8
+######### centos 7
+elif [[ "$temp" == "CentOS Linux release 7"* ]];then
+    centos7
 else
-     echo "##### Certbot error !!! #####"
+    echo "##### PHP73 error !!! #####"
 fi
 
 
-mkdir /usr/local/nginx/$urls
-cp -r /usr/local/nginx/html/* /usr/local/nginx/$urls/
+cat >/usr/local/nginx/html/index.php<<-EOF
+&lt;?php phpinfo(); ?&gt;
+EOF
 
 /usr/local/nginx/sbin/nginx -t
 /usr/local/nginx/sbin/nginx -s reload
 systemctl restart nginx.service
+systemctl enable nginx.service
 systemctl status nginx.service
