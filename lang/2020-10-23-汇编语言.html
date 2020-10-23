@@ -100,10 +100,68 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">#####</a></div></div>
-<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">汇编语言</a></div></div>
+<div class="row"><span class="txt">
+	CPU对外部设备(显示器，音响，打印机)不能直接控制。从CPU的角度看各种设备都(显卡，网卡，内存...)在连续内存空间。不同的计算机系统内存地址空间分配情况不同的。RAM随机存储器，ROM只读存储器，BIOS最基本的输入输出。 
+	CPU由运算器，控制器，寄存器构成由内部总线连接。8086有16个寄存器，寄存器大小是16bit(两个字节)，分高8位和低8位，可以独立使用。AX，BX，CX，DX一般存放一般性数据，叫通用寄存器。程序员只能操作寄存器来控制CPU
+	8086物理地址=段地址*16+偏移地址=20bit
+	8086段寄存器CS，DS，SS，ES。IP是偏移寄存器。CS=FFFFH，IP=0000H初始化状态
+	int9 中断例程从向键盘从缓冲区写入，int16h中断例程从缓冲区读出。
+</span></div>
+
+<div class="row"><span class="txt">寄存器</span></div>
+<div class="row"><pre><code>
+AX,BX,CX,DX
+AX可分为高位和AH低位AL(其余三个也是都可以这样分)
+内存单元的高8位和第8位，分别跟寄存器高8位和第8位对应。
+MOV AX,1000H
+MOV BX,AX
+ADD AX,BX//相加后存AX中
+SUB AX,BX//AX-BX相减后存AX中
+</code></pre></div>
+
+<div class="row"><span class="txt">对于代码段，段地址CS中，第一条指令偏移地址在IP中，这样CPU执行我们定义的代码段。</span></div>
+<div class="row"><pre><code>
+CS:代码段寄存器
+IP:指令指针寄存器
+jmp CS:IP    //修改CS和IP
+jmp AX(jmp IP,AX)    //修改IP
+代码段:N(N=<64KN)的一组代码，起始地址为16的倍数的内存单元。
+</code></pre></div>
+
+<div class="row"><span class="txt">对于数据段，段地址DS中，用ADD,MOV,SUB等访问内存单元的指令时候，CPU就将我们定义的数据段中内容当做数据来访问。</span></div>
+<div class="row"><pre><code>
+DS:数据段寄存器
+[address] 表示偏移地址为address的内存单元
+MOV AX,1000H
+MOV DS,AX
+MOV AL,[0]//内存单元地址为[0]的，数据送人AX寄存器低位
+MOV BX,[1]//字的传送
+MOV AX,[3]
+</code></pre></div>
+
+<div class="row"><span class="txt">对于栈</span></div>
+<div class="row"><pre><code>
+栈是一种具有特殊访问方式的存储空间，最后进入这个空间的数据，最先出去。
+段地址SS中，将栈顶单元的偏移地址放在SP中，这样CPU在需要进行栈操作的时候，比如push和pop指令时候，将我们定义的栈段当做栈空间来用。
+SS:栈段地址
+SP:栈偏移地址寄存器
+任意时刻，SS:SP指向栈顶元素
+PUSH AX    SP=SP-2
+POP  BX     SP=SP+2
+MOV AX,1000H
+MOV DS,AX
+PUSH [0]//1000:0数据入栈
+POP  [2]//出栈，数据送入1000:0
+栈段:N(N=<64KN)的一组连续地址，起始地址为16的倍数的内存单元，当做栈空间。
+</code></pre></div>
+
+
+<div class="row"><span class="txt">对于栈</span></div>
 <div class="row"><pre><code>LANG</code></pre></div>
 
+<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><pre><code>LANG</code></pre></div>
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <div class="row"><hr></div>

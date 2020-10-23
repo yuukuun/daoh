@@ -100,7 +100,107 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">#####</a></div></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.html">docker 容器的命令与应用</a></div></div>
+<div class="row"><span class="txt">安装：</span></div>
+<div class="row"><pre><code>
+尚硅谷Docker容器（周阳）
+https://docs.docker.com/install/linux/docker-ce/ubuntu/
+mintLinux/ubuntu安装：
+sudo vim /etc/apt/sources.list.d/additional-repositories.list
+deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable    #内容
+ 
+sudo apt update
+</code></pre></div>
+
+<div class="row"><span class="txt">阿里云docker源</span></div>
+<div class="row"><pre><code>https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors    ###加速器</code></pre></div>
+<div class="row"><span class="txt">镜像加速 https://www.docker-cn.com/registry-mirror</span></div>
+<div class="row"><pre><code>
+docker --registry-mirror=https://registry.docker-cn.com daemon
+ 
+#为了永久性保留更改，您可以修改 /etc/docker/daemon.json 文件并添加上 registry-mirrors 键值。
+{ "registry-mirrors": ["https://registry.docker-cn.com"] }
+</code></pre></div>
+
+<div class="row"><span class="txt">
+仓库注册服务器往往存放多个仓库，每个仓库中有多个镜像，每个镜像有多个Tag（类似版本号），镜像打包好的只读的模板 容器就是镜像创建的实例。
+Docker只需要服务需要的库和设置，不像虚拟机一样模拟整套系统。没有自己内核，调用宿主机内核，服务互相隔离。容器是系统和服务的中间桥梁，一个容器最好能运行一个服务。
+仓库注册服务器往往存放多个仓库，每个仓库中有多个镜像，每个镜像有多个Tag（类似版本号），镜像打包好的只读的模板，容器就是镜像创建的实例。
+Docker前后台运行，必须有前台进程
+</span></div>
+<div class="row"><pre><code>
+mintLinux安装：
+sudo vim /etc/apt/sources.list.d/additional-repositories.list
+sudo apt update
+ 
+帮助：
+sudo docker info
+sudo docker version
+sudo docker help
+镜像：
+sudo docker images  ###显示本地镜像
+sudo docker search nginx    ###hub.docker.com搜索nginx镜像
+sudo docker pull nginx  ###远程仓库拉nginx镜像到本地
+sudo docker rmi -f nginx:latest     ###删除nginx镜像
+sudo docker rmi -f $(sudo docker images -qa)    ###删除所有镜像
+容器：
+sudo docker run -it --name nginx 0f3e07c0138f   ###用镜像0f3e07c0138f交互式启动一个容器
+sudo docker run -d --name nginx -p 88:80 0f3e07c0138f   ###用镜像0f3e07c0138f后台启动,端口映射88到80（-P随即分配）
+sudo docker ps  ###运行中的容器
+sudo docker start [CONTAINER ID]      ###启动容器，810c899068a4是容器id
+sudo docker restart [CONTAINER ID]      ###重启容器，810c899068a4是容器id
+sudo docker stop [CONTAINER ID]       ###停止容器，810c899068a4是容器id
+sudo docker kill [CONTAINER ID]       ###杀死容器，810c899068a4是容器id
+ 
+sudo docker exec -it [CONTAINER ID] /bin/bash   ###容器id的终端启动
+sudo docker commit -a="作者" -m="说明" [CONTAINER ID] nginx:1.5 ###从容器输出到镜像
+sudo docker run -d -v /tmp/share:/tmp/share:ro [image ID]  ###主机：容器共享数据,ro只读方式(可选)
+sudo docker run -it --name d2 --volumes-from d1 centos  ###容器d2继承之d1容器
+推送到docker hub：
+docker login   ###登录
+docker tag 镜像名字 用户名/v2nginx:1.3    ###修改镜像名
+docker push 用户名/v2nginx:1.3   ###推送
+ 
+参数：
+--privileged=true    添加权限目录映射时候
+</code></pre></div>
+
+<div class="row"><span class="txt">
+DockerFile是创建镜像文件的脚本，每条指令都会创建镜像层。DockerFile面向开发的，DockerImages是软件的交付品，Docker容器是运行状态。
+</span></div>
+<div class="row"><pre><code>
+sudo docker build -f ./my.dc -t mycentos:7 .   ###创建镜像，根据my.dc文件（注意点）
+
+FROM    ###基础镜像###FROM centos:7
+MAINTAINER      ###维护者姓名 ren<wqe@qq.com>
+RUN     ###镜像构建运行命令     RUN yum install -y vim
+EXPOSE      ###对外暴露姓名   EXPOSE 80
+WORKDIR     ###登陆目录 WORKDIR /root/
+ENV     ###环境变量     ENV $dir1 /root
+ADD     ###拷贝文件和目录到镜像，自动处理tar文件
+COPY     ###拷贝文件和目录到镜像
+VOLUME  ###创建目录### VOLUME ["/root/dir"]   
+CMD     ###制定容器执行后的命令,最后一个生效   CMD
+ENTRYPOINT  ###CMD一样，制定容器执行程序和参数，
+ONBUILD ###
+</code></pre></div>
+
+<div class="row"><span class="txt">Docker Mysql:</span></div>
+<div class="row"><pre><code>
+sudo docker run --name mysql -p 127.0.0.1:3306:3306 -v 主机目录:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=w123456 -d mysql:5.7.28 
+###-p端口映射 -v目录同步（数据持久话） -e 密码设置 -d     ###
+mysql -h 127.0.0.1 -u root -p    ##登录客户端（安装mysql-client）
+</code></pre></div>
+
+<div class="row"><span class="txt">Docker OpenJDk:</span></div>
+<div class="row"><pre><code>
+sudo docker run --rm -v /home/user/java:/usr/src/myapp -w /usr/src/myapp openjdk java HelloWorld.java
+sudo docker run -it -v /home/user/java:/usr/src/myapp --name jdk -d openjdk
+sudo docker exec -it jdk bash
+</code></pre></div>
+
+
+
 <div class="row"><span class="txt">TEXT</span></div>
 <div class="row"><pre><code>LANG</code></pre></div>
 
