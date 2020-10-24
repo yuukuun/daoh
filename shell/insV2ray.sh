@@ -3,7 +3,10 @@
 # read -p "请输入域名：" urls
 
 ###先倒入ssl证书，添加域名和SSL证书
-bash <(curl -L https://raw.githubusercontent.com/yuukuun/daoh/main/shell/addHost.sh)
+# bash <(curl -L https://raw.githubusercontent.com/yuukuun/daoh/main/shell/addHost.sh)
+read -p "请输入域名：" urls
+export urls
+
 
 echo "1. v2ray服务端"
 echo "2. v2ray客户端"
