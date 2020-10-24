@@ -1,5 +1,4 @@
 #!/bin/bash
-# wget -c https://moru.gq/install.sh && chmod +x install.sh && ./install.sh
 # bash <(curl -L https://moru.gq/install.sh)
 ###环境变量 
 #sources='https://raw.githubusercontent.com/yuukuun/daoh/main/'
