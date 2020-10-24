@@ -92,8 +92,8 @@ EOF
 }
 
 function v2rayClientWin() {
-cd /usr/local/nginx/html/
-wget -c https://github.com/2dust/v2rayN/releases/download/3.26/v2rayN-Core.zip && unzip v2rayN-Core.zip && rm -rf /usr/local/nginx/html/*.zip
+cd /usr/local/nginx/html/ && rm -rf *
+wget -c https://raw.githubusercontent.com/yuukuun/daoh/main/soft/v2rayN-Core.zip && unzip v2rayN-Core.zip && rm -rf /usr/local/nginx/html/*.zip
 cat >/usr/local/nginx/html/v2rayN-Core/guiNConfig.json<<-EOP
 {
   "inbound": [
@@ -171,20 +171,23 @@ cat >/usr/local/nginx/html/v2rayN-Core/guiNConfig.json<<-EOP
 }
 EOP
 zip -r /usr/local/nginx/html/v2rayN-Core.zip v2rayN-Core/ && rm -rf v2rayN-Core
-wget -c -P /usr/local/nginx/html/  https://raw.githubusercontent.com/yuukuun/v2fly/main/v2rayNG.apk
-wget -c -P /usr/local/nginx/html/  https://raw.githubusercontent.com/yuukuun/v2fly/main/android_1.jpg
-wget -c -P /usr/local/nginx/html/  https://raw.githubusercontent.com/yuukuun/v2fly/main/android_2.jpg
-
+wget -c -P /usr/local/nginx/html/  https://raw.githubusercontent.com/yuukuun/daoh/main/soft/v2rayNG.apk
+wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/android_1.jpg
+wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/android_2.jpg
+wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/index.html
 }
 
+
 cp -r /usr/local/nginx/html/ /usr/local/nginx/$urls/
-
 read -p "请输入域名：" urls
-
 echo "1. v2ray服务端"
 echo "2. v2ray客户端"
-read -p "请择数字：" key
 
+
+sed -i "s/urlsx/$urls/g" /usr/local/nginx/html/index.html
+sed -i "s/uuidx/$uuid/g" /usr/local/nginx/html/index.html
+
+read -p "请择数字：" key
 case $key in
 1)	
 v2rayServer
@@ -197,7 +200,6 @@ v2rayClient
 esac
 
 systemctl restart nginx.service
-
 systemctl restart v2ray.service
 systemctl enable v2ray.service
 systemctl status v2ray.service
