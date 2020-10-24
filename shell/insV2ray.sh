@@ -104,8 +104,9 @@ EOF
 }
 
 function v2rayClientWin() {
-cd /usr/local/nginx/html/
-wget -c https://raw.githubusercontent.com/yuukuun/daoh/main/soft/v2rayN-Core.zip && unzip v2rayN-Core.zip && rm -rf /usr/local/nginx/html/*.zip
+paths="/usr/local/nginx/html/"
+cd "$paths"
+wget -c https://raw.githubusercontent.com/yuukuun/daoh/main/soft/v2rayN-Core.zip && unzip "$paths"v2rayN-Core.zip && rm -rf "$paths"*.zip
 cat >/usr/local/nginx/html/v2rayN-Core/guiNConfig.json<<-EOP
 {
   "inbound": [
@@ -182,12 +183,13 @@ cat >/usr/local/nginx/html/v2rayN-Core/guiNConfig.json<<-EOP
   "userPacRule": []
 }
 EOP
-rm -rf /usr/local/nginx/html/*
-zip -r /usr/local/nginx/html/v2rayN-Core.zip v2rayN-Core/ && rm -rf v2rayN-Core
+zip -r "$paths"v2rayN-Core.zip "$paths"v2rayN-Core/ && rm -rf v2rayN-Core
 
 wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/soft/v2rayNG.apk
 wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/android_1.jpg
 wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/android_2.jpg
+
+rm -rf "$paths"*.html "$paths"*.php
 wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/index.html
 
 sed -i "s/baidu.com/$urls/g" /usr/local/nginx/html/index.html
