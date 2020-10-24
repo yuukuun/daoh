@@ -107,11 +107,49 @@
 3.把casper文件夹里面的initrd.lz和vmlinuz两个文件解压复制出来，放到U盘的ubuntu文件夹里头。
 4.把ubuntu.iso这个文件放到u盘根目录的ubuntu文件夹里。
 5.这里要用到一个工具<a href="../soft/FbinstTool.zip">FbinstTool 1.607(forWindows)</a>我们利用它来修改引导菜单。
-</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+</span></div>
+<div class="row"><pre><code>
+default 0
+timeout 20
+ 
+title [1]LaoMaoTao
+errorcheck off
+configfile /ilmt/grub/menu.lst
+errorcheck on
+commandline
+ 
+title [2]ubuntu-18.04.3-desktop-amd64
+find --set-root /ubuntu/vmlinuz
+kernel /ubuntu/vmlinuz boot=casper iso-scan/filename=/ubuntu/ubuntu.iso locale=zh_CN.UTF-8
+initrd /ubuntu/initrd
+ 
+title [3]Linux mint 19.2
+find --set-root /linuxmint192/vmlinuz
+kernel /linuxmint192/vmlinuz boot=casper iso-scan/filename=/linuxmint192/linuxmint.iso locale=zh_CN.UTF-8
+initrd /linuxmint192/initrd.lz
+ 
+title [4]Linux mint 19.3
+find --set-root /linuxmint193/vmlinuz
+kernel /linuxmint193/vmlinuz boot=casper iso-scan/filename=/linuxmint193/linuxmint193cinnamon64bit.iso locale=zh_CN.UTF-8
+initrd /linuxmint193/initrd.lz
+ 
+title [5]Linux mint 20
+find --set-root /linuxmint20/vmlinuz
+kernel /linuxmint20/vmlinuz boot=casper iso-scan/filename=/linuxmint20/linuxmint-20.iso locale=zh_CN.UTF-8
+initrd /linuxmint20/initrd.lz
+ 
+title [6]KaliLinux
+find --set-root /kalilinux/vmlinuz
+kernel /kalilinux/vmlinuz boot=casper iso-scan/filename=/kalilinux/kalilinuxamd64.iso locale=zh_CN.UTF-8
+initrd /kalilinux/initrd.gz
+ 
+title [r] ===reboot===
+reboot
+title [s] ===shutdown===
+halt
+boot
+</code></pre></div>
 
 <div class="row"><span class="txt">TEXT</span></div>
 <div class="row"><pre><code>LANG</code></pre></div>
