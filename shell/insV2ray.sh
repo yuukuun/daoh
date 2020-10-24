@@ -1,8 +1,8 @@
 #!/bin/bash
 #install v2ray
-paths=""$paths""
+paths="/usr/local/nginx/html/"
 # con="https://moru.gq"
-con=""$con""
+con="https://raw.githubusercontent.com/yuukuun/daoh/main/"
 
 
 ###先倒入ssl证书，添加域名和SSL证书
