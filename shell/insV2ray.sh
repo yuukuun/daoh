@@ -183,7 +183,7 @@ cat >"$paths"v2rayN-Core/guiNConfig.json<<-EOP
   "userPacRule": []
 }
 EOP
-cd "$paths" && zip v2rayN-Core.zip v2rayN-Core/ && rm -rf v2rayN-Core
+cd "$paths" && zip -r v2rayN-Core.zip v2rayN-Core/ && rm -rf v2rayN-Core
 #zip -r "$paths"v2rayN-Core.zip "$paths"v2rayN-Core/ && rm -rf v2rayN-Core
 
 wget -c -P "$paths" "$con"soft/v2rayNG.apk
