@@ -1,9 +1,11 @@
 #!/bin/bash
 #install v2ray
-# read -p "请输入域名：" urls
+paths=""$paths""
+# con="https://moru.gq"
+con=""$con""
+
 
 ###先倒入ssl证书，添加域名和SSL证书
-# bash <(curl -L https://raw.githubusercontent.com/yuukuun/daoh/main/shell/addHost.sh)
 read -p "请输入域名：" urls
 export urls
 
@@ -104,10 +106,9 @@ EOF
 }
 
 function v2rayClientWin() {
-paths="/usr/local/nginx/html/"
 cd "$paths"
-wget -c https://raw.githubusercontent.com/yuukuun/daoh/main/soft/v2rayN-Core.zip && unzip "$paths"v2rayN-Core.zip && rm -rf "$paths"*.zip
-cat >/usr/local/nginx/html/v2rayN-Core/guiNConfig.json<<-EOP
+wget -c "$con"soft/v2rayN-Core.zip && unzip "$paths"v2rayN-Core.zip && rm -rf "$paths"*.zip
+cat >"$paths"v2rayN-Core/guiNConfig.json<<-EOP
 {
   "inbound": [
     {
@@ -185,17 +186,17 @@ cat >/usr/local/nginx/html/v2rayN-Core/guiNConfig.json<<-EOP
 EOP
 zip -r "$paths"v2rayN-Core.zip "$paths"v2rayN-Core/ && rm -rf v2rayN-Core
 
-wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/soft/v2rayNG.apk
-wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/android_1.jpg
-wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/android_2.jpg
+wget -c -P "$paths" "$con"soft/v2rayNG.apk
+wget -c -P "$paths" "$con"lang/2020-10-17-v2ray-server/android_1.jpg
+wget -c -P "$paths" "$con"lang/2020-10-17-v2ray-server/android_2.jpg
 
 rm -rf "$paths"*.html "$paths"*.php
-wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/index.html
+wget -c -P "$paths" "$con"lang/2020-10-17-v2ray-server/index.html
 
-sed -i "s/baidu.com/$urls/g" /usr/local/nginx/html/index.html
-sed -i "s/uuidx/$uuid/g" /usr/local/nginx/html/index.html
-sed -i "s/href=\"..\/..\/soft\/v2rayN-Core.zip\"/href=\"v2rayN-Core.zip\"/g" /usr/local/nginx/html/index.html
-sed -i "s/href=\"..\/..\/soft\/v2rayNG.apk\"/href=\"v2rayNG.apk\"/g" /usr/local/nginx/html/index.html
+sed -i "s/baidu.com/$urls/g" "$paths"index.html
+sed -i "s/uuidx/$uuid/g" "$paths"index.html
+sed -i "s/href=\"..\/..\/soft\/v2rayN-Core.zip\"/href=\"v2rayN-Core.zip\"/g" "$paths"index.html
+sed -i "s/href=\"..\/..\/soft\/v2rayNG.apk\"/href=\"v2rayNG.apk\"/g" "$paths"index.html
 }
 
 
@@ -212,7 +213,7 @@ v2rayClient
 esac
 
 
-cp -r /usr/local/nginx/html/* /usr/local/nginx/$urls/
+cp -r "$paths"* /usr/local/nginx/$urls/
 
 systemctl restart nginx.service
 systemctl restart v2ray.service
