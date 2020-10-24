@@ -63,7 +63,7 @@ server {
     root /usr/local/nginx/$urls/;
     index index.php index.html;
     $php_config 
-    rewrite ^(.*)$  https://$host$1 permanent;
+    rewrite ^(.*)$  https://\$host\$1 permanent;
 }
 server {
     listen 443 ssl http2;
