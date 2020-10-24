@@ -2,7 +2,7 @@
 #install v2ray
 bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 uuid="621b99bc-1230-4f20-8438-04ff5f1edd8f"
-#uuid="621b99bc-1230-4f20-8438-04ff5f1edd8f"
+# uuid=$(cat /proc/sys/kernel/random/uuid)
 export uuid
 export urls
 
@@ -186,6 +186,8 @@ echo "2. v2ray客户端"
 
 sed -i "s/baidu.com/$urls/g" /usr/local/nginx/html/index.html
 sed -i "s/uuidx/$uuid/g" /usr/local/nginx/html/index.html
+sed "s/href=\"..\/..\/soft\/v2rayN-Core.zip\"/v2rayN-Core.zip/g" index.html
+sed "s/href=\"..\/..\/soft\/v2rayNG.apk\"/v2rayNG.apk/g" index.html
 
 read -p "请择数字：" key
 case $key in
