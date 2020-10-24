@@ -1,9 +1,12 @@
 #!/bin/bash
 #install v2ray
-paths="/usr/local/nginx/html/"
-# con="https://moru.gq"
-con="https://raw.githubusercontent.com/yuukuun/daoh/main/"
 
+uuid="621b99bc-1230-4f20-8438-04ff5f1edd8f"
+# uuid=$(cat /proc/sys/kernel/random/uuid)
+paths="/usr/local/nginx/html/"
+#con="https://moru.gq/"
+con="https://raw.githubusercontent.com/yuukuun/daoh/main/"
+export uuid
 
 ###先倒入ssl证书，添加域名和SSL证书
 read -p "请输入域名：" urls
@@ -15,10 +18,7 @@ echo "2. v2ray客户端"
 read -p "请择数字：" key
 
 bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
-uuid="621b99bc-1230-4f20-8438-04ff5f1edd8f"
-# uuid=$(cat /proc/sys/kernel/random/uuid)
-export uuid
-
+rm -rf /usr/local/etc/v2ray/config.json
 
 function v2rayServer() {
 cat >/usr/local/etc/v2ray/config.json<<-EOF
@@ -191,12 +191,12 @@ wget -c -P "$paths" "$con"lang/2020-10-17-v2ray-server/android_1.jpg
 wget -c -P "$paths" "$con"lang/2020-10-17-v2ray-server/android_2.jpg
 
 rm -rf "$paths"*.html "$paths"*.php
-wget -c -P "$paths" "$con"lang/2020-10-17-v2ray-server/index.html
+wget -c "$con"lang/2020-10-17-v2ray-server/index.html -O "$paths"v2ray.html
 
-sed -i "s/baidu.com/$urls/g" "$paths"index.html
-sed -i "s/uuidx/$uuid/g" "$paths"index.html
-sed -i "s/href=\"..\/..\/soft\/v2rayN-Core.zip\"/href=\"v2rayN-Core.zip\"/g" "$paths"index.html
-sed -i "s/href=\"..\/..\/soft\/v2rayNG.apk\"/href=\"v2rayNG.apk\"/g" "$paths"index.html
+sed -i "s/baidu.com/$urls/g" "$paths"v2ray.html
+sed -i "s/uuidx/$uuid/g" "$paths"v2ray.html
+sed -i "s/href=\"..\/..\/soft\/v2rayN-Core.zip\"/href=\"v2rayN-Core.zip\"/g" "$paths"v2ray.html
+sed -i "s/href=\"..\/..\/soft\/v2rayNG.apk\"/href=\"v2rayNG.apk\"/g" "$paths"v2ray.html
 }
 
 
@@ -218,4 +218,6 @@ cp -r "$paths"* /usr/local/nginx/$urls/
 systemctl restart nginx.service
 systemctl restart v2ray.service
 systemctl enable v2ray.service
+
+systemctl status nginx.service
 systemctl status v2ray.service
