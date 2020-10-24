@@ -4,7 +4,7 @@
 cd /tmp
 ### 初始化 ### 
 #read -p "请输入域名：" url
-mkdir -p /usr/local/nginx/ssl /usr/local/nginx/conf.d
+mkdir -p /usr/local/nginx/conf.d
 sed -i 's/=enforcing/=disabled/g' /etc/selinux/config
 #判断是否redhat系列
 if [[ -f /etc/redhat-release ]]; then
@@ -42,34 +42,10 @@ wget https://nginx.org/download/nginx-1.18.0.tar.gz && tar xf nginx-1.18.0.tar.g
 make && make install
  
 ### nginx配置
-function centos7() {
-cat >/usr/local/nginx/conf/nginx.conf <<-EOF
-user  root;
-worker_processes  1;
-error_log  /usr/local/nginx/logs/error.log warn;
-pid        /usr/local/nginx/logs/nginx.pid;
-events {
-    worker_connections  1024;
-}
-http {
-    include       /usr/local/nginx/conf/mime.types;
-    default_type  application/octet-stream;
-    log_format  main  '\$remote_addr - \$remote_user [\$time_local] "\$request" '
-                      '\$status \$body_bytes_sent "\$http_referer" '
-                      '"\$http_user_agent" "\$http_x_forwarded_for"';
-    access_log  /usr/local/nginx/logs/access.log  main;
-    sendfile        on;
-    #tcp_nopush     on;
-    keepalive_timeout  120;
-    client_max_body_size 20m;
-    #gzip  on;
-    server { 
-      listen       80;
-      server_name  default;
-      root /usr/local/nginx/html/;
-      index index.php index.html;
-      #rewrite ^(.*)$  https://\$host\$1 permanent; 
-      location ~ .php\$ {
+temp=$(cat /etc/redhat-release)
+if [[ "$temp" == "CentOS Linux release 7"* ]]; then
+php_config=$(cat<<EOF
+location ~ .php\$ {
         try_files \$uri =404;
         root /usr/local/nginx/html/;
         fastcgi_pass 127.0.0.1:9000;
@@ -77,13 +53,25 @@ http {
         fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
         include fastcgi.conf;
         }
-    } 
-    include /usr/local/nginx/conf.d/*.conf;  
-}
 EOF
-}
+)
+######### centos 7
+elif [[ "$temp" == "CentOS Linux release 8"* ]];then
+php_config=$(cat<<EOF
+location ~ \.php\$ {
+        try_files \$uri =404;
+        fastcgi_pass unix:/run/php-fpm/www.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+        include fastcgi_params;
+        }
+EOF
+)
+else
+    echo "##### nginx conf error !!! #####"
+fi
 
-function centos8() {
+###php 配置
 cat >/usr/local/nginx/conf/nginx.conf <<-EOF
 user  root;
 worker_processes  1;
@@ -110,30 +98,11 @@ http {
       root /usr/local/nginx/html/;
       index index.php index.html;
       #rewrite ^(.*)$  https://\$host\$1 permanent; 
-      location ~ \.php\$ {
-        try_files \$uri =404;
-        fastcgi_pass unix:/run/php-fpm/www.sock;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
-        include fastcgi_params;
-        }
+      $php_config 
     } 
     include /usr/local/nginx/conf.d/*.conf;  
 }
 EOF
-}
-
-
-temp=$(cat /etc/redhat-release)
-if [[ "$temp" == "CentOS Linux release 7"* ]]; then
-    centos7
-######### centos 7
-elif [[ "$temp" == "CentOS Linux release 8"* ]];then
-    centos8
-else
-    echo "##### nginx conf error !!! #####"
-fi
-
 ###nginx 启动
 cat >/etc/systemd/system/nginx.service<<-EOF
 [Unit]

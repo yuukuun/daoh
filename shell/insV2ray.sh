@@ -1,6 +1,10 @@
 #!/bin/bash
 #install v2ray
-read -p "请输入域名：" urls
+# read -p "请输入域名：" urls
+
+###先倒入ssl证书，添加域名和SSL证书
+bash <(curl -L https://raw.githubusercontent.com/yuukuun/daoh/main/shell/addHost.sh)
+
 echo "1. v2ray服务端"
 echo "2. v2ray客户端"
 read -p "请择数字：" key
@@ -9,7 +13,7 @@ bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/
 uuid="621b99bc-1230-4f20-8438-04ff5f1edd8f"
 # uuid=$(cat /proc/sys/kernel/random/uuid)
 export uuid
-export urls
+
 
 function v2rayServer() {
 cat >/usr/local/etc/v2ray/config.json<<-EOF
@@ -177,10 +181,16 @@ cat >/usr/local/nginx/html/v2rayN-Core/guiNConfig.json<<-EOP
 EOP
 rm -rf /usr/local/nginx/html/*
 zip -r /usr/local/nginx/html/v2rayN-Core.zip v2rayN-Core/ && rm -rf v2rayN-Core
+
 wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/soft/v2rayNG.apk
 wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/android_1.jpg
 wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/android_2.jpg
 wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/index.html
+
+sed -i "s/baidu.com/$urls/g" /usr/local/nginx/html/index.html
+sed -i "s/uuidx/$uuid/g" /usr/local/nginx/html/index.html
+sed -i "s/href=\"..\/..\/soft\/v2rayN-Core.zip\"/href=\"v2rayN-Core.zip\"/g" /usr/local/nginx/html/index.html
+sed -i "s/href=\"..\/..\/soft\/v2rayNG.apk\"/href=\"v2rayNG.apk\"/g" /usr/local/nginx/html/index.html
 }
 
 
@@ -196,12 +206,8 @@ v2rayClient
 *)  echo "v2ray错误!" ;;  
 esac
 
-rm -rf /usr/local/nginx/$urls/*
+
 cp -r /usr/local/nginx/html/* /usr/local/nginx/$urls/
-sed -i "s/baidu.com/$urls/g" /usr/local/nginx/html/index.html
-sed -i "s/uuidx/$uuid/g" /usr/local/nginx/html/index.html
-sed "s/href=\"..\/..\/soft\/v2rayN-Core.zip\"/v2rayN-Core.zip/g" index.html
-sed "s/href=\"..\/..\/soft\/v2rayNG.apk\"/v2rayNG.apk/g" index.html
 
 systemctl restart nginx.service
 systemctl restart v2ray.service
