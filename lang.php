@@ -103,7 +103,7 @@
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-23-CentOS的内核升级.html">CentOS 的内核升级.html</a></div>
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-11-TCP IP DNS 网络.html">TCP/IP DNS 网络</a></div>
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-22-DHCP 服务安装配置.html">DHCP 服务安装配置</a></div>
-<div class="col-12 col-md-6 tit"><a href="lang/2020-10-17-Nginx+WS+TLS+V2Ray服务端安装.html">V2Ray 服务端安装</a></div>
+<div class="col-12 col-md-6 tit"><a href="lang/2020-10-17-Nginx+WS+TLS+V2Ray服务端安装.php">V2Ray 服务端安装</a></div>
 
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-23-Nginx Mysql PHP LNMP 安装.php">2020-10-23-Nginx Mysql PHP LNMP 安装</a></div>
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-22-HTTPS Certbot acme.sh SSL证书.html">HTTPS Certbot acme.sh SSL证书</a></div>
