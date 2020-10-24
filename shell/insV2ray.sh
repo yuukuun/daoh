@@ -214,6 +214,7 @@ esac
 
 
 cp -r "$paths"* /usr/local/nginx/$urls/
+mkdir ~/v2ray && cp -r "$paths"* ~/v2ray/
 
 systemctl restart nginx.service
 systemctl restart v2ray.service
@@ -221,3 +222,6 @@ systemctl enable v2ray.service
 
 systemctl status nginx.service
 systemctl status v2ray.service
+
+rm -rf /etc/localtime
+ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime

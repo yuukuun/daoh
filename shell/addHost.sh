@@ -56,7 +56,6 @@ fi
 
 
 
-
 cat >/usr/local/nginx/conf.d/$urls.conf<<-EOF
 server {
     listen       80;
@@ -109,3 +108,5 @@ cp -r /usr/local/nginx/html/* /usr/local/nginx/$urls/
 /usr/local/nginx/sbin/nginx -s reload
 systemctl restart nginx.service
 systemctl status nginx.service
+
+echo '10 4 * * 2 /usr/bin/certbot renew --dry-run "/usr/local/nginx/sbin/nginx -s reload"' >> /var/spool/cron/root
