@@ -11,7 +11,7 @@ chmod 600 ~/.ssh/authorized_keys
 sed -i "/Port/d" /etc/ssh/sshd_config
 sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
 #sed -i "/PasswordAuthentication/a\Port 19631" /etc/ssh/sshd_config
-sed -i "/PasswordAuthentication/a\Port 19631" /etc/ssh/sshd_config
+sed -i "/PasswordAuthentication/a\Port $ports" /etc/ssh/sshd_config
 sed -i "/PasswordAuthentication/a\Port 22" /etc/ssh/sshd_config
 systemctl restart sshd 
 
