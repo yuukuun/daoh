@@ -92,7 +92,7 @@ EOF
 }
 
 function v2rayClientWin() {
-cd /usr/local/nginx/html/ && rm -rf *
+cd /usr/local/nginx/html/ 
 wget -c https://raw.githubusercontent.com/yuukuun/daoh/main/soft/v2rayN-Core.zip && unzip v2rayN-Core.zip && rm -rf /usr/local/nginx/html/*.zip
 cat >/usr/local/nginx/html/v2rayN-Core/guiNConfig.json<<-EOP
 {
@@ -171,7 +171,7 @@ cat >/usr/local/nginx/html/v2rayN-Core/guiNConfig.json<<-EOP
 }
 EOP
 zip -r /usr/local/nginx/html/v2rayN-Core.zip v2rayN-Core/ && rm -rf v2rayN-Core
-wget -c -P /usr/local/nginx/html/  https://raw.githubusercontent.com/yuukuun/daoh/main/soft/v2rayNG.apk
+wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/soft/v2rayNG.apk
 wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/android_1.jpg
 wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/android_2.jpg
 wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh/main/lang/2020-10-17-v2ray-server/index.html
@@ -184,7 +184,7 @@ echo "1. v2ray服务端"
 echo "2. v2ray客户端"
 
 
-sed -i "s/urlsx/$urls/g" /usr/local/nginx/html/index.html
+sed -i "s/baidu.com/$urls/g" /usr/local/nginx/html/index.html
 sed -i "s/uuidx/$uuid/g" /usr/local/nginx/html/index.html
 
 read -p "请择数字：" key
