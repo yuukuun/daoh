@@ -1,8 +1,8 @@
 #!/bin/bash
 #install v2ray
 
-uuid="621b99bc-1230-4f20-8438-04ff5f1edd8f"
-# uuid=$(cat /proc/sys/kernel/random/uuid)
+# uuid="621b99bc-1230-4f20-8438-04ff5f1edd8f"
+uuid=$(cat /proc/sys/kernel/random/uuid)
 paths="/usr/local/nginx/html/"
 #con="https://moru.gq/"
 con="https://raw.githubusercontent.com/yuukuun/daoh/main/"
