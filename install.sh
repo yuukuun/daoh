@@ -1,8 +1,8 @@
 #!/bin/bash
 # bash <(curl -L https://moru.gq/install.sh)
 ###环境变量 
-#sources='https://raw.githubusercontent.com/yuukuun/daoh/main/'
-sources='https://moru.gq/'
+sources='https://raw.githubusercontent.com/yuukuun/daoh/main/'
+#sources='https://moru.gq/'
 export sources
 ###安装
 echo "1. install init"
