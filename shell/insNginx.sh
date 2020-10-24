@@ -125,11 +125,11 @@ EOF
 
 
 temp=$(cat /etc/redhat-release)
-if [[ "$temp" == "CentOS Linux release 8"* ]]; then
-    centos8
-######### centos 7
-elif [[ "$temp" == "CentOS Linux release 7"* ]];then
+if [[ "$temp" == "CentOS Linux release 7"* ]]; then
     centos7
+######### centos 7
+elif [[ "$temp" == "CentOS Linux release 8"* ]];then
+    centos8
 else
     echo "##### nginx conf error !!! #####"
 fi

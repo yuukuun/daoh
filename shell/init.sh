@@ -28,3 +28,7 @@ firewall-cmd --reload
 systemctl enable firewalld.service 
 sysctl net.ipv4.tcp_available_congestion_control
 firewall-cmd --list-all
+
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+shutdown -r now
+
