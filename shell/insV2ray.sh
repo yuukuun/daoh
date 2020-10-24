@@ -178,7 +178,7 @@ wget -c -P /usr/local/nginx/html/ https://raw.githubusercontent.com/yuukuun/daoh
 }
 
 
-cp -r /usr/local/nginx/html/ /usr/local/nginx/$urls/
+cp -r /usr/local/nginx/html/* /usr/local/nginx/$urls/
 read -p "请输入域名：" urls
 echo "1. v2ray服务端"
 echo "2. v2ray客户端"
