@@ -106,7 +106,7 @@ EOF
 }
 
 function v2rayClientWin() {
-wget -c "$con"soft/v2rayN-Core.zip && unzip "$paths"v2rayN-Core.zip && rm -rf "$paths"*.zip
+cd "$paths" && wget -c "$con"soft/v2rayN-Core.zip && unzip v2rayN-Core.zip && rm -rf *.zip
 cat >"$paths"v2rayN-Core/guiNConfig.json<<-EOP
 {
   "inbound": [
