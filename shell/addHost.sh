@@ -13,7 +13,7 @@ yum remove -y epel-release
 yum install -y epel-release
 yum install -y yum-utils certbot python2-certbot-nginx 
 certbot certonly --webroot -w /usr/local/nginx/html/ -d $urls -m $emails --agree-tos -n  ###--test-cert测试 -n后台
-php_config=$(cat<<EOF
+php_config=$(cat<<-EOF
 location ~ .php\$ {
         try_files \$uri =404;
         root /usr/local/nginx/$urls/;
@@ -32,7 +32,7 @@ dnf remove -y epel-release
 dnf install -y epel-release
 dnf install -y certbot python3-certbot-nginx
 certbot certonly --webroot -w /usr/local/nginx/html/ -d $urls -m $emails --agree-tos -n  ###--test-cert测试 -n后台
-php_config=$(cat<<EOF
+php_config=$(cat<<-EOF
 location ~ \.php\$ {
         try_files \$uri =404;
         fastcgi_pass unix:/run/php-fpm/www.sock;
@@ -96,10 +96,6 @@ server {
     }
 }
 EOF
-
-
-
-
 
 mkdir /usr/local/nginx/$urls
 cp -r /usr/local/nginx/html/* /usr/local/nginx/$urls/

@@ -143,7 +143,7 @@ PING qiqing.ga (45.76.97.209) 56(84) bytes of data.
 <div class="row"><span class="txt"><a href="https://github.com/v2fly/fhs-install-v2ray" target="_blank">1. v2ray服务端安装配置</a></span></div>
 <div class="row"><pre><code>
 <?php
-// install Nginx
+// install v2rat
 $file = '../shell/insV2ray.sh'; //先读取文件
 $cbody = file($file); //file（）函数作用是返回一行数组，txt里有三行数据，因此一行被识别为一个数组，三行被识别为三个数组
 for($i=0;$i<count($cbody);$i++){ //count函数就是获取数组的长度的，长度为3 因为一行被识别为一个数组 有三行
@@ -153,20 +153,6 @@ for($i=0;$i<count($cbody);$i++){ //count函数就是获取数组的长度的，�
 
 </pre></code></div>
 
-<!-- <div class="row"><span class="txt"><a href="https://github.com/v2fly/fhs-install-v2ray" target="_blank">2. Linux客户端配置</a></span></div>
-<div class="row"><pre><code>
-
-
-
-</pre></code></div>
-
-<div class="row"><span class="txt"><a href="https://github.com/2dust/v2rayN/releases/" target="_blank">3. Windows客户端配置</a></span></div>
-<div class="row"><pre><code>
-
-
-
-
-</pre></code></div> -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 

@@ -31,6 +31,7 @@ else
 fi
  
 ### 开始安装 nginx
+### 开始安装 nginx
 cd /tmp
 wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz
 tar xzvf openssl-1.1.1a.tar.gz 
@@ -40,8 +41,8 @@ wget https://nginx.org/download/nginx-1.18.0.tar.gz && tar xf nginx-1.18.0.tar.g
 --with-http_v2_module --with-http_ssl_module --with-http_gzip_static_module --with-http_stub_status_module \
 --with-http_sub_module --with-stream --with-stream_ssl_module
 make && make install
-##################################################################################
-### nginx配置
+####################################################################################
+###php 配置
 temp=$(cat /etc/redhat-release)
 if [[ "$temp" == "CentOS Linux release 7"* ]]; then
 php_config=$(cat<<-EOF
@@ -57,7 +58,7 @@ EOF
 )
 ######### centos 7
 elif [[ "$temp" == "CentOS Linux release 8"* ]];then
-php_config=$(cat<<-EOF
+php_config=$(cat<-EOF
 location ~ \.php\$ {
         try_files \$uri =404;
         fastcgi_pass unix:/run/php-fpm/www.sock;
@@ -70,9 +71,11 @@ EOF
 else
     echo "##### nginx conf error !!! #####"
 fi
-##################################################################################
-###php 配置
-cat >/usr/local/nginx/conf/nginx.conf <<-EOF
+
+
+####################################################################################
+###默认 配置
+cat >/usr/local/nginx/conf/nginx.conf<<-EOF
 user  root;
 worker_processes  1;
 error_log  /usr/local/nginx/logs/error.log warn;
