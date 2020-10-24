@@ -106,7 +106,6 @@ EOF
 }
 
 function v2rayClientWin() {
-cd "$paths"
 wget -c "$con"soft/v2rayN-Core.zip && unzip "$paths"v2rayN-Core.zip && rm -rf "$paths"*.zip
 cat >"$paths"v2rayN-Core/guiNConfig.json<<-EOP
 {
@@ -184,7 +183,8 @@ cat >"$paths"v2rayN-Core/guiNConfig.json<<-EOP
   "userPacRule": []
 }
 EOP
-zip -r "$paths"v2rayN-Core.zip "$paths"v2rayN-Core/ && rm -rf v2rayN-Core
+cd "$paths" && zip v2rayN-Core.zip v2rayN-Core/ && rm -rf v2rayN-Core
+#zip -r "$paths"v2rayN-Core.zip "$paths"v2rayN-Core/ && rm -rf v2rayN-Core
 
 wget -c -P "$paths" "$con"soft/v2rayNG.apk
 wget -c -P "$paths" "$con"lang/2020-10-17-v2ray-server/android_1.jpg
