@@ -69,8 +69,7 @@ http {
       root /usr/local/nginx/html/;
       index index.php index.html;
       #rewrite ^(.*)$  https://\$host\$1 permanent; 
-    } 
-    location ~ .php\$ {
+      location ~ .php\$ {
         try_files \$uri =404;
         root /usr/local/nginx/html/;
         fastcgi_pass 127.0.0.1:9000;
@@ -78,6 +77,7 @@ http {
         fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
         include fastcgi.conf;
         }
+    } 
     include /usr/local/nginx/conf.d/*.conf;  
 }
 EOF
@@ -110,14 +110,14 @@ http {
       root /usr/local/nginx/html/;
       index index.php index.html;
       #rewrite ^(.*)$  https://\$host\$1 permanent; 
-    } 
-    location ~ \.php\$ {
+      location ~ \.php\$ {
         try_files \$uri =404;
         fastcgi_pass unix:/run/php-fpm/www.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
         include fastcgi_params;
         }
+    } 
     include /usr/local/nginx/conf.d/*.conf;  
 }
 EOF
