@@ -103,6 +103,7 @@
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-23-CentOS的内核升级.html">CentOS 的内核升级.html</a></div>
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-11-TCP IP DNS 网络.html">TCP/IP DNS 网络</a></div>
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-22-DHCP 服务安装配置.html">DHCP 服务安装配置</a></div>
+<div class="col-12 col-md-6 tit"><a href="lang/2020-10-25-Linux 安装后问题.html">Linux 安装后问题</a></div>
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-24-Linux 集群配置.html">Linux 集群配置</a></div>
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-24-Linux 命令.html">Linux 命令</a></div>
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-25-Linux shell 脚本.html">Linux shell 脚本</a></div>
