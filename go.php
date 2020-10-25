@@ -1,4 +1,4 @@
-<!doctype html>
+<?php require 'ejing/date.php'; ?><!doctype html>
 <html lang="en">
 <!--------------------------------------------------头部-------------------------------------------------------->
   <head>
@@ -24,8 +24,9 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="css/offcanvas.css" rel="stylesheet">
-    <title>裤子</title>
+    <link href="../css/offcanvas.css" rel="stylesheet">
+   <!--  <link href="../css/floating-labels.css" rel="stylesheet"> -->
+    <title>Blog</title>
   </head>
 <!--------------------------------------------------导航-------------------------------------------------------->
   <body class="bg-light" id="ups" name="ups">
@@ -38,17 +39,17 @@
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <!-- <li class="nav-item active"><a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a></li> -->
- <li class="nav-item"><a class="nav-link" href="index.html">博客</a></li>
+       <li class="nav-item "><a class="nav-link" href="index.html">博客</a></li>
       <li class="nav-item"><a class="nav-link" href="lang.php">Lang</a></li>
       <li class="nav-item"><a class="nav-link" href="soft.html">软件</a></li>
       <li class="nav-item"><a class="nav-link" href="site.html">导航</a></li>
-<li class="nav-item"><a class="nav-link" href="ejing.html">易经</a></li>
+      <li class="nav-item"><a class="nav-link" href="ejing.html">易经</a></li>
       <li class="nav-item"><a class="nav-link" href="m/index.html">音乐</a></li>
- <li class="nav-item"><a class="nav-link" href="go.php">|</a></li>
+      <li class="nav-item active"><a class="nav-link" href="go.php">|</a></li>
       <li class="nav-item"><a class="nav-link" href="head.html">头部</a></li>
       <li class="nav-item"><a class="nav-link" href="women.html">女装</a></li>
       <li class="nav-item"><a class="nav-link" href="man.html">男装</a></li>
-      <li class="nav-item active"><a class="nav-link" href="ku.html">裤子</a></li>
+      <li class="nav-item"><a class="nav-link" href="ku.html">裤子</a></li>
       <li class="nav-item"><a class="nav-link" href="bags.html">包</a></li>
       <li class="nav-item"><a class="nav-link" href="child.html">儿童</a></li>
       <li class="nav-item"><a class="nav-link" href="shoes.html">鞋</a></li>
@@ -63,65 +64,33 @@
       <li class="nav-item"><a class="nav-link" href="medi.html">医药</a></li>
       <li class="nav-item"><a class="nav-link" href="indus.html">工业</a></li>
       <li class="nav-item"><a class="nav-link" href="ray.html">光</a></li>
-
-     <!--  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li> -->
+      <li class="nav-item"><a class="nav-link" href="#" id="add"></a></li>
     </ul>
-   <!--  <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> -->
   </div>
 </nav>
 <!--------------------------------------------------二级导航-------------------------------------------------------->
-<!-- <div class="nav-scroller bg-white shadow-sm">
-  <nav class="nav nav-underline">
-    <a class="nav-link" href="#">粤语</a>
-    <a class="nav-link" href="#">中文</a>
-    <a class="nav-link" href="#">MO</a>
-    <a class="nav-link" href="#">返回</a>
-    <a class="nav-link" href="#">返回</a>
-    <a class="nav-link" href="#">返回</a>
-    <a class="nav-link" href="#">返回</a>
-    <a class="nav-link" href="#">返回</a>
-    <a class="nav-link" href="#">返回</a>
-  </nav>
-</div> -->
 <!--------------------------------------------------内容-------------------------------------------------------->
-<main role="main" class="container">
-<!---------------------------------------------------------------------------------------------------------------------------->
-<!---------------------------------------------------------------------------------------------------------------------------->
-<div class="row"><div class="col-xs-12 col-md-12 btit">裤子</div></div>
+<main role="main" class="container"><hr>
+<?php  if($isview) {
+$temp=<<<EOT
+<!---------------------------------------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------------->
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="go.php">Linux</a></div></div>
 <div class="row">
-
-<div class="col-6 col-md-3 tit imp"><a target="_blank" href="https://renda1688.1688.com/page/offerlist.htm">义乌市任达/织带</a></div> <!-- 义乌市廿三里街道金麟北路186号0579 81533919 -->
-<div class="col-6 col-md-3 tit"><a target="_blank" href="https://shop1457369754668.1688.com/page/offerlist.htm">义乌市明渝(皮带)</a></div> <!-- 义乌市佛堂义南工业区剡溪56号138 67910364 -->
-
+<pre><code>621b99bc-1230-4f20-8438-04ff5f1edd8f</pre></code>
 
 </div>
-<hr>
-<div class="row">
-
-<div class="col-6 col-md-2 links"><a href="https://detail.1688.com/offer/543535187234.html" target="_blank"><img src="img/renda16881.jpg" class="img-fluid" alt="Responsive image">男士帆布编织腰带/6</a></div>
-<div class="col-6 col-md-2 links"><a href="https://detail.1688.com/offer/527986643484.html" target="_blank"><img src="img/shop14573697546681.jpg" class="img-fluid" alt="Responsive image">二层牛皮腰带/6</a></div>
-
-
-</div>
-
-
-
-
-
+<!---------------------------------------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------------->
+EOT;
+echo $temp;
+} else {   echo $sign;   echo $p; } ?>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-<div class="row"><hr></div>
+<hr></span>
+<div class="row hou"><hr></div>
 </main>
 
     <!-- Optional JavaScript -->
@@ -129,8 +98,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src="css/offcanvas.js"></script>
-<div class="goTop" id="js-go_top"><a href="#ups"><img src="css/icon_top.png" alt="回到顶部图片"></a></div>
-<script src="css/GoToTop.js"></script>
+    <script src="../css/offcanvas.js"></script>
+<div class="goTop" id="js-go_top"><a href="#ups"><img src="../css/icon_top.png" alt="回到顶部图片"></a></div>
+<script src="../css/GoToTop.js"></script>
   </body>
 </html>

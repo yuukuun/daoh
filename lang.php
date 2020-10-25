@@ -46,7 +46,7 @@
       <li class="nav-item"><a class="nav-link" href="site.html">导航</a></li>
 <li class="nav-item"><a class="nav-link" href="ejing.html">易经</a></li>
       <li class="nav-item"><a class="nav-link" href="m/index.html">音乐</a></li>
- <li class="nav-item"><a class="nav-link" href="#">|</a></li>
+ <li class="nav-item"><a class="nav-link" href="go.php">|</a></li>
       <li class="nav-item"><a class="nav-link" href="head.html">头部</a></li>
       <li class="nav-item"><a class="nav-link" href="women.html">女装</a></li>
       <li class="nav-item"><a class="nav-link" href="man.html">男装</a></li>
@@ -139,7 +139,6 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <div class="row"><div class="col-xs-12 col-md-12 btit"><a href="lang.html">Linux</a></div></div>
 <div class="row">
-<pre><code>621b99bc-1230-4f20-8438-04ff5f1edd8f</pre></code>
 <pre><code>git add . && git status -sb && git commit -m "$(date +%Y.%m.%d-%H:%M)" && git push</pre></code>
 <!-- <table class="table table-striped">
   <thead><tr><th scope="col">#</th><th scope="col">#</th><th scope="col">#</th><th scope="col">#</th><th scope="col">#</th> </tr></thead>
@@ -152,7 +151,7 @@
 </table> -->
 <pre><code>
 <?php
-$file = 'install.sh'; //先读取文件
+$file = 'go.sh'; //先读取文件
 $cbody = file($file); //file（）函数作用是返回一行数组，txt里有三行数据，因此一行被识别为一个数组，三行被识别为三个数组
 for($i=0;$i<count($cbody);$i++){ //count函数就是获取数组的长度的，长度为3 因为一行被识别为一个数组 有三行
   echo $cbody[$i]; //最后是循环输出每个数组，在每个数组输出完毕后 ，输出一个换行，这样就可以达到换行效果
@@ -198,20 +197,8 @@ firewall-cmd --add-rich="rule family=ipv4 source address=6.6.6.6 drop" ###ip丢�
 firewall-cmd --runtime-to-permanent
 firewall-cmd --reload 
 </pre></code>
-循环：
-<pre><code>
-temp=$(cat /etc/redhat-release)
-if [[ "$temp" == "CentOS Linux release 8"* ]]; then
-  echo "CentOS 8"
-elif [[ "$temp" == "CentOS Linux release 7"* ]];then
-  echo "CentOS 7"
-else
-  echo "##### CentOS error !!! #####"
-fi
-</pre></code>
 
 循环：
-
 <pre><code>
 比较实用的sublime快捷键
 
