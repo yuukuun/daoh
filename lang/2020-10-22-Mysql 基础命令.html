@@ -343,7 +343,153 @@ show grants for root@'localhost';    #查看权限
   第二范式：建立在第一范式基础上，所有分主键字段完全依赖主键，不能产生部分依赖。多对多，三张表，关系表两个外键。
   第二范式：第二范式基础上，所有非主键字段直接依赖主键，不能产生传递依赖。
 </span></div>
-<!-- <div class="row"><pre><code>#####</code></pre></div>
+
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">MySQLi MySQL扩展PHP链接</a></div></div>
+
+<div class="row"><span class="txt">
+  MySQL扩展：PHP应用程序操作 => MySQL扩展库控制 => MySQL数据库。MySQL扩展库帮我们操作数据库。（mysql_connect,mysql_query在MySQL扩展库）。MySQL扩展库在php.ini文件里配置。
+</span></div>
+<div class="row"><span class="txt">MySQLi 面向对象：</span></div>
+<div class="row"><pre><code>
+$mysqli = new MySQLi('localhost','root','root','dbname'); //$mysqli对象
+属性：
+mysqli::connect_errno; //错误信息提示   if($this->connect_errno)
+mysqli::connect_error; //错误输出
+mysqli::afected_rows;    //操作对数据影响
+ 
+方法
+mysqli::set_charset('utf-8'); //设置编码
+mysqli::query($sql)   //sql语句，返回值是对象
+mysqli::close();  //关闭链接
+</code></pre></div>
+
+<div class="row"><span class="txt">mysql_result 面向对象：</span></div>
+<div class="row"><pre><code>
+方法：
+mysqli_result::fetch_assoc(); //默认用法，关联数组
+mysqli_result::fetch_row(); //索引数组
+mysqli_result::fetch_array(); //返回关联和索引数组返回
+mysqli_result::fetch_object();  //返回对象
+mysqli_result::free();  //释放资源
+</code></pre></div>
+
+<div class="row"><span class="txt">MySQLi面向过程：</span></div>
+<div class="row"><pre><code>
+$conn = mysqli_connect('localhost','root','root','dbname');
+mysqli_connect_errno(); //错误信息提示
+mysqli_connect_error(); //错误输出
+mysqli_set_charset($conn,'utf8');
+ 
+$res = mysqli_query($conn,$sql);  //查询
+$ros = mysqli_fetch_assoc($res);  
+ 
+mysqli_free_result($res);   //释放资源
+mysqli_close($conn);  //关闭数据库
+</code></pre></div>
+
+<div class="row"><span class="txt">MySQL （旧版）扩展：链接</span></div>
+<div class="row"><pre><code>
+$conn = mysql_connect('localhost','root','password'); //链接
+if(!$conn) { die('MySQL链接失败！' . mysql_error()); } //链接是否成功
+ 
+mysql_select_db('dbname');  //选择数据库
+mysql_set_charset('utf-8');   //设置字符集
+ 
+$sql = 'SELECT * FROM mess_info'; //dml语句返回bool，select语句返回资源mysql result
+ 
+if($res = mysql_query($sql)){
+  while($row = mysql_fetch_assoc($res)){  
+    var_dump($row);
+  } 
+}
+// 1.返回关联数组，常用写法，mysql_fetch_assoc 
+// 2.索引数组，  mysql_fetch_row 
+// 3.是返回关联数组和索引数组，mysql_fetch_array 
+// 4.返回对象，mysql_fetch_object 
+ 
+mysql_free_result($res);  //关闭资源，尽量快速释放
+mysql_close($conn);   //关闭数据库，一般系统关闭
+</code></pre></div>
+
+<div class="row"><span class="txt">MySQLi面向对象例子：</span></div>
+<div class="row"><pre><code>
+$wosql = new MySQLi('localhost','root','root','dbname');
+ 
+if($wosql->connect_errno){
+  die('MySQLi链接错误！' . $wosql->connect_error);
+}else{
+  echo 'MySQLi链接成功！';
+}
+$wosql->set_charset('utf8');
+$sql = "SELECT * FROM tableName";
+$res = $wosql->query($sql);
+ 
+while($row = $res->fetch_assoc()){
+  
+  var_dump($row);
+}
+$res->free();   //释放资源
+$wosql->close();  //关闭数据库
+</code></pre></div>
+
+<div class="row"><span class="txt">MySQLi面向过程例子：</span></div>
+<div class="row"><pre><code>
+$conn = mysqli_connect('localhost','root','qwe456789','mess');
+ 
+if(mysqli_connect_errno()){
+  die('MySQLi链接错误！' . mysqli_connect_error());
+}else{
+  echo 'MySQLi链接成功！';
+}
+mysqli_set_charset($conn,'utf8');
+$sql = "SELECT * FROM mess_info";
+$res = mysqli_query($conn,$sql);
+ 
+while($row = mysqli_fetch_assoc($res)){
+  var_dump($row);
+}
+ 
+mysqli_free_result($res);   //释放资源
+mysqli_close($conn);  //关闭数据库
+</code></pre></div>
+
+<div class="row"><span class="txt">MySQL扩展：查询</span></div>
+<div class="row"><pre><code>
+$sql = 'SELECT * FROM mess_info'; //dml语句返回bool，select语句返回资源mysql result
+ 
+if($res = mysql_query($sql)){
+  while($row = mysql_fetch_assoc($res)){  
+    var_dump($row);
+  } 
+}
+// 1.返回关联数组，常用写法，mysql_fetch_assoc 
+// 2.索引数组，  mysql_fetch_row 
+// 3.是返回关联数组和索引数组，mysql_fetch_array 
+// 4.返回对象，mysql_fetch_object</code></pre></div>
+
+<div class="row"><span class="txt">MySQL扩展： 插入，删除，修改</span></div>
+<div class="row"><pre><code>
+$sql = "INSERT INTO mess_info VALUES ('值1','值2','值3')"; //插入语句
+$sql = "DELETE FROM TableName WHERE id = 5 "; //删除语句
+$sql = "UPDATE TableName SET name = '修改名' WHERE id = 5 ";   //修改语句
+$sql = "DROP TABLE TableName";
+ 
+if(mysql_query($sql)){    
+  echo '插入成功！';
+}else
+{
+  die("插入失败！",mysql_error());
+  exit;
+}
+ 
+if(mysql_affected_rows($conn) > 0)    //判断是否对数据库影响
+{
+  echo '操作对记录有影响！';
+}else
+{
+  echo '操作对记录没有影响！';
+}
+</code></pre></div>
 
 <div class="row"><span class="txt">#####</span></div>
 <div class="row"><pre><code>#####</code></pre></div>
@@ -351,8 +497,7 @@ show grants for root@'localhost';    #查看权限
 <div class="row"><span class="txt">#####</span></div>
 <div class="row"><pre><code>#####</code></pre></div>
 
-<div class="row"><span class="txt">#####</span></div>
-<div class="row"><pre><code>#####</code></pre></div> -->
+
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
