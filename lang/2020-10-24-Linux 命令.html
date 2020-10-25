@@ -712,33 +712,7 @@ echo 1 > /proc/sys/vm/drop_caches    #执行这条命令之前先sync
 cat /proc/sys/vm/drop_caches    #查看内存
 </code></pre></div>
 
-<div class="row"><span class="txt">[ -d /roots ] && echo "yes" || echo "no"    #条件判断</span></div>
-<div class="row"><pre><code>
--d    #是否目录
--e    #文件是否存在
--f    #文件是否存在，是否普通文件
-#权限比较
--r        #文件是否存在，并且读权限
--w        #文件是否存在，并且写权限
--x        #文件是否存在，执行权限
- 
-&& #前一个命令正确，继续执行
-|| #前一个命令不正确，继续执行
-#文件比较
-文件1 -nt 文件2 #文件1比文件2，修改时间新的，则为真
-文件1 -ot 文件2 #文件1比文件2，修改时间旧的，则为真
-文件1 -ef 文件2 #文件，inode号比价，是的话则为真
- 
-#字符串的判断
--z 字符串  #空为返回镇
--n 字符串  #非空为返回镇
-字串1==字串2  #相等返回真
-字串1!=字串2  #不相等返回真
-#多重判断
-判断1 -a 判断2  #两个都真，返回真
-判断1 -o 判断2  #一个为真，返回真
-!判断 #取反
-</code></pre></div>
+
 
 
 <div class="row"><span class="txt">TEXT</span></div>

@@ -104,7 +104,8 @@
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-11-TCP IP DNS 网络.html">TCP/IP DNS 网络</a></div>
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-22-DHCP 服务安装配置.html">DHCP 服务安装配置</a></div>
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-24-Linux 集群配置.html">Linux 集群配置</a></div>
-<div class="col-12 col-md-6 tit"><a href="lang/2020-10-24-Linux 命令 脚本.html">Linux 命令 脚本</a></div>
+<div class="col-12 col-md-6 tit"><a href="lang/2020-10-24-Linux 命令.html">Linux 命令</a></div>
+<div class="col-12 col-md-6 tit"><a href="lang/2020-10-25-Linux shell 脚本.html">Linux shell 脚本</a></div>
 
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-17-Nginx+WS+TLS+V2Ray服务端安装.php">V2Ray 服务端安装</a></div>
 
@@ -116,7 +117,7 @@
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-22-git.html">git git clone</a></div>
 
 <div class="col-12 col-md-6 tit"><a href="lang/go.html">Go Lang 基础和函数</a></div>
-<div class="col-12 col-md-6 tit"><a href="lang/php.html">PHP 基础 函数 例子</a></div>
+<div class="col-12 col-md-6 tit"><a href="lang/PHP 基础 函数 例子.php">PHP 基础 函数 例子</a></div>
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-23-汇编语言.html">汇编语言</a></div>
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-23-Docker 容器的命令与应用.html">Docker 容器的命令与应用</a></div>
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-24-Redis 配置与基础.html">Redis 配置与基础</a></div>

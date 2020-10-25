@@ -137,7 +137,7 @@ include_once 'a.php';    //只能引入一次单个文件，文件不存在继�
 //特殊：null,资源
  
 $GLOBAL     //预定义全局数组。包含所有全局变量。不包含局部变量。
-//例子：
+//代码：
 $arr = array('a','b',245);    
 $name = 'hello!';
 echo $GLOBALS['arr'][1];
@@ -185,7 +185,7 @@ static $c = 0;    //静态变量放在静态区，函数运行完不注销，下
 函数默认是值传递。
  
 可变函数：如果变量后面有圆括号，PHP将寻找与变量值相同的函数，并尝试执行。
-例子：
+代码：
 function abc($n1,$n2){        }
 %fun_name = 'abc';    //abc是函数名
 fun_name(5,6);    //用fun_name来调用abc函数
@@ -228,7 +228,7 @@ class 类名{   成员属性；
          成员函数；
          析构函数；   }
  
-例子
+代码：
 class Cat{    //类名cat不区分大小写。大写字母开头，驼峰命名法
   public $name;
   public $age;
@@ -260,7 +260,7 @@ echo $cat2 -&gt; val(25,45);
 魔术方法：
 当访问（protected ，private ，不存在）属性时候。__get(属性名称);函数触发。通过__get();函数访问类的私有属性值。
 当（protected ，private ，不存在）属性赋值时候。__set(属性名称，属性值);函数触发。
-例子：
+代码：
 class cat{
   public $name;
   protected $food;
@@ -287,7 +287,7 @@ echo $mao-&gt; color;
  
 __isset(属性名);当不可访问的（protected ，private ，不存在）属性调用isset()或empty()时候，__isset(属性名)会被调用。
 __unset();当不可访问的（protected ，private ，不存在）属性调用unset()时候，__unset()会被调用。
-例子：
+代码：
 class house{
   protected $zhu;
   public $jiage;
@@ -327,7 +327,7 @@ var_dump($qing);
  
 __toString();
 当我们把一个对象当做字符串来使用的时候，默认触发类内的__toString();方法。
-例子：
+代码：
 class dog{
   private $name;
   private $color;
@@ -349,7 +349,7 @@ __clone();
 当我们对象1 = clone 对象2 的时候，触发默认的__clone();函数。private function __clone() 的用处是防止别人clone
 对象1==对象2  通过一个类创建的两个对象属性和属性值相就成立。
 对象1===对象2 如果对象1=对象2就全等。
-例子：
+代码：
 class sheep{
   public $name;
   public $food;
@@ -376,7 +376,7 @@ var_dump($s2);
  
 __call();
 在对象调用不可访问的（protected ，private ，不存在）函数的时候，__call(方法名称,参数合集);被触发。__call($m,$n);两个变量来接受。
-例子：
+代码：
 class monkeys{
   public $name;
   public $food;
@@ -399,7 +399,7 @@ echo $ms -&gt;pp('sum',25,15);
  
 类的自动加载：
 类名文件的命名是按照，ClassName.class.php方式命名的。
-例子：
+代码：
 //分别创建dog.class.php和cat.class.php的定义class的文件
 spl_autoload_register('myload');  //注册自己的__autoload函数
  
@@ -417,7 +417,7 @@ $cat-&gt;show();
  
 静态属性和函数 static $count;
 静态变量是属于类的，不属于对象，函数内使用self::$count;。默认值是$count = 0
-例子：
+代码：
 class dog{
   public $name;
   public static $cou = 15;  //静态变量默认值 0 
@@ -639,9 +639,25 @@ property_exists('ClassName','name');
 get_class($ClassName);  //当前对象的类名
 </code></pre></div>
 
-
+<!-- -------------------------------------------------------------------------------------------------------------------------->
+<!-- -------------------------------------------------------------------------------------------------------------------------->
+<!-- -------------------------------------------------------------------------------------------------------------------------->
 <div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">PHP 例子</a></div></div>
-<!-- <div class="row"><span class="txt">例子：</span></div> -->
+<div class="row"><span class="txt">打开文本输出：</span></div>
+<div class="row"><pre><code>
+&lt;?php
+$file = 'temp.txt'; //先读取文件
+$cbody = file($file); //file（）函数作用是返回一行数组，txt里有三行数据。
+for($i=0;$i&lt;count($cbody);$i++){ //count函数就是获取数组的长度的，长度为3 因为一行被识别为一个数组 有三行
+  echo $cbody[$i]; //最后是循环输出每个数组
+}
+?&gt;
+</code></pre></div>
+
+<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><pre><code>LANG</code></pre></div>
+
+
 <div class="row"><pre><code>
 //////////////////////////////////////////////////////////////床架mysql数据库/////////////////////////////////////////////////
 mysql -u root -p
