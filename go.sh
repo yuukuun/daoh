@@ -3,8 +3,8 @@
 # bash <(curl -L https://raw.githubusercontent.com/yuukuun/daoh/main/go.sh)
 
 ###环境变量 
-sources='https://raw.githubusercontent.com/yuukuun/daoh/main/'
-#sources='https://moru.gq/'
+#sources='https://raw.githubusercontent.com/yuukuun/daoh/main/'
+sources='https://moru.gq/'
 export sources
 ###安装
 echo "1. install init"
