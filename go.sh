@@ -1,6 +1,6 @@
 #!/bin/bash
-# bash <(curl -L https://moru.gq/install.sh)
-# bash <(curl -L https://raw.githubusercontent.com/yuukuun/daoh/main/install.sh)
+# bash <(curl -L https://moru.gq/go.sh)
+# bash <(curl -L https://raw.githubusercontent.com/yuukuun/daoh/main/go.sh)
 
 ###环境变量 
 sources='https://raw.githubusercontent.com/yuukuun/daoh/main/'
