@@ -100,19 +100,74 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">LEMP 源码安装</a></div></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">JAVA 基础</a></div></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><span class="txt">安装：</span></div>
+<div class="row"><pre><code>
+java运行在JVM虚拟机上的：
+jdk:java Development kit    ###开放环境
+jre:java runtime environment    ###运行环境
+jvm:java vitrual machine    ###java虚拟机
+ 
+安装：
+源文件编译成*.class多个子解码文件名和类名一致。源文件声明多个class。public类型名和文件名相同。
+sudo docker pull openjdk:latest    ### 安装
+sudo docker run -it -v /home/user/java:/usr/src/myapp --name jdk -d openjdk:latest
+运行：
+sudo docker exec -it jdk bash      ### 进入docker
+java HelloWord.java      ###运行java程序
+</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><span class="txt">
+命名规范：
+  java区分大小写。注释'//'单行和'/* */'多行。数字不可以开头，不能含空格。包名小写(zzzbbbccc)，类名和接口首字符大写(Zzzbbbccc)，变量和方法第一个单词小写第二个大写(zzzBbbCcc)，常量用大写下划线(ZZZ_BBB)。关键字都是小写。
+</span></div>
+<div class="row"><pre><code>
+定义数据类型：
+class,interface,enum,byte,short,int,long,float,double,char,boolean,void(false,true,null)
+流程控制：
+if,else,switch,case,default,while,do,for,break,continue,return
+访问权限(php一样):
+public,protected,private
+保留子：
+goto,const
+</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><span class="txt">
+变量：
+  先声明在使用，有作用域，同一个作用域不可相同变量。long变量L结尾(long a = 1111L;)。float变量后面F结尾(long a = 123.3L;)。通常用double。char只能单引号一个utf8字符,转移字符。单引号解析成对应utf8编码，双引号解析成String。
+</span></div>
+<div class="row"><pre><code>
+数据类型 命名;
+数据类型 命名 = 变量值;
+数据类型：
+基本：byte(1字节),short(2字节),int(4字节),long(8字节),float(4字节),double(8字节)
+,char(2字节),boolean
+引用：class(字符串是类类型),interface,([])数组
+</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><span class="txt">
+自动类型提升：
+  变量的容量小和容量大的互相运算时候结果是容量大的。byte,char,short运算结果是int。byte,char,short-->int-->long-->float-->double 
+  强制类型转换是自动类型提升的逆行。int a = (int)b;可能精度损失。
+  String是个引用类型(用法：String str1 = "aa bb";)，可以其它8中类型运算，只能连接运算(Str + 其它变量)，结果是也String。
+类：
+  类就类似模板，对象就通过基于这个类创建创建的内存空间，这个类的属性和方法都独立的。类的属性加载到堆空间。类的加载信息，常量池，静态域方法区。类的属性都有默认初始化值。java将功能和结构等封装到类中。new关键字创建对象(内存空间)。
+</span></div>
+<div class="row"><pre><code>
+类的成员：
+属性=成员变量=field=域，字段
+方法=成员方法=函数=method
+ 
+类的方法：
+权限修饰符 返回值类型 方法名(参数列表){ 方法体 [return 返回数据]}
+权限值：默认,public,private,protected
+ 
+例子：
+Student[] stu = new Student[5];    //stu保存数组Student[5]地址
+stu[0] = new Student();  //stu[0]中保存Student对象地址
+class Student { int num; int size;}
+</code></pre></div>
 
 <div class="row"><span class="txt">TEXT</span></div>
 <div class="row"><pre><code>LANG</code></pre></div>

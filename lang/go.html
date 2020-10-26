@@ -100,11 +100,16 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">go基础</a></div></div>
 <div class="row"><span class="txt">
-  go通过包名字管理的，文件第一行定义包名package util。导入包时候相对目录路径（import "./www"）或者在src目录下（import "fmt"）。包名=》函数（首字母大写跨跨包）或变量。包定义必须在首行，包名不可重复。对象编程(MVC):设计结构体图时候MCV步骤,编写代码顺序是VCM。
+  go通过包名字管理的，文件第一行定义包名package util。导入包时候相对目录路径（import "./www"）或者在src目录下（import "fmt"）。包名=》函数（首字母大写跨跨包）或变量。包定义必须在首行，包名不可重复。对象编程(MVC):设计结构体图时候MCV步骤,编写代码顺序是VCM。包名=》函数（首字母大写跨跨包）或变量。包定义必须在首行，包名不可重复。
 可以一个目录一个包。</span></div>
 <div class="row"><pre><code>
 go run FILE.go    //运行
 go build FILE.go //编译
+
+fmt "./tools"    //倒入包的目录的相对路径
+package tools    //定义包
+Cal (){}    //函数或变量
+tools.cal()    //调用
 </code></pre></div>
 
 <div class="row"><span class="txt">变量：变量是内存局部空间的定义。go语言基本数据类型和数组是值传递，函数也是数据类型。</span></div>
@@ -118,7 +123,9 @@ var m,n,l = 45,"string",65.89 ( m,n,l := 45,"string",65.89 )
 
 <div class="row"><span class="txt">数组：go语言基本数据类型和数组是值传递，函数也是数据类型。函数递归：递归是函数本身在栈中调用自己本身。
 递归必须跳出递归的条件逼近，要么是死循环。（栈是先进后出）当一个函数结束或遇到return时候函数本身被销毁。谁调用函数返回给谁！数组是连续内存空间，第一元素地址就本数组地址，元素间隔元素类型决定。数组是同一类型数据和集。数组长度定义了不能改变，长度也是数组类型的部分。切片是动态数组，
-数组的引用，是引用类型。底层数组的长度是指定的容量。</span></div>
+数组的引用，是引用类型。底层数组的长度是指定的容量。
+go语言基本数据类型和数组是值传递，函数也是数据类型。对象编程(MVC):设计结构体图时候MCV步骤,编写代码是VCM
+</span></div>
 <div class="row"><pre><code>
 //数组
 var arr [3]int = [3]int{5,4,8}
@@ -142,6 +149,179 @@ var person3 *Person = new(Person)
 var person4 *Person = &Person{}
 </code></pre></div>
 
+<div class="row"><span class="txt">运行：</span></div>
+<div class="row"><pre><code>
+go run file.go    //直接运行
+go build -o execFile srcFile.go    //生成可执行文件
+</code></pre></div>
+
+<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><pre><code>
+//基本数据类型：
+byte = 'b' //一个字节长度，8bit，int8的类型
+
+//转移字符：
+\t    //tab键
+\n    //换行
+\r    //替换
+\"    //双引号转移
+
+//函数递归：
+/*
+递归是函数本身在栈中调用自己本身。递归必须跳出递归的条件逼近，要么是死循环。（栈是先进后出）当一个函数结束或遇到return时候函数本身被销毁。谁调用函数返回给谁！
+*/
+
+//格式：
+Tab，Shift + Tab    //快捷键
+gofmt -w file.go    //文件格式化
+func main(){    //花括号必须在一行
+    Println("hello word!hello word!",    //每一行不得超过80字
+    "hello word!")
+}
+
+//数组是连续内存空间，第一元素地址就本数组地址，元素间隔元素类型决定。数组是同一类型数据和集。数组长度定义了不能改变，长度也是数组类型的部分。
+//数组的初始化
+//var a [3]int = [3]int{5,4,8}
+//var a = [3]int{5,4,8}
+//var a = [...]int{5,4,8}
+//var a = [...]int{1:5,0:4,2:8}
+
+//切片是动态数组，数组的引用，是引用类型。底层数组的长度是指定的容量。
+var sli []int = make([]int,10,12) /初始化切片，长度是10,容量是12
+slice := append([]int{1,2,3},4,5,6)   //切片追加元素
+sli = append(sli[:i],sli[i+1:]...)    //sli[i]删除
+
+//函数
+fmt.Scanln(&a)    //接受变量
+fmt.Sprintf("%v",mom)    //格式化输出
+fmt.Printf("%d",i)    //格式化打印 %d:整数 %c:字母
+
+//结构体是自定义数据类型，结构体的字段（属性）基本数据类型，指针，切片，map 结构体的变量是代表具体的事物，结构体变量初始化
+var person1 Person
+person2 := Person{}
+var person3 *Person = new(Person)
+var person4 *Person = &Person{}
+
+//继承，Go lang中的结构体嵌套另一个匿名结构体叫继承.那么结构可以访问匿名结构体的字段和方法.
+type A struct {}
+type B struct { A }    #B继承A
+
+//文件，os包的type File结构体内有很多操作文件的方法.
+file,err := os.Open()    ###打开文件
+reader := bufio.NewReader(file)    ###加载到缓存
+str,err := reader.String('\n')
+ioutil.ReadFile("/home/file.txt")    ###io/ioutill包的直接读取文件,不用关闭.返回[]byte,err
+ioutil.WriteFile("/home/user/ss.sh",[]byte("sssww"),0666)    ###读入文件
+
+//JSON是轻量级的数据交换格式,网络中的数据(map,结构体)序列化成JSON格式传输到目的计算机然后反序列化成数据(map,结构体)格式:{"key","value"}
+
+var i int = 25
+var m = "string"( m := "string" )//go 可以进行类型推到，自己判断类型。
+var m,n,l int //定义多个变量
+var m,n,l = 45,"string",65.89 ( m,n,l := 45,"string",65.89 )
+
+//Go 环境变量
+go env    //显示配置
+ 
+GOARCH="amd64"
+GOBIN=""
+GOEXE=""
+GOHOSTARCH="amd64"
+GOHOSTOS="linux"
+GOOS="linux"
+GOPATH="/home/mgl/go"    //工作目录
+GORACE=""            
+GOROOT="/usr/local/go"    //安装目录
+GOTOOLDIR="/usr/local/go/pkg/tool/linux_amd64"    
+GCCGO="gccgo"
+CC="gcc"
+GOGCCFLAGS="-fPIC -m64 -pthread -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build864558782=/tmp/go-build -gno-record-gcc-switches"
+CXX="g++"
+CGO_ENABLED="1"
+CGO_CFLAGS="-g -O2"
+CGO_CPPFLAGS=""
+CGO_CXXFLAGS="-g -O2"
+CGO_FFLAGS="-g -O2"
+CGO_LDFLAGS="-g -O2"
+PKG_CONFIG="pkg-config"
+ 
+go env    //显示配置
+go get    //获取远程包（需要提前安装git或hg）
+go run    //直接运行程序
+go build    //测试编译，检查是否编译错误
+go fmt    //格式化源码（部分IDE在保存时候自动调用）
+go install    //编译包文件，并编译整个程序
+go test    //运行测试文件
+go doc    //查看文档
+
+
+/*go程序的一般结构，basic_structure.go
+go程序通过package来组织，只有package名称包可以包含main函数，一个执行程序只有一>个main函数
+*/
+package main
+//通过import关键字来导入其他包
+import "fmt"
+import {                //批量导入包名
+        "导入的包1"
+        "导入的包2"
+        "导入的包3"
+}
+//别名的设置
+import BieMing "fmt"
+//用const关键字定义常量
+const PI = 3.14 
+ 
+const {
+const1=1
+const2=3
+const3=3
+}
+//函数外部使用var关键字来进行全局变量的声明和赋值
+var name = "haoren"
+var {
+name = 1
+name2 = 3
+}
+ 
+//用关键字type进行结构(struct)或接口(interface)的声明
+type nameTpye int
+type{
+type int
+type float
+type string
+}
+ 
+type jiegou struct{}
+type jiekou interface{}
+//用func关键字函数声明
+//函数名首字母为小写即为private
+//函数名首字母为大写即为public
+func main(){
+        Println("hello word！你好世界！")
+}
+
+</code></pre></div>
+
+<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><pre><code>LANG</code></pre></div>
+
+<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><pre><code>LANG</code></pre></div>
+
+<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><pre><code>LANG</code></pre></div>
+
+<div class="row"><span class="txt">
+测试：
+  单元测试方法和函数的测试。测试文件和被测试文件包名相同，同一目录下。测试文件名_test.go结尾，和引入testing包，函数TestXxx开头，X是大写。
+</span></div>
+<div class="row"><pre><code>
+func TestAdd(t *testing.T){ //Add自定义名字必须是大写开头。
+AddUser()
+}
+</code></pre></div>
+
+<!-- ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！ -->
 <div class="row"><div class="col-xs-12 col-md-12 btit">go函数</div></div><!-- ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！ -->
 <div class="row"><span class="txt">文件：</span></div><div class="row"><pre><code>
 close(ch1)  //关闭管道

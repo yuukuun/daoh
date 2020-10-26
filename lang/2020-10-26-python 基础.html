@@ -100,7 +100,66 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">LEMP 源码安装</a></div></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">python 基础</a></div></div>
+
+<div class="row"><span class="txt">列表：</span></div>
+<div class="row"><pre><code>
+member=['巴图', '12345', '排在第三位', 250, '我的', '坏人', '字符串1', '字符串2']    #创建列表
+member.append('坏人')        #添加到列表尾
+member.extend(['字符串1','字符串2'])    #扩展列表
+member.insert(2,'排在第三位')        #插入到列表
+temp=member[2]    #转换列表元素
+member[2]=member[1]
+member[1]=temp    
+member[2]    #输出列表的第三个元素
+member.remove('坏人')    #删除"坏人"的元素
+del member[2]    #删除第三个元素
+member.pop()    #删除列表最后一个元素
+member.pop(2)    #删除第三个元素
+member[1:3]    #列表从第二个元素到第三个元素
+member2=member[:]    #对列表的拷贝
+list1=list[:]    #对列表的拷贝
+list=[0,2,5,11,87,3,7,5]    #列表
+list.reverse()    #列表元素翻转
+list.sort()    #正序
+list.sort(reverse=True)    #倒序
+</code></pre></div>
+
+<div class="row"><span class="txt">元组</span></div>
+<div class="row"><pre><code>
+temp=(1,2,3,5,6,7)    #创建元组
+temp=(1,)   and temp2=()    #创建单个元素的元组和空元组
+###
+temp=('天','人','畜生')    #元组
+temp=temp[:1]+('阿修罗',)+temp[1:]    #插入元组
+del temp        #删除元组
+</code></pre></div>
+
+<div class="row"><span class="txt">def(函数)</span></div>
+<div class="row"><pre><code>
+def MyFirstFunction():        #定义函数
+print('我的第一个函数')
+print('第二行')
+----------------------------------------------------------------------------------------------------
+MyFirstFunction()    #调用函数
+####################################################################################################
+def add(a,b):        #定义函数
+  return (a+b)    #返回值
+----------------------------------------------------------------------------------------------------  
+print(add(9,5))        #调用函数
+####################################################################################################
+def SaySome(name='Jack',words='我爱中国'):
+  print(name+'->'+words)
+----------------------------------------------------------------------------------------------------  
+SaySome(words='编程改变世界',name='小甲鱼')
+SaySome()
+####################################################################################################
+def test(*params,exp=78):            #收集参数
+  print('参数长度是：',len(params),exp);
+  print('第二参数是：',params[1]);
+----------------------------------------------------------------------------------------------------
+test('小甲鱼',1,4,56,66,98,44)     #调用函数
+</code></pre></div>
 
 <div class="row"><span class="txt">TEXT</span></div>
 <div class="row"><pre><code>LANG</code></pre></div>
@@ -108,20 +167,7 @@
 <div class="row"><span class="txt">TEXT</span></div>
 <div class="row"><pre><code>LANG</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
-
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
-
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
-
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <div class="row"><hr></div>

@@ -127,6 +127,12 @@
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-24-Redis 配置与基础.html">Redis 配置与基础</a></div>
 
 <div class="col-12 col-md-6 tit"><a href="lang/2020-10-25-zblog 设置.html">zblog 设置</a></div>
+<div class="col-12 col-md-6 tit"><a href="lang/2020-10-26-编程算法.html">编程算法</a></div>
+<div class="col-12 col-md-6 tit"><a href="lang/2020-10-26-LEMP 源码安装.html">LEMP 源码安装</a></div>
+<div class="col-12 col-md-6 tit"><a href="lang/2020-10-26-c语言编程.html">c语言编程</a></div>
+<div class="col-12 col-md-6 tit"><a href="lang/2020-10-26-JAVA 基础.html">JAVA 基础</a></div>
+<div class="col-12 col-md-6 tit"><a href="lang/2020-10-26-JavaScript 基础 函数.html">JavaScript 基础 函数</a></div>
+<div class="col-12 col-md-6 tit"><a href="lang/2020-10-26-HTML 基础.html">HTML 基础</a></div>
 
 
 <div class="col-12 col-md-12 tit"><a >.</a></div>
@@ -184,8 +190,30 @@ ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
 #ProxyCommand ncat --proxy-type socks5 --proxy 127.0.0.1:1080 %h %p
 ServerAliveInterval  20 ###每20秒链接一次
 
+ListenAddress 192.168.1.22  ###监听的地址
+Port 19631                  ###端口
+AuthorizedKeysFile      .ssh/authorized_keys    ###公钥匙文件
+PasswordAuthentication yes      ###密码验证
+PermitRootLogin yes             ###是否root登陆 prohibit-password禁止密码
+
 ssh root@11.22.33.44 -p 22 ~/.ssh/id_rsa
 rsync -av -e 'ssh root@11.22.33.44 -p 22 -i ~/.ssh/id_rsa' --exclude={'目录',} /root/* root@:/root/ ###--exclude={'目录',}排除目录
+##################################################################
+命令1:命令2    #命令1执行完执行命令2，不管对不对
+命令1 && 命令2    #命令1正确执行命令2才执行
+命令1 || 命令2    #命令1不正确执行命令2才执行
+命令1 && 命令2    #命令1正确执行后的参数作为命令2的参数
+
+###################### VIM
+vim快捷键
+鼠标模式复制set mouse=a 时候	选中，鼠标中间粘贴
+行位，行首
+gg 和 G  （7gg 跳转到 7号行）
+复制，粘贴	yy  ,  p  （5yy 复制 5行 ）
+删除	dd（行），dw（word），d$（光标后行），J（删除环行符）
+编辑	u（撤销），a和A（光标后和行尾），r和R（替换字和光标位置数据）
+列操作	ctrl + v ，j（选择多列），c（删除）
+
 </pre></code>
 firewall防火墙：
 <pre><code>

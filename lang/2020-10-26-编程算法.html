@@ -100,7 +100,69 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">LEMP 源码安装</a></div></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">2020-10-26-编程算法</a></div></div>
+
+<div class="row"><span class="txt">
+队列：
+  队列是有序列表，可以是数组或链表实现，先进先出的原则。如果用数组来标识队列，用MaxSIze声明队列最大容量，因为队列是前后段处理。用front和rear来表示队列的前后端下表。 front因数据输出而改变，rear因数据输入而改变。
+二分算法：
+  二分算法，查找的数组必须是有序数组。要查找的数字 $n 跟中间值相等就找到，如果 $n 小于中间值就左边查找，如果$n 打于中间值就右边查找。
+</span></div>
+<div class="row"><pre><code>
+$arr = array(10,20,33,40,55,68,79,210,900);
+ 
+function two($left,$right,$arr,$n)
+{
+  if($left > $right)
+  {
+    echo '未能找到对应的数字！';
+    return;
+  }
+  $med = round(($left + $right)/2);
+  if( $n == $arr[$med]){
+    echo '恭喜找到对应下标是：' . $med;
+    return;   //这是本函数唯一的出口，
+  }
+  elseif($n < $arr[$med])
+  {
+    two($left,$med - 1,$arr,$n);
+  }
+  elseif($n > $arr[$med])
+  {
+    two($med + 1,$right,$arr,$n);
+  }
+}
+ 
+$res = two(0,count($arr),$arr,'220');
+echo $res;
+</code></pre></div>
+
+<div class="row"><span class="txt">
+冒泡排序：
+  冒号排序,arr[i]和arr[i+1]每次循环之后最大数字到数组最后面大循环的总次数是数组的长度是： count($arr) - 1 。每次小循环的次数在逐渐减少[2,1]</span></div>
+<div class="row"><pre><code>
+function maohao($arr){
+  $size = count($arr);
+  for($i = 0 ; $i < $size - 1 ; $i++)
+  {
+    // echo '大循环' . $i;
+    for($j = 0 ; $j < $size - $i- 1 ; $j++)
+    {
+      // echo '小循环' . $j;
+      if($arr[$j] > $arr[$j+1])
+      {
+        $temp = $arr[$j+1];
+        $arr[$j+1] = $arr[$j];
+        $arr[$j] = $temp;
+      }
+    }
+  }
+  echo var_dump($arr);
+}
+ 
+$arr = array(7,10,1,15);
+maohao($arr);
+</code></pre></div>
 
 <div class="row"><span class="txt">TEXT</span></div>
 <div class="row"><pre><code>LANG</code></pre></div>
@@ -108,20 +170,7 @@
 <div class="row"><span class="txt">TEXT</span></div>
 <div class="row"><pre><code>LANG</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
-
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
-
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
-
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <div class="row"><hr></div>

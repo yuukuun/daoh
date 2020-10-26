@@ -100,7 +100,7 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">PHP 基础 函数 例子</a></div></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">PHP 基础 函数 例子 面向对象</a></div></div>
 <div class="row"><span class="txt">
 php 的很多功能需要相应的应用库，比如更好的图形支持就安装GD库，php5.6.2最稳定。集成开发工具：zend stdio 和 netbean 。前端notepad++ 和editplus
 //php中值传递是内存空间是独立的。（int,bool,float,string,array(),对象,资源）默认是值传递。
@@ -758,11 +758,286 @@ include("conn.php");
 ?&gt;
 </code></pre></div>
 
+<!-- -------------------------------------------------------------------------------------------------------------------------->
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">PHP 注释</a></div></div>
+<div class="row"><span class="txt">
+  php的很多功能需要相应的应用库，比如更好的图形支持就安装GD库。php5.6.2最稳定。集成开发工具：zend stdio 和 netbean 。前端notepad++ editplus</span></div>
+<div class="row"><pre><code>
+&lt;? php
+header('content-type:text/html;charset=utf8');
+@mysql_connect("localhost:3306","root","root")or die("mysql链接失败");//mysql连接
+@mysql_select_db("sjk")or die("DB链接失败");//数据库编码
+ mysql_set_charset("utf8");//数据编码统一,老版本mysql_query("gbk");
+//mysql_query("set names 'utf8'")
+//echo "数据库连接成功";
+?&gt;
+&lt;!--注释，注释，注释，注释，注释，注释，注释，注释，注释，注释，注释，注释，注释，注释，注释，注释，注释--&gt; 
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;php注释&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;?php 
+    echo "我的的输出&lt;br/&gt;";  /*多行注释*/
+    $ab=false;
+    $url7="www.xunlei.com";
+    if (!$ab) {         //单行注释，变量取反，大括号代码抱起来，“!”取反
+      echo "我的是真的";
+      echo "$url7";
+    }
+    $aa="bb";     //可变变量
+    $$aa="hello";   //可变变量
+    echo "&lt;br/&gt;$bb";
+    echo 'wo shi \' zifu chuan\\\\';  /*字符串,'\'是转义字符,单引号不可以解析变量
+    建议使用单引号，
+    */
+    $lei_xing_sc="123abc";
+    $lei_zhuanhuan=(int)$lei_xing_sc; /*类型转换变量*/
+    echo "&lt;br/&gt;";
+    var_dump($lei_xing_sc); /*类型输出函数*/
+    echo "&lt;br/&gt;";
+    var_dump($lei_zhuanhuan); /*类型转换输出函数*/
+    
+    echo "&lt;br/&gt;";
+    $shuzu=array(1,2,3,4,5);  /*声明数组*/
+    var_dump($shuzu);     /*输出数组*/
+ 
+    echo "&lt;br/&gt;";
+    echo __LINE__;  //常量，输出行号，前后两个下划线
+ 
+    echo "&lt;br/&gt;";
+    define("TEST", 1987); //自定义常量Parse error: syntax error, unexpected 'echo' 这样提示是上一行没写;号
+    echo TEST;        //常量输出
+ 
+    echo "&lt;br/&gt;40行：";
+    echo 5%2;   //求余数运算
+    echo "&lt;br/&gt;42行：";
+    $shuz=10;
+    echo ++$shuz; //把++放在变量后面是只运算不出结果，把++放在变量前面是运算出结果
+ 
+    echo "&lt;br/&gt;46行：";
+    $zifu1="string";
+    $shuz1=256;
+    echo $shuz1."shi".$zifu1; //字符串运算符是. 也是连接符。
+ 
+    echo "&lt;br/&gt;51行：";
+    $sz2=5;
+    $sz2*=2;  //$sz2=5*2跟这个一样
+    echo $sz2;
+ 
+    echo "&lt;br/&gt;56行：";
+    var_dump(5==="5");  
+ 
+    echo "&lt;br/&gt;59行：";
+    if (!$zjb="好") {    //if语句，
+      echo "真的";
+    } else {
+      echo "假的";
+    }
+    
+    echo "&lt;br/&gt;66行：";   //switch语句，
+    switch (1) {
+      case '1':
+        echo "我是一";
+        break;
+      case '2':
+        echo "我是二";
+        break;
+      case '3':
+        echo "我是三";
+        break;
+      
+      default:
+        echo "没有匹配！";
+        break;
+    }
+    echo "&lt;br/&gt;83行：";
+    $arr2 = array('a' =&gt; 77,'b' =&gt; 83,'c' =&gt; 99,'d' =&gt; 87,'e' =&gt; 27,  ); //php当中有了键名以后不能再用下标了！
+    $arr = array(11,22,33,44,55,66,77,88 );
+    $arr[0]=58;   //修改数组
+    unset($arr[3]); //删除数组
+    echo $arr[2]."&lt;br/&gt;88行："; //通过下标访问数组 通过.运算符
+    //echo "&lt;br/&gt;83行：";
+    echo $arr2['b'];  //通过键访问数组
+ 
+    foreach ($arr2 as $key =&gt; $value) {    //遍历数组，可以不写$key，直接输出value。
+      echo "&lt;br/&gt;".$key."----&gt;&gt;".$value;
+    }
+    var_dump($arr2);  //打印数组函数
+    echo "&lt;br/&gt;96行：";
+    print_r($arr2);   //打印数组函数
+    
+    for ($i=1; $i &lt;=70; $i++) { echo "+";} //+++++++++++++
+ 
+    $arre = array( array(11,22,33,44 ),array(55,66,77,88 ) );     //二维数组
+    echo "&lt;br/&gt;100行：".$arre[1][3];
+ 
+    $arr3[0]=32;
+    $arr3[1]=65;
+    echo "&lt;br/&gt;104行：".$arr3[1];
+ 
+    $arrr = array( 80=&gt;3,4,5,6,7,8 );
+    echo "&lt;br/&gt;107行：";
+    unset($arrr[81]);
+    $arrr[83]='ef';
+    print_r($arrr);
+ 
+    for ($i=1; $i &lt;=70; $i++) { echo "+"; } //+++++++++++++
+    
+    $arr5 = array(25,15,2,6,79,88);
+    sort($arr5);    //数组正序函数，rsort反序，ksort字母排列
+    $arr6 = array('A' =&gt; 14, 'a' =&gt; 24,'C' =&gt; 33,);  //
+    ksort($arr6);   //大写字母排在前面
+    print_r($arr5);
+    echo "&lt;br/&gt;120行：";
+    print_r($arr6);
+    echo "&lt;br/&gt;123行：";
+    echo array_sum($arr5);    //数组求和函数。 
+    ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre></div>
+
+<!-- -------------------------------------------------------------------------------------------------------------------------->
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">PHP 面向对象</a></div></div>
+
+
+<div class="row"><span class="txt">
+  类名文件的命名是按照，ClassName.class.php方式命名的。    修饰符：public（类外直接访问，继承）， protected（类外不能直接访问，继承），private（只能类内访问）
+</span></div>
+<div class="row"><pre><code>
+public static $name;    //    静态属性
+public static function func(){}    //定义静态方法
+self::$VarName;    //访问静态属性
+OjeactName->StaticFunctionName();( ClassName::StaticFunctionName(); )    //类的外面访问静态函数
+self::StaticFunctionName(); ( $this->StaticFunctionName(); )    //类内静态函数
+</code></pre></div>
+
+<div class="row"><span class="txt">
+构造函数：
+1.构造函数没有返回值
+2.主要对新对象的初始化，并不是创建本身。
+3.一个类只有一个构造函数。PHP5中__construct()和类名()可以供存。
+4.如果没有构造方法，则是使用系统默认的构造方法。
+5.如果该类定义构造函数后默认的构造方法被覆盖。
+6.构造方法的默认修饰符是 public
+</span></div>
+<div class="row"><pre><code>LANG</code></pre></div>
+
+<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><pre><code>
+__get(属性名),__set(属性名,属性值);
+当访问（protected ，private ，不存在）属性时候。__get(属性名);函数触发。通过__get();函数访问类的私有属性值。
+当（protected ，private ，不存在）属性赋值时候。__set(属性名，属性值);函数触发。
+
+__isset(属性名);__unset();
+__isset(属性名);当不可访问的（protected ，private ，不存在）属性调用isset()或empty()时候，__isset(属性名)会被调用。
+__unset();当不可访问的（protected ，private ，不存在）属性调用unset()时候，__unset()会被调用。
+
+__toString();
+当我们把一个对象当做字符串来使用的时候，默认触发类内的__toString();方法。
+
+__clone();
+新对象 = clone 就对象;
+克隆对象会生成和全新的相等对象（不是全等）。会调用新对象的__clone()方法（函数）。private __clone()可以防止克隆。
+当我们对象1 = clone 对象2 的时候，触发默认的__clone();函数。private function __clone() 的用处是防止别人clone对象
+对象1==对象2通过一个类创建的两个对象属性和属性值相就成立。对象1===对象2如果对象1=对象2就全等。
+
+__call();
+在对象调用不可访问的（protected ，private ，不存在）函数的时候，__call(方法名称,参数合集);被触发。__call($m,$n);两个变量来接受。
+
+静态属性和静态方法（函数）：
+静态变量是属于类的，不属于对象。函数内使用self::$count;。默认值是 0 
+静态方法（函数），我们操作静态属性可以使用静态函数操作，使用静态函数在没有实例化对象的情况下使用。静态方法中不能调用非静态属性。
+普通成员函数，可以访问静态属性。
+ 
+public static $name;
+public static function $func(){}
+ 
+self::$VarName; //访问静态属性
+OjeactName->StaticFunctionName();( ClassName::StaticFunctionName(); ) //类的外面访问静态函数
+self::StaticFunctionName(); ( $this->StaticFunctionName(); )  //类内静态函数
+__callStatic();在静态方法中访问不可访问（private protected 没有的）的静态函数函数时候被调用。
+
+继承：
+子类继承父类的属性和方法的继承。父类的public和protected修饰符的属性和方法子类可以继承（ class 子类 extends 父类 ）子类只能继承一个父类。
+当一个对象操作属性和函数时候现在子类查找，找不到的话然后在在父类中查找属性和方法，然后判断是否可以操作。如果父类没有到他上一级类查找。
+子内没有自定义构造函数时候，调用父类的构造函数。子类中调用父类的函数（public protected）。子类和父类方法相同，叫重写。
+$this->MyFunction();
+FatherClassName::MyFunction();
+parent::MyFunction();(parent::__construct();)
+
+重写：
+子类的方法和属性重写（覆盖）父类。属性也一样。
+复制成功！
+
+多态：
+对象（类）在不同的情况下，有不同的状态。
+
+抽象：
+抽象类不能实例化，抽象类可以没有abstract方法（函数）。如果一个类继承了某个抽象类。则他必须实现该类的所有抽象方法。
+如果一个类方法（函数）不确定，我们可以定义为抽象类。如果一个类中有一个抽象方法该类就定义为抽象类。抽象类的重点是其他类来继承它，
+实现它的方法。可以有常量，类中方法abstract加上后，这个类必须为抽象类。
+
+接口：
+接口不能实例化，接口所有方法不能有主体。没有必要obstract来修饰。一个类中可以实现多个接口。所有方法都实现。接口中可以用常量。（常量属于类）接口方法必须是public。
+接口之间接口是继承，接口和类之间是实现，类和类之间是继承。接口中属性不用public修饰，默认是public，接口不能继承类，但是可以同时继承接口。
+ 
+interface A{  func();  }
+class B implements A{  func(){ echo '输出'; }  }
+
+类的前面（final class A）,A类不能继承。方法前面（final fucntion show()）,这个方法不能重写，但是可以继承。属性不能final来修饰。
+
+类常量：
+类中定义的常量需要初始化，除了对象以外的数据类型都可以。const前不写修饰符。可以继承。接口也可以定义常量。类常量是全局的。
+const DAXIE = 2.4;
+className::const;(self::const;)
+interfaceName::const;
+
+对象遍历内部（foreach($this as $key => $val)）通过调用函数来所有属性输出，外部只能public属性。
+
+$pre = new stdClass();  //内置标准类
+$obj = (object)$arr     //把数组转成对象stdClass
+reflectionClass报告类的信息 //对象当字符串
+
+对象序列化:
+把对象属性名，属性类型和属性值都存储到文件中，还可以反序列化把对象重新恢复过来，反序列化时候把该类的定义引入进来。我们调试时候用。
+把对象放入session中也用。 
+serialize $obj;//序列化
+unserialize($obj);//反序列化
+
+trait:
+trait类父类的概念相似，trait不能实例化，trait优先级比继承高，子类继承父类和调用trait相同名字的方法时候trait里方法优先。
+trait A{ function show(){echo 'trait输出！';} }
+class B{ use A; }//这样调用trait的方法
+
+反射：
+对类，函数，接口，方法和扩展进行反向工程。
+查看类结构：
+ReflectionClass::export($Class_Name);
+
+类与对象相关函数：
+class_exists('ClassName');//判断类是否存在
+method_exists($ClassName,'func');//方法是否存在
+property_exists('ClassName','name');
+get_class($ClassName);//当前对象的类名
+
+反射：
+对类，函数，接口，方法和扩展进行反向工程。
+查看类结构：
+ReflectionClass::export($Class_Name);
+
+</code></pre></div>
+
 <div class="row"><span class="txt">TEXT</span></div>
 <div class="row"><pre><code>LANG</code></pre></div>
 
 <div class="row"><span class="txt">TEXT</span></div>
 <div class="row"><pre><code>LANG</code></pre></div>
+
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->

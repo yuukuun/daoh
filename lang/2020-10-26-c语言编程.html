@@ -100,25 +100,76 @@
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 
-<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">LEMP 源码安装</a></div></div>
+<div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">C语言编程</a></div></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><span class="txt">gcc 编辑器</span></div>
+<div class="row"><pre><code>
+#编译的四个阶段：
+-E：仅执行编译预处理； 
+-c：仅执行编译操作，不进行连接操作；
+-S：将C代码转换为汇编代码； 
+-o：指定生成的输出文件。
+ 
+gcc -o helloword helloword.c    #指定输出文件
+</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><span class="txt">c语言 类型</span></div>
+<div class="row"><pre><code>
+int a = 15;    //整型变量,32位
+short int b = 25;    //短整型变量，16位
+long int c = 25;    //长整型变量，32位
+ 
+double e = 15.115;   //双精度浮点型，64位
+float d = 15.5;    //单精度浮点型，32位
+ 
+char f = 'c';    //字符型变量，8位
+//char型保存的是ASCII码，空格是'32'，大写A和小写a之间ASCII码是32
+</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><span class="txt">c语言笔记</span></div>
+<div class="row"><pre><code>
+int num = 10;
+int res = num++ > 11 && --num <20;    //如果&&的左侧是假的话，&&右边的不执行。num++是整个表达式运算后再加加。
+</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><span class="txt">
+  程序中通过变量名对内存读取操作，程序编译后变量名转成变量地址，对变量的存取都是通过地址进行的。变量的地址称为该变量的“指针”，专门用来存放另一个变量的地址（指针），则称为“指针变量”。指针运算，如指针移动一位置，这个1代表，如果是整型指针变量移动2个字节。相加1是加2个字节，浮点型相加1是4个字节。
+</span></div>
+<div class="row"><pre><code>
+基类型 * 指针变量名;
+int * pointer_i;
+float * pointer;        //指向float型变量的指针变量
+i_pointer=&i        //取变量i的地址赋予指针变量i_pointe
+</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><pre><code>
+#include &lt;stdio.h&gt;
+void main()
+{
+    int a;
+    int * pointer_a;
+    a=100;
+    pointer_a=&a;
+    printf("%d\n",a);
+    printf("%d\n",* pointer_a);
+}
+</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><pre><code>
+224页
+#include<stdio.h>
+void main()
+{
+int a,b,* p1,* p2,* c;
+scanf("%d,%d",&a,&b);
+p1=&a;
+p2=&b;
+if(a&lt;b){c=p1;p1=p2;p2=c;}
+printf("a=%d,b=%d\n\n",a,b);
+printf("max=%d,min=%d\n",* p1,* p2);
+}
+
+</code></pre></div>
 
 <div class="row"><span class="txt">TEXT</span></div>
 <div class="row"><pre><code>LANG</code></pre></div>

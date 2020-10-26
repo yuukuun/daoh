@@ -102,23 +102,168 @@
 
 <div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../lang.php">LEMP 源码安装</a></div></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><pre><code>yum -y install gcc gcc-c++</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><span class="txt">
+安装 nginx：http://nginx.org/en/download.html</span></div>
+<div class="row"><pre><code>
+groupadd www    #创建组
+useradd -g www www -M -s /sbin/nologin    #创建用户，不许登录
+ 
+tar -zxvf nginx-1.14.1.tar.gz
+./configure --help  #查看相应模块
+./configure --prefix=/home/nginx --user=www --group=www --with-http_ssl_module --with-http_gzip_static_module --with-pcre
+ 
+如果安装出错：
+yum -y install pcre-devel openssl-devel
+make && make install
+echo $?    # 输出0是没错，输出非0是有错误
+</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><span class="txt">
+MySQL安装：
+https://dev.mysql.com/downloads/mysql/5.5.html#downloads
+https://dev.mysql.com/get/Downloads/MySQL-5.5/mysql-5.5.62.tar.gz
+</span></div>
+<div class="row"><pre><code>
+groupadd mysql
+useradd -g mysql mysql -M -s /sbin/nologin
+tar -zxvf mysql-5.5.62.tar.gz
+ 
+yum -y install cmake    #mysql安装需要cmake
+ 
+cmake -DCMAKE_INSTALL_PREFIX=/home/mysql -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DMYSQL_USER=mysql 
+ -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DWITH_MYISAM_STORAGE_ENGINE=1 
+ -DWITH_DEBUG=0 -DWITH_READLINE=1 -DWITH_EMBEDDED_SERVER=1 -DENABLED_LOCAL_INFILE=1 
+ -DWITH_INNOBASE_STORAGE_ENGINE=1 -DEXTRA_CHARSETS=all 
+ 
+rm -rf CMakeCache.txt    #出错的话删除这个文件，在编译
+make && make install
+ 
+cd /home/mysql    #进入MySQL安装目录
+./scripts/mysql_install_db --basedir=/home/mysql --datadir=/home/mysql/data --user=mysql  #初始化数据库
+mkdir etc
+./support-files/my-huge.cnf   #配置文件复制到etc改名my.cnf
+rm -rf /etc/my.cnf    #删除系统默认的my.cnf配置
+ 
+./support-files/mysql.server start    #启动脚本start,restart
+vim /etc/profile     #最后加上export PATH="$PATH:/home/mysql/bin"
+export PATH="$PATH:/home/mysql/bin"
+ 
+#mysql安全设置
+/home/mysql-5.5.62/scripts/mysql_secure_installation   #源码目录里的 mysql_secure_installation文件安全设置
+</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><span class="txt">安装php：http://php.net/downloads.php</span></div>
+<div class="row"><pre><code>
+tar -zxvf php-5.6.38.tar.gz
+cd php-5.6.38
+ 
+#安装依赖
+yum install -y libxml2-devel libcurl-devel  libpng-devel libjpeg-devel freetype-devel 
+ 
+./configure --prefix=/home/php/ --enable-fpm --with-fpm-user=www --with-fpm-group=www 
+--disable-ipv6 --with-libxml-dir --with-openssl --with-zlib --with-curl --with-gd --with-jpeg-dir --with-png-dir 
+--with-gettext --enable-mbstring --with-mysql --with-mysqli --enable-embedded-mysqli --with-pdo-mysql 
+--with-freetype-dir --with-pcre-dir --enable-mysqlnd --with-config-file-path=/home/php/etc
+ 
+make && make install
+ 
+#配置
+--with-config-file-path=/home/php/etc    #这个是配置文件目录
+mv php-fpm.conf.default php-fpm.conf
+cp php.ini-development /home/php/etc/php.ini     #复制到etc下改名php.ini 生产环境用 php.ini-production
+ 
+vim /home/nginx/conf/nginx.conf    #下面的注释去掉
+location ~ \.php$ {
+            root           html;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+           # include        fastcgi_params;    #这个注释掉
+            include     fastcgi.conf;    #修改成这个
+        }
+</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><span class="txt">安装步骤 https://www.linuxprobe.com/chapter-20.html</span></div>
+<div class="row"><pre><code>
+1，下载和解压   tar
+2，编译，环境配置 ./configure --prefix=/usr/local/nginx
+3, 生成二进制文件  make
+4，安装      make install
+6，清理编译后垃圾 make clean
+</code></pre></div>
 
-<div class="row"><span class="txt">TEXT</span></div>
-<div class="row"><pre><code>LANG</code></pre></div>
+<div class="row"><span class="txt">1，安装cmake：</span></div>
+<div class="row"><pre><code>
+wget https://www.linuxprobe.com/Software/cmake-2.8.11.2.tar.gz
+tar -zxvf cmake-2.8.11.2.tar.gz && cd cmake-2.8.11.2
+./configure && make make install
+</code></pre></div>
+
+<div class="row"><span class="txt">2，安装MySQL：</span></div>
+<div class="row"><pre><code>
+mkdir -p /usr/local/mysql/var
+groupadd mysql
+useradd -g mysql mysql -M -s /sbin/nologin
+ 
+cmake
+-DCMAKE_INSTALL_PREFIX=/usr/local/mysql
+-DMYSQL_DATADIR=/usr/local/mysql/var
+-DSYSCONFDIR=/usr/local/mysql/etc
+</code></pre></div>
+
+<div class="row"><span class="txt">3，安装 pcre</span></div>
+<div class="row"><pre><code>
+./configure prefix=/usr/local/pcre
+make && make install
+</code></pre></div>
+
+<div class="row"><span class="txt">4，安装 openssl</span></div>
+<div class="row"><pre><code>
+./config prefix=/usr/local/openssl
+make && make install
+export PATH=$PATH:/usr/local/openssl/bin
+</code></pre></div>
+
+<div class="row"><span class="txt">5，安装 zlib</span></div>
+<div class="row"><pre><code>
+./configure prefix=/usr/local/zlib
+make && make install
+</code></pre></div>
+
+<div class="row"><span class="txt">6，安装 nginx</span></div>
+<div class="row"><pre><code>
+./configure --prefix=/usr/local/nginx 
+--without-http_memcached_module 
+--user=www --group=www 
+--with-http_stub_status_module 
+--with-http_ssl_module 
+--with-http_gzip_static_module 
+--with-openssl=/usr/local/src/openssl-1.0.1h 
+--with-zlib=/usr/local/src/zlib-1.2.8 
+--with-pcre=/usr/local/src/pcre-8.35
+ 
+vim /etc/rc.d/init.d/nginx  #官网上启动脚本https://www.linuxprobe.com/chapter-20.html
+chmod 755 /etc/rc.d/init.d/nginx
+chkconfig nginx on
+</code></pre></div>
+
+
+<div class="row"><span class="txt">7，安装 yasm</span></div>
+<div class="row"><pre><code>
+./configure 
+make && make install
+</code></pre></div>
+
+<div class="row"><span class="txt">8，安装 libmcrypt:</span></div>
+<div class="row"><pre><code>make && make install</code></pre></div>
+
+<div class="row"><span class="txt">9，安装 libvpx:</span></div>
+<div class="row"><pre><code>
+./configure --prefix=/usr/local/libvpx --enable-shared --enable-vp9
+make && make install
+</code></pre></div>
 
 <div class="row"><span class="txt">TEXT</span></div>
 <div class="row"><pre><code>LANG</code></pre></div>
