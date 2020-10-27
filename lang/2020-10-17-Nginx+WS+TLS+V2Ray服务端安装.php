@@ -135,7 +135,7 @@ PING qiqing.ga (45.76.97.209) 56(84) bytes of data.
 <div class="row"><span class="txt"><a href="2020-10-17-v2ray-server/index.html" target="_blank">
 4. 把刚才输入的域名用浏览器打开，就可以看到v2ray客户端和参数。(1)电脑端参数配置好直接下载就能用。(2)Android客户端安装后手动暑输入参数。(3)苹果IOS客户端需要美国区的帐号下载安装和参数配置。(如果客户端连接出错，把服务器和客户端时间同步的！)</a></span></div><br>
 
-<!-- <img src="2020-10-17-v2ray-server/client.jpg" class="img-fluid col-12 col-md-12" alt="Responsive image"> -->
+<img src="2020-10-17-v2ray-server/client.jpg" class="img-fluid col-12 col-md-12" alt="Responsive image">
 
 
 <div class="row"><div class="col-xs-12 col-md-12 btit"><a href="../bash/install-release.sh" target="_blank">+++++++++++++++手动安装v2ray+++++++++++++++</a></div></div>
