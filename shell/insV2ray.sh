@@ -103,6 +103,7 @@ cat >/usr/local/etc/v2ray/config.json<<-EOF
   ]
 }
 EOF
+sed -i "\$a\alias ytb='sudo /usr/local/bin/youtube-dl --proxy socks5://127.0.0.1:1080'" ~/.bashrc
 }
 
 function v2rayClientWin() {
@@ -223,5 +224,7 @@ systemctl enable v2ray.service
 systemctl status nginx.service
 systemctl status v2ray.service
 
+
 rm -rf /etc/localtime
 ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
