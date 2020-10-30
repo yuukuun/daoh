@@ -21,7 +21,7 @@ function ShowPage($arr) {
 		    // echo $value[2]."<br>";
 		    // echo "<div onclick=\"play('../model/zh/$value[2]')\" class=\"tit col-6 col-md-3\"><a href=\"#q\" title=\"$value[2]\" >$value[2]</a></div>"."\n";
 		    MusicTit($value[0],$value[1],$value[2]);
-		  } 
+		  }
 	}
 }
 
