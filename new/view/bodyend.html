@@ -1,0 +1,47 @@
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="view/css/offcanvas.js"></script>
+<div class="goTop" id="js-go_top"><a href="#ups"><img src="view/css/icon_top.png" alt="回到顶部图片"></a></div>
+<script src="view/css/GoToTop.js"></script>
+    <div role="main" class="container">
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->      
+<!-- ---------------------------------------------------------音频播放器------------------------------------------------------------------------------------------- -->
+<div class="row"><audio class="col-md-4 col-xs-12 audioplayer" id="player" src="" autoplay="autoplay" loop="loop" controls="controls">您的浏览器不支持播放，请使用Chrome浏览器</audio></div>
+<div class="row">
+  <div  class="col-md-4 col-xs-12 audioplayerbg" id="playerbg">
+    <div class="col-xs-12 col-md-12 btn btn-sm btn-default">
+      <a id="playerbgdown" type="button" target="_blank" download="" >下载</a>&nbsp;&nbsp;&nbsp;
+      <a id="playerbgdown" data-toggle="modal" data-target="#myModal" type="button" target="_blank" download="" >歌词</a> 
+    </div>
+  </div>  
+</div>
+<!-- ---------------------------------------------------------歌词------------------------------------------------------------------------------------------- -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+      <!-- 这里是内容区域 -->
+       <object data="" id="inobj" class="col-md-12 col-xs-12"></object> <!-- 导入文件 -->
+
+      </div>
+      <div class="modal-footer">
+       <!--  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> -->
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+  </body>
+</html>
