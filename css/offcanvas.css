@@ -226,19 +226,15 @@ textarea{ width: 100%;  }
 /*******************************二级目录音乐***********************************/
 /*  音频播放器 */
 .audioplayer{  
-/*    position: fixed;
+    position: fixed;
     bottom: 20px;
     z-index: 1000;
-    display: none;*/
-
-    position: fixed;
-    bottom: 50px;
-    z-index: 1000;
     display: none;
+
 }
 /*  音频播放器背景色  */
 .audioplayerbg{  
-      border: #adadad solid 1px;
+      /*border: #adadad solid 1px;
       background:  #ccccca;
       height: 86px;  
       position: fixed;
@@ -248,7 +244,20 @@ textarea{ width: 100%;  }
       text-align: center;
       z-index: 900;
       display: none;
-      box-shadow: 4px 4px 10px #888888;
+      box-shadow: 4px 4px 10px #888888;*/
+
+      border: #adadad solid 1px;
+      background:  #ccccca;
+      height: 84px;  
+      position: fixed;
+      float: left;
+      bottom: 20px;
+      font: 24px/29px arial,sans-serif;
+      vertical-align:bottom;
+      text-align: center;
+      z-index: 900;
+      display: none;
+      /*box-shadow: 4px 4px 10px #888888;*/
 
       
 
