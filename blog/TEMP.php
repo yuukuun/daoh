@@ -39,7 +39,7 @@
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <!-- <li class="nav-item active"><a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a></li> -->
-       <li class="nav-item"><a class="nav-link" href="../index.html">博客</a></li>
+ <li class="nav-item active"><a class="nav-link" href="../index.html">博客</a></li>
       <li class="nav-item"><a class="nav-link" href="../lang.html">Lang</a></li>
       <li class="nav-item"><a class="nav-link" href="../index.html">软件</a></li>
       <li class="nav-item"><a class="nav-link" href="../site.html">网页</a></li>
@@ -74,7 +74,7 @@ $temp=<<<EOT
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------------->
-<h1><a href="../ejing.html">TTTITTT</a></h1><span class="texts"><hr>
+<h1><a href="../index.html">TTTITTT</a></h1><span class="texts"><hr>
 TTTEXTTT
 
 <img src="IMG" class="img-fluid col-12 col-md-12" alt="Responsive image">
