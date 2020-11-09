@@ -29,7 +29,7 @@
     <title>Blog</title>
   </head>
 <!--------------------------------------------------导航-------------------------------------------------------->
-  <body class="bg-light">
+  <body class="bg-light" id="ups" name="ups">
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
   <a class="navbar-brand mr-auto mr-lg-0" href="#">&nbsp;</a>
   <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
@@ -39,12 +39,12 @@
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <!-- <li class="nav-item active"><a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a></li> -->
-       <li class="nav-item active"><a class="nav-link" href="../index.html">博客</a></li>
-      <li class="nav-item"><a class="nav-link" href="../lang.php">Lang</a></li>
+       <li class="nav-item"><a class="nav-link" href="../index.html">博客</a></li>
+      <li class="nav-item"><a class="nav-link" href="../lang.html">Lang</a></li>
       <li class="nav-item"><a class="nav-link" href="../index.html">软件</a></li>
       <li class="nav-item"><a class="nav-link" href="../site.html">网页</a></li>
-<li class="nav-item"><a class="nav-link" href="../ejing.html">易经</a></li>
-      <li class="nav-item"><a class="nav-link" href="../m/index.php" target="_blank">音乐</a></li>
+<li class="nav-item active"><a class="nav-link" href="../ejing.html">易经</a></li>
+      <li class="nav-item"><a class="nav-link" href="../m/index.php">音乐</a></li>
       <li class="nav-item"><a class="nav-link" href="../head.html">头部</a></li>
       <li class="nav-item"><a class="nav-link" href="../women.html">女装</a></li>
       <li class="nav-item"><a class="nav-link" href="../man.html">男装</a></li>
@@ -74,13 +74,11 @@ $temp=<<<EOT
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------------->
-<h1><a href="../index.html">############################</a></h1><span class="texts"><hr>
-############################
-############################
-############################
+<h1><a href="../ejing.html">TTTITTT</a></h1><span class="texts"><hr>
+TTTEXTTT
 
-<img src="img/client.jpg" class="img-fluid col-12 col-md-12" alt="Responsive image">
-(转自：<a href="############################" target="_blank">############################</a>)
+<img src="IMG" class="img-fluid col-12 col-md-12" alt="Responsive image">
+(转自：<a href="AAAAA" target="_blank">AAAAA</a>)
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------------->
@@ -91,7 +89,6 @@ echo $temp;
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <hr></span>
-<div class="up"><a href="#top" target="_self"><img src="../css/top.png" class="img-fluid" alt="Responsive image"></a></div> <!-- 回到顶部  -->
 <div class="row hou"><hr></div>
 </main>
 
@@ -101,5 +98,8 @@ echo $temp;
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="../css/offcanvas.js"></script>
+<div class="goTop" id="js-go_top"><a href="#ups"><img src="../css/icon_top.png" alt="回到顶部图片"></a></div>
+<script src="../css/GoToTop.js"></script>
+<script src="../css/GoToTop.js"></script>
   </body>
 </html>

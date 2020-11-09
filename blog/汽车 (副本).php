@@ -38,13 +38,13 @@
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <!-- <li class="nav-item active"><a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a></li> -->
- <li class="nav-item"><a class="nav-link" href="../index.html">博客</a></li>
-      <li class="nav-item"><a class="nav-link" href="../lang.html">Lang</a></li>
+ <li class="nav-item active"><a class="nav-link" href="../index.html">博客</a></li>
+      <li class="nav-item"><a class="nav-link" href="../lang.php">Lang</a></li>
       <li class="nav-item"><a class="nav-link" href="../soft.html">软件</a></li>
       <li class="nav-item"><a class="nav-link" href="../site.html">导航</a></li>
-<li class="nav-item active"><a class="nav-link" href="../ejing.html">易经</a></li>
-      <li class="nav-item"><a class="nav-link" href="../m/index.php">音乐</a></li>
- <li class="nav-item"><a class="nav-link" href="../go.php">|</a></li>
+<li class="nav-item"><a class="nav-link" href="../ejing.html">易经</a></li>
+      <li class="nav-item"><a class="nav-link" href="../m/index.php" target="_blank">音乐</a></li>
+ <li class="nav-item"><a class="nav-link" href="#">|</a></li>
       <li class="nav-item"><a class="nav-link" href="../head.html">头部</a></li>
       <li class="nav-item"><a class="nav-link" href="../women.html">女装</a></li>
       <li class="nav-item"><a class="nav-link" href="../man.html">男装</a></li>
@@ -71,12 +71,26 @@
 <main role="main" class="container"><hr>
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
-<h1><a href="../ejing.html">TTTITTT</a></h1><span class="texts"><hr>
-TTTEXTTT
-
-<img src="IMG" class="img-fluid col-12 col-md-12" alt="Responsive image">
-(转自：<a href="AAAAA" target="_blank">AAAAA</a>)
-<hr></span>
+<h1><a href="../index.html">汽车</a></h1><div class="row"><span class="texts">
+<div onclick="play('../m/教练录音.mp3')" class="tit col-12 col-md-12" style="text-align: center;"><a href="#q">教练_考试要点录音_10.28</a></div>
+<hr>
+比亚迪=》F3
+大众=》宝来，速腾
+RAV4,CRV，本田CRV，马自达CX5，日产RAV4 奇俊，三菱 欧蓝德
+<hr>
+<h1>扣分</h1>
+<img src="科目二/k1.jpg" class="img-fluid col-12 col-md-12" alt="Responsive image">
+<hr></span></div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<?php
+// player 
+$file = '../m/player.ht'; //先读取文件
+$cbody = file($file); //file（）函数作用是返回一行数组，txt里有三行数据，因此一行被识别为一个数组，三行被识别为三个数组
+for($i=0;$i<count($cbody);$i++){ //count函数就是获取数组的长度的，长度为3 因为一行被识别为一个数组 有三行
+  echo $cbody[$i]; //最后是循环输出每个数组，在每个数组输出完毕后 ，输出一个换行，这样就可以达到换行效果
+}
+?>
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <div class="row hou"><hr></div>
