@@ -106,6 +106,8 @@ var rules = [
             "protonmail.com", 
             "ibm.com", 
             "xiin123.com", 
+            "theepochtimes.com", 
+            "quan.media", 
             "y2mate.com", 
             "0rz.tw", 
             "1-apple.com.tw", 
