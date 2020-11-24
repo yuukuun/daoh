@@ -2,7 +2,6 @@
 
 #sources="https://moru.gq/"
 #sources="https://raw.githubusercontent.com/yuukuun/daoh/main/"
-bash <(curl -L "$sources"shell/v2fly.sh) 
 
 #uuid="621b99bc-1230-4f20-8438-04ff5f1edd8f"
 uuid=$(cat /proc/sys/kernel/random/uuid)
@@ -13,6 +12,10 @@ rm -rf /usr/local/etc/v2ray/config.json
 echo "1. v2ray服务端"
 echo "2. v2ray客户端"
 read -p "请择数字：" key
+read -p "请输入域名：" urls
+
+bash <(curl -L "$sources"shell/v2fly.sh) 
+
 
 function v2rayServer() {
 cat >/usr/local/etc/v2ray/config.json<<-EOF
@@ -105,7 +108,6 @@ case $key in
   v2rayServer
 ;;
 2)  
-  read -p "请输入域名：" urls
   v2rayClient
 ;;
 *)  
@@ -123,4 +125,4 @@ systemctl enable nginx.service
 
 rm -rf /etc/localtime
 ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl && chmod +x /usr/local/bin/youtube-dl
