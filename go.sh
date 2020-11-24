@@ -4,7 +4,7 @@
 
 ###环境变量 
 #sources='https://raw.githubusercontent.com/yuukuun/daoh/main/'
-sources='https://xiin123.com/'
+sources="https://moru.gq/"
 export sources
 
 ###安装
