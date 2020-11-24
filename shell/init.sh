@@ -32,3 +32,6 @@ firewall-cmd --list-all
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 shutdown -r now
 
+# v2fly定时任务
+# 10 4 * * 3 rm -rf /usr/local/nginx/daoh/shell/v2fly.sh && curl -o /usr/local/nginx/daoh/shell/v2fly.sh https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh && chmod +x /usr/local/nginx/daoh/shell/v2fly.sh
+

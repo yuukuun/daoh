@@ -4,8 +4,9 @@
 
 ###环境变量 
 #sources='https://raw.githubusercontent.com/yuukuun/daoh/main/'
-sources='https://moru.gq/'
+sources='https://xiin123.com/'
 export sources
+
 ###安装
 echo "1. install init"
 echo "2. install Nginx"

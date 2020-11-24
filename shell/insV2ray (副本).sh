@@ -1,10 +1,24 @@
 #!/bin/bash
 #install v2ray
-bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
-uuid="621b99bc-1230-4f20-8438-04ff5f1edd8f"
+
 #uuid="621b99bc-1230-4f20-8438-04ff5f1edd8f"
+uuid=$(cat /proc/sys/kernel/random/uuid)
+paths="/usr/local/nginx/html/"
+#con="https://moru.gq/"
+con="https://raw.githubusercontent.com/yuukuun/daoh/main/"
 export uuid
+
+###先倒入ssl证书，添加域名和SSL证书
+read -p "请输入域名：" urls
 export urls
+
+
+echo "1. v2ray服务端"
+echo "2. v2ray客户端"
+read -p "请择数字：" key
+
+bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
+rm -rf /usr/local/etc/v2ray/config.json
 
 function v2rayServer() {
 cat >/usr/local/etc/v2ray/config.json<<-EOF
@@ -68,7 +82,7 @@ cat >/usr/local/etc/v2ray/config.json<<-EOF
         "vnext": [
           {
             "address": "$urls",
-            "port": 12345,
+            "port": 443,
             "users": [
               {
                 "id": "$uuid",
@@ -89,12 +103,12 @@ cat >/usr/local/etc/v2ray/config.json<<-EOF
   ]
 }
 EOF
+sed -i "\$a\alias ytb='sudo /usr/local/bin/youtube-dl --proxy socks5://127.0.0.1:1080'" ~/.bashrc
 }
 
 function v2rayClientWin() {
-cd /usr/local/nginx/html/
-wget -c https://github.com/2dust/v2rayN/releases/download/3.26/v2rayN-Core.zip && unzip v2rayN-Core.zip && rm -rf /usr/local/nginx/html/*.zip
-cat >/usr/local/nginx/html/v2rayN-Core/guiNConfig.json<<-EOP
+cd "$paths" && wget -c "$con"soft/v2rayN-Core.zip && unzip v2rayN-Core.zip && rm -rf *.zip
+cat >"$paths"v2rayN-Core/guiNConfig.json<<-EOP
 {
   "inbound": [
     {
@@ -170,77 +184,47 @@ cat >/usr/local/nginx/html/v2rayN-Core/guiNConfig.json<<-EOP
   "userPacRule": []
 }
 EOP
-zip -r /usr/local/nginx/html/v2rayN-Core.zip v2rayN-Core/ && rm -rf v2rayN-Core
-wget -c -P /usr/local/nginx/html/  https://raw.githubusercontent.com/yuukuun/v2fly/main/v2rayNG.apk
-wget -c -P /usr/local/nginx/html/  https://raw.githubusercontent.com/yuukuun/v2fly/main/android_1.jpg
-wget -c -P /usr/local/nginx/html/  https://raw.githubusercontent.com/yuukuun/v2fly/main/android_2.jpg
-cat >/usr/local/nginx/html/index.html<<-EOF
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>v2ray 客户端</title>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
-  </head>
-  <body>
-<div class="container"><div class="row">
-<!-- 下载客户端 -->
-<h4><div class="alert alert-success" align="center">下载客户端</div></h4>
-<a type="button" class="btn btn-primary btn-lg" href="v2rayN-Core.zip" target="_blank">Windows客户端 v2rayN</a>
-<a type="button" class="btn btn-primary btn-lg" href="v2rayNG.apk" target="_blank">安卓客户端 v2rayNG</a>
-<a type="button" class="btn btn-primary btn-lg" href="https://apps.apple.com/us/app/shadowrocket/id932747118" target="_blank">苹果手机客户端 Shadowrocket</a>
-<!--<a type="button" class="btn btn-primary btn-lg" href="v2rayNG_1.1.14.apk" target="_blank">IOS客户端</a>-->
-<!-- 参数设置 -->
-<h4><div class="alert alert-success" align="center">客户端参数</div></h4>
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover">
-      <tr><th>属性</tH><th>参数</th></tr>
-      <tr><td>协议：</td><td>vmess</td></tr>
-      <tr><td>域名地址：</td><td>$urls</td></tr>
-      <tr><td>UUID：</td><td>$uuid</td></tr>
-      <tr><td>端口：</td><td>443</td></tr>
-      <tr><td>额外ID：</td><td>64</td></tr>
-      <tr><td>传输协议：</td><td>ws</td></tr>
-      <tr><td>PATH：</td><td>/7ba7</td></tr>
-      <tr><td>传输安全：</td><td>TLS</td></tr>
-    </table>
-  </div>  
-<!-- 安卓客户端参数 -->
-<h4><div class="alert alert-success " align="center">安卓客户端：域名和UUID修改成自己的</div>
-<img class="img-responsive col-sm-12 col-md-6" src="android_1.jpg"/>
-<img class="img-responsive col-sm-12 col-md-6" src="android_2.jpg"/>
-</h4>
-</div></div>
-<!-- 这里写script -->
-  </body>
-</html>
-EOF
+cd "$paths" && zip -r v2rayN-Core.zip v2rayN-Core/ && rm -rf v2rayN-Core
+#zip -r "$paths"v2rayN-Core.zip "$paths"v2rayN-Core/ && rm -rf v2rayN-Core
+
+wget -c -P "$paths" "$con"soft/v2rayNG.apk
+wget -c -P "$paths" "$con"lang/2020-10-17-v2ray-server/android_1.jpg
+wget -c -P "$paths" "$con"lang/2020-10-17-v2ray-server/android_2.jpg
+
+rm -rf "$paths"*.html "$paths"*.php
+wget -c "$con"lang/2020-10-17-v2ray-server/index.html -O "$paths"v2ray.html
+
+sed -i "s/baidu.com/$urls/g" "$paths"v2ray.html
+sed -i "s/uuidx/$uuid/g" "$paths"v2ray.html
+sed -i "s/href=\"..\/..\/soft\/v2rayN-Core.zip\"/href=\"v2rayN-Core.zip\"/g" "$paths"v2ray.html
+sed -i "s/href=\"..\/..\/soft\/v2rayNG.apk\"/href=\"v2rayNG.apk\"/g" "$paths"v2ray.html
 }
-cp -r /usr/local/nginx/html/ /usr/local/nginx/$urls/
 
-read -p "请输入域名：" urls
 
-echo "1. v2ray服务端"
-echo "2. v2ray客户端"
-read -p "请择数字：" key
 
 case $key in
-1)	
+1)  
 v2rayServer
 v2rayClientWin
 ;;
-2)	
+2)  
 v2rayClient
 ;;
-*)	echo "v2ray错误!"	;;	
+*)  echo "v2ray错误!" ;;  
 esac
 
-systemctl restart nginx.service
 
+cp -r "$paths"* /usr/local/nginx/$urls/
+mkdir ~/v2ray && cp -r "$paths"* ~/v2ray/
+
+systemctl restart nginx.service
 systemctl restart v2ray.service
 systemctl enable v2ray.service
+
+systemctl status nginx.service
 systemctl status v2ray.service
+
+
+rm -rf /etc/localtime
+ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
