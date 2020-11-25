@@ -85,14 +85,22 @@ body {
 
 /*******************************回到顶部GoToTop***********************************/
 .goTop >img{
+       /* width: 50px;
+        height: 50px;
+        cursor: pointer;*/
+        z-index: 1000;
         width: 50px;
         height: 50px;
         cursor: pointer;
 }
 .goTop{
+        /*position: fixed;
+        right : 20px;
+        bottom : 20px;*/
+        z-index: 1000;
         position: fixed;
         right : 20px;
-        bottom : 20px;
+        bottom : 80px;
 }
 
 /*******************************代码复制***********************************/
@@ -196,6 +204,7 @@ textarea{ width: 100%;  }
 }
 
 .bor { border-bottom: 1px #000 solid;  }
+
 .imp { background-color:  #bebebe;  }
 .tit:hover {    background-color:  #ccccca;   }    
 .tit:link {   background-color:  #ccccca; }
@@ -212,6 +221,24 @@ textarea{ width: 100%;  }
     border: 1px red solid; 
     font: bold 12px/22px arial,sans-serif; 
 } 
+
+/*图标*/
+.icon { 
+ /*  margin: 2px;*/
+    padding: 3px;
+    border: 12px #fff solid;
+    border-radius: 19px;
+    font: 12px/16px arial,sans-serif; 
+ }
+ .icon:hover {    
+    background-color: #c0c0c0;
+    padding: 3px;
+} 
+.ibor {
+  background-color: #e8e7e3;
+}
+
+
 /*  到顶部 */
 .up {
    position:fixed;  
@@ -227,17 +254,32 @@ textarea{ width: 100%;  }
 /*  音频播放器 */
 .audioplayer{  
     position: fixed;
-    bottom: 20px;
+    bottom: 10px;
     z-index: 1000;
     display: none;
+
 }
 /*  音频播放器背景色  */
 .audioplayerbg{  
-      border: #adadad solid 1px;
+      /*border: #adadad solid 1px;
       background:  #ccccca;
       height: 86px;  
       position: fixed;
       bottom: 20px;
+      font: 24px/29px arial,sans-serif;
+      vertical-align:bottom;
+      text-align: center;
+      z-index: 900;
+      display: none;
+      box-shadow: 4px 4px 10px #888888;*/
+
+      border: #adadad solid 1px;
+     /* background:  #ccccca;*/
+       background:  #666;
+      height: 80px;  
+      position: fixed;
+      float: left;
+      bottom: 10px;
       font: 24px/29px arial,sans-serif;
       vertical-align:bottom;
       text-align: center;
