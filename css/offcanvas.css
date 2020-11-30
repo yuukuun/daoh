@@ -224,7 +224,6 @@ textarea{ width: 100%;  }
 
 /*图标*/
 .icon { 
- /*  margin: 2px;*/
     padding: 3px;
     border: 12px #fff solid;
     border-radius: 19px;
@@ -232,8 +231,9 @@ textarea{ width: 100%;  }
     width: 150px;
  }
  .icon:hover {    
-    background-color: #c0c0c0;
-    padding: 3px;
+    /*background-color: #ccccca;*/
+    background-color: #00FF00;
+    /*padding: 4px;*/
 } 
 .ibor {
   background-color: #e8e7e3;
