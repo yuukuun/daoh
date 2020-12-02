@@ -1,5 +1,6 @@
 <?php  
-require 'model/data.php'; 
+require 'exec.php'; 
+
 ?>
 
 <!doctype html>
@@ -29,7 +30,7 @@ require 'model/data.php';
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="view/css/offcanvas.css" rel="stylesheet">
+    <link href="css/offcanvas.css" rel="stylesheet">
     <title>导航</title>
   </head>
 <!--------------------------------------------------导航-------------------------------------------------------->
@@ -43,15 +44,12 @@ require 'model/data.php';
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <!-- <li class="nav-item active"><a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a></li> -->
- 
 <?php  
-
-$num = count($arr);
+// 顶部导航条
+$num = count($nav);
 for ($i=0; $i < $num; $i++) { 
-  echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"".$arr[$i][0]."\">".$arr[$i][0]."</a></li>";
-  echo "<br>";
+  echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"".$nav[$i]."\">".$nav[$i]."</a></li>";
 }
-
 
 ?>
 
@@ -88,33 +86,31 @@ for ($i=0; $i < $num; $i++) {
 <main role="main" class="container">
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
-<?php  
-$path_a = "博客";
-echo "<div class=\"row\"><div class=\"col-xs-12 col-md-12 btit\">".$path_a."</div></div>";
-$dirtemp=scandir("model/".$path_a);
-// if ( $arr[$i][0] == $path_a ) {
-  
-// }
+<!-- <div class="row"><div class="col-xs-12 col-md-12 btit">电影音乐</div></div>
+<div class="row">
+<div class="col-6 col-md-2 tit"><a href="./page.php">page</a></div>
+<div class="col-6 col-md-2 tit"><a href="./page.php">page</a></div>
 
- foreach($dirtemp as $v) {
-  echo "<div class=\"col-6 col-md-2 tit\"><a target=\"_blank\" href=\"000\">".$v."<a></div>";
- }
+
+</div> -->
+
+
+<?php  
+
+$path = "博客";
+if ( $path == "博客") {
+  txtTit($path);
+}
+
+
+
+
 
 
 ?>
 
 
-<div class="row"><div class="col-xs-12 col-md-12 btit">电影音乐</div></div>
-<div class="row">
-<div class="col-6 col-md-2 tit"><a target="_blank" href="http://www.51ape.com/">51ape无损音乐</a></div>
-<div class="col-6 col-md-2 tit"><a target="_blank" href="http://www.wsyyb.com/">无损音乐吧</a></div>
-<div class="col-6 col-md-2 tit"><a target="_blank" href="http://www.mtv-ktv.net/">MV下载</a></div>
-<div class="col-6 col-md-2 tit"><a target="_blank" href="http://www.czcdc.com/">czcdc电影</a></div>
-<div class="col-6 col-md-2 tit"><a target="_blank" href="http://www.3btjia.com/">BT之家</a></div> <!-- www.647.net -->
-<div class="col-6 col-md-2 tit"><a target="_blank" href="http://www.xiepp.com/">磁力下载</a></div>
-<div class="col-6 col-md-2 tit"><a target="_blank" href="http://www.ikanmv.com/">ikanmv电影</a></div> 
 
-</div>
 
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
@@ -128,9 +124,9 @@ $dirtemp=scandir("model/".$path_a);
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src="view/css/offcanvas.js"></script>
-<div class="goTop" id="js-go_top"><a href="#ups"><img src="view/css/icon_top.png" alt="回到顶部图片"></a></div>
-<script src="view/css/GoToTop.js"></script>
+    <script src="css/offcanvas.js"></script>
+<div class="goTop" id="js-go_top"><a href="#ups"><img src="css/icon_top.png" alt="回到顶部图片"></a></div>
+<script src="css/GoToTop.js"></script>
 
 
   </body>

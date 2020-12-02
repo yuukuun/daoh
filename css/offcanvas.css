@@ -3,10 +3,13 @@ html,
 
 .container-fluid {  background-color: #f8f9fa;  }
 .container {  background-color: #f8f9fa;  }
+
+
 .container a { color: #000;  }
 .container-fluid a { color: #000;   }
 
 body {
+	background-color: red; 
   overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 body {
@@ -225,7 +228,7 @@ textarea{ width: 100%;  }
 } 
 /*图标*/
 .icon { 
-    border: 12px #fff solid;
+    border: 12px #f8f9fa solid;
     border-radius: 15px;
     padding: 3px;
     padding-bottom: 0px;
