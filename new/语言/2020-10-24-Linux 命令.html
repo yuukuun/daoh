@@ -1,0 +1,626 @@
+<!---------------------------------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------->
+
+<div class="row"><span class="txt">常用：</span></div>
+<div class="row"><pre><code>
+yum install -y epel-release git tree wget vim unzip    ####基础软件
+yum -y install http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm
+yum update --security
+apt-get install openssh-server vim
+</code></pre></div>
+
+<div class="row"><span class="txt">远程：</span></div>
+<div class="row"><pre><code>
+创建密码钥匙：
+ssh-keygen -t rsa -b 2048   ###创建密钥匙，加密类型rsa和dsa
+ssh-copy-id -i ~/.ssh/id_rsa -p 22 root@192.168.1.5 ###公钥匙传到服务器.ssh/authorized_keys下
+登陆：
+ssh root@3.3.3.3 -p 22 -i ./id_rsa   ##### p:端口 i:密钥
+ssh代理：
+ssh -o ProxyCommand="nc -X 5 -x 127.0.0.1:1080 %h %p" root@3.3.3.3 -p 22    ###本地代理
+ssh -o ProxyCommand="ncat --proxy-type socks5 --proxy 127.0.0.1:1080 %h %p"  root@1.1.1.2 -p 22
+# 如果代理服务器需要认证，可以使用 nc 的升级版 ncat 指定代理服务器的用户名和密码
+$ ssh -o ProxyCommand="ncat --proxy-type http/socks4/socks5 --proxy proxy.net:port --proxy-auth \
+proxyuser:proxypwd %h %p" user@server.net
+rsync同步:
+rsync -av -e 'ssh -p 22 -i ~/.ssh/id_rsa' --exclude={user} /tmp/* root@5.5.5.5:/tmp/ 
+rsync -av -e 'ssh -p 22 -i ~/.ssh/id_rsa' --exclude={'目录',} /tmp/* root@5.5.5.5:/root/  #中文目录带点
+rsync代理：
+https://www.jianshu.com/p/f6990f3a52eb
+rsync -av -e 'ssh -o ProxyCommand="ncat --proxy-type socks5 --proxy 127.0.0.1:1080 %h %p" \
+root@1.2.3.5 -p 22' /root/test root@:/root/
+##### /tmp/*复制到/home/下 ##### a:归档 v:显示 #####
+who    ###查看谁在登录
+w    ###登录用户详细信息
+last    ###/var/log/wtmp 记录的登录系统的用户名
+lastb    ###/var/log/btmp 登入系统失败的用户名单
+lastlog    ###/var/log/lastlog
+</code></pre></div>
+
+<div class="row"><span class="txt">网络：</span></div>
+<div class="row"><pre><code>
+路由：
+route -n    ###查看路由表
+route add default gw 192.168.1.1    ###设置网关，del删除网关
+扫描：
+nmap -sP 192.168.1.0/24 ###扫描局域网内所有ip /24=255.255.255.0
+nmap -sT 192.168.1.1    ###扫描端口
+状态：
+netstat -antp   ###查看TCP链接
+netstat -tlun   ###查看TCP链接
+netstat -an  ###查看所有链接
+HOSTS：
+vim /etc/hosts ###指定：192.168.1.10 baidu.com
+DNS：
+nslookup yahoo.com    ###查看DNS解析
+vim /etc/resolv.conf ### debian系列：nameserver 8.8.8.8
+</code></pre></div>
+
+<div class="row"><span class="txt">容量：</span></div>
+<div class="row"><pre><code>
+fdisk -l    # 分区情况
+df -h    # 挂载情况
+du -sh /home   ##### 目录容量 s:总量 h:人类模式 c:所有文件 #####
+</code></pre></div>
+
+<div class="row"><span class="txt">列表：</span></div>
+<div class="row"><pre><code>
+ls -lFRa    ##### -l:列表     -F:区分     -l:递归     -a:全部   #####
+ls -ltr    ###安修改时间显示
+ls [ab].txt ###查找a.txt和b.txt文件
+ls [^ab].txt ###查找非a.txt和b.txt文件
+ls [a-z]*    ###查找a-z字母开头的文件
+</code></pre></div>
+
+<div class="row"><span class="txt">创建：</span></div>
+<div class="row"><pre><code>
+touch file.txt    ##### 创建文件
+touch file{1..10}.txt   ###创建file名字的10个文件
+mkdir -p /home/temp    #####  创建目录 p:递归
+mkdir mydir{1..5}    ###创建五个目录
+</code></pre></div>
+
+<div class="row"><span class="txt">压缩：</span></div>
+<div class="row"><pre><code>
+tar -zcvf a.tar.gz ./*    ###当前目录下压缩
+tar -zxvf a.tar.gz -C /root    ###解压到root目录
+tar -tf a.tar.gz    ###查看压缩文件
+</code></pre></div>
+
+<div class="row"><span class="txt">查找：</span></div>
+<div class="row"><pre><code>
+find /home -iname "ssh*"    ###查找文件
+find /etc -type d -name "ssh" ###查找ssh目录
+find /home/ ! -type f   ###取反，-O -a
+sudo find /etc -mtime -2    ###最近两天
+sudo find /etc -mtime 3    ###三天
+sudo find /etc -mtime +2    ###两天前
+ 
+通配符就是键盘上特殊公共来代表特殊功能，适用范围是命令行和脚本。
+ls *.txt  ###*匹配所有字符
+ls ??.txt   ###?匹配单个字符
+</code></pre></div>
+
+<div class="row"><span class="txt">通配符：</span></div>
+<div class="row"><pre><code>
+""    ###解析变量
+''
+^     ###取反
+?    ###任意一个字符
+*    ###任意多个字符
+touch {a..d}.txt    ###创建a-b.txt的文件
+</code></pre></div>
+
+<div class="row"><span class="txt">查看文件内容：</span></div>
+<div class="row"><pre><code>
+file /etc/ssh/sshd_config    ##### 查看文本类型
+cat -n /etc/passwd   ##### n:行数 b:文本行 T:不显示制表符
+less -mN /etc/ssh/sshd_config    ##### m:百分比 N:行数 q:退出
+head -5 (tail -5)  /etc/ssh/sshd_config  ##### 文件头5行或文件尾5行显示we
+</code></pre></div>
+
+<div class="row"><span class="txt">文件编辑:</span></div>
+<div class="row"><pre><code>
+sed 流编辑器
+-i 写入文件,-e 多次编辑,s 替换,g全局,p打印,d删除
+ 
+sed -n '2,3p' a.txt     ###打印2-3行
+sed -n '/Port/p' a.txt   ###打印Port关键字行
+sed '/Port/d' a.txt   ###删除Port
+sed -e 's!Port!PPP!g' -e '5,10p' a.txt  ###替换分隔符'/,#,!'
+ 
+echo "s/old1/new1/" >> sh.sed    #多个命令写入sh.sed文件
+sed -f sh.sed file.txt
+sed -e '    # -e:多个命令
+s/old1/new1/
+s/old2/new2/' file.txt
+</code></pre></div>
+
+<div class="row"><span class="txt">重定向：</span></div>
+<div class="row"><pre><code>
+date | tee -a log.txt  ####标准输出和文件中
+command &> out.log    ##### 输出重定向到out.log文件
+command 2> error.log 1> out.log   ##### 错误和正确输出分开文件
+
+#!/bin/bash
+# 正确输出和错误输出重定向到文件
+exec 1>out.log
+exec 2>err.log
+echo "把这个行重定向到err.log" >&2
+</code></pre></div>
+
+<div class="row"><span class="txt">复制：</span></div>
+<div class="row"><pre><code>cp -rp /home/user /tmp  ##### user复制到/tmp下    p:保留权限</code></pre></div>
+
+<div class="row"><span class="txt">用户：</span></div>
+<div class="row"><pre><code>
+su - user    ####切换用户
+useradd -D #### D:默认值 M:不建HOME目录 m:建HOME目录 g:用户组名 G:附加用户组
+usermod -G group user1 #### user1添加到group
+userdel -r user ##### 删除用户和目录
+sudo passwd user ##### 更改用户密码
+</code></pre></div>
+
+<div class="row"><span class="txt">权限：</span></div>
+<div class="row"><pre><code>
+chown www:www /root/dir -R  #### 递归dir目录下的所有者和所属组www:www
+usermod -a -G group user    ###用户user添加到group组
+</code></pre></div>
+
+<div class="row"><span class="txt">变量：</span></div>
+<div class="row"><pre><code>###如果要用变量就使用$操作变量就是不要用$</code></pre></div>
+
+<div class="row"><span class="txt">防火墙:</span></div>
+<div class="row"><pre><code>
+firewall-cmd --state                ###状态
+systemctl start firewalld.service    ###启动防火墙
+firewall-cmd --add-service=https    ###添加服务https
+firewall-cmd --add-port=8080/tcp    ###添加端口8080
+firewall-cmd --add-rich="rule family=ipv4 source address=6.6.6.6 drop" ###ip丢弃
+firewall-cmd --runtime-to-permanent
+firewall-cmd --reload                ###重新加载
+</code></pre></div>
+
+<div class="row"><span class="txt">开机任务:</span></div>
+<div class="row"><pre><code>
+启动级别：
+systemctl get-default   ###查看启动级别
+systemctl set-default multi-user.target  ###设置字符界面为默认启动
+ 
+systemctl list-unit-files | grep enable #开机自动启动
+systemctl start firewalld.service    #启动一个服务
+systemctl stop firewalld.service    #关闭一个服务
+systemctl restart firewalld.service    #重启一个服务
+systemctl enable firewalld.service    #开机自启动服务
+systemctl disable firewalld.service    #开机时禁启动服务
+ 
+systemctl is-enabled firewalld.service    #查看服务是否开机启动
+systemctl list-unit-files|grep enabled    #查看已启动的服务列表
+systemctl --failed    #查看启动失败的服务列
+</code></pre></div>
+
+<div class="row"><span class="txt">centos6开机任务:</span></div>
+<div class="row"><pre><code>
+服务控制：
+service sshd start  ###启动
+service sshd restart    ###重启
+service sshd status ###状态
+service sshd stop   ###停止
+自启动：
+chkconfig --list       ###列出所有的系统服务
+chkconfig --add httpd        ###增加httpd服务
+chkconfig --del httpd        ###删除httpd服务
+</code></pre></div>
+
+<div class="row"><span class="txt">计划任务：</span></div>
+<div class="row"><pre><code>
+17 09 * * * /usr/local/nginx/navi/wong/add.sh    ###09：17时候执行脚本 系统命令以外要用绝对路径
+systemctl enable crond.service
+
+#计划任务crontab 
+vi /etc/crontab    #centos7
+crontab -l    #显示计划任务
+crontab -e    #编辑计划任务
+crontab -d    #删除计划任务
+*/5 * * * * /usr/bin/echo qkk@foxmail.com >> cr.txt   #每五分钟，email地址写入cr.txt 命令写绝对路径
+0 5 * * * 1-6    #每周一至每周六的五点
+* 1,5,12 * * *   #每天1点，5点，12点
+ 
+#第一个：分钟0-59
+#第二个：  时0-23
+#第三个：以天0-31
+#第四个：以月0-12
+#第五个：星期0-7   0和7都是星期日
+
+pwd ; ls ; ll  
+ls -FR /home    # -R digui
+ls -alF    
+cp -R old/ new/
+mkdir -p /home/a/b
+tree /etc/ssh    #tree directory
+ps -ef # e:all process , f:
+kill -s 9 chrome # 3:QUIT 9:KILL
+killall nginx    #
+ 
+##### Sort ######
+sort -n -t ':' -k 3 /etc/passwd
+grep -n 'root' /etc/passwd
+</code></pre></div>
+
+<div class="row"><span class="txt">=========================================软件包管理=========================================</span></div>
+<div class="row"><pre><code>
+------------------------------------------------------------------------------
+#apt-get软件包管理
+sudo apt-get update        #从服务器更新可用的软件包列表。
+sudo apt-get upgrade       # 根据列表，更新已安装的软件包。upgrade 
+sudo apt-get dist-upgrade     #根据列表，更新已安装的软件包。dist-upgrade 可能会删除一些软件包，也可能会安装新的软件包。
+ 
+/etc/init.d/ssh restart            #重启ssh服务       
+apt-get install      #安装ssh服务
+</code></pre></div>
+
+<div class="row"><span class="txt">==========================================命令帮助=========================================</span></div>
+<div class="row"><pre><code>
+#cheat 是使用 python 开发的，所以可以用 pip 来在你的系统上安装 cheat。
+--------------------------------------------------------------------------------------------
+#对于 Debian/Ubuntu 用户
+#对于Python2：
+sudo apt install python-pip python-setuptools
+#对于Python3：
+sudo apt install python3-pip
+ 
+#RHEL/CentOS 官方仓库中没有 pip，因此使用 EPEL 仓库，并使用 YUM 命令安装 pip。
+sudo yum install python-pip python-devel python-setuptools
+#RHEL/CentOS：
+sudo pip install cheat
+</code></pre></div>
+
+<div class="row"><span class="txt">==========================================目录操作=========================================</span></div>
+<div class="row"><pre><code>
+--
+tar    #打包命令
+tar -tf    ##查看打包内容
+tar -zcvf /tmp/ii.tar.gz firewall.sh id_rsa lnmp-install.log    #打包到/tmp/ii.tar.gz
+tar -zxvf file.tar.gz    #解压到当前目录
+tar -C /tmp/dd/ -zxvf file.tar.gz    #解压到/tmp/dd/目录下    -c打包  /  -v显示详情 /  -z压缩  -j bzip2压缩   /  -x解包
+</code></pre></div>
+
+<div class="row"><span class="txt">==========================================文件操作=========================================</span></div>
+<div class="row"><pre><code>
+-------------------------------------------------------------------------------------------------
+#查找命令
+find /etc -name init    #搜索/etc/目录下的 init的文件
+find /etc -name init*    #搜索init开头文件
+find /etc -name *init*    #搜索包含init的文件
+find /etc/ -name init???    #搜索init开头 后三字未知的文件
+ 
+-iname #不区分大小写
+-inum #文件的i节点查找
+-size #文件大小查找 find /etc  -size  +204800(数据块儿)
+-user #按所有者查找
+-group #按所属组查找
+ 
+find /etc -name inittab -exec ls -ldh {} \;    #查找/etc/目录下的inittab 文件，然后执行ls -ldh
+find /etc -name init* -a -type f -exec ls -lh {} \;    #查找/etc/目录下的init开头的文件，然后执行ls -lh
+ 
+--------------------------------------------------------------------------------------------------------------
+#锁定文件    chattr  lsattr
+chattr命令不能保护/、/dev、/tmp、/var目录
+ 
+chattr +i 文件或或目录    #加锁
+chattr -i 文件或或目录    #解锁
+#系统不允许对这个文件进行任何的修改。目录的话那么任何的进程只能修改目录之下的文件，不允许建立和删除文件。
+ 
+chattr +a 文件或或目录    #加锁
+chattr -a 文件或或目录    #解锁 
+#系统只允许在这个文件之后追加数据。如果目录系统将只允许在这个目录下建立和修改文件，而不允许删除任何文件。 
+ 
+lsattr -a&-d 文件名或目录    #查看文件或目录的chattr属性
+------------------------------------------------------------------------------------------------------------------------
+#文件同步命令rsync 
+ 
+##################
+rsync -av -e 'ssh root@192.168.1.5 -p 22 -i /root/id_rsa' root@:/tmp/dir /root/    
+rsync -av -e 'ssh -p 22 -i /root/id_rsa' root@192.168.1.5:/tmp/dir /root/    
+rsync -av --delete /tmp/ /root/backup/         #--delete删除源目录没有，备份目录的文件
+#排除同步目录
+rsync -av -e 'ssh -p 10562 -i /root/.ssh/id_rsa' --exclude={quan,wang,david} /usr/share/nginx/html/ root@12.11.11.11:/home/wwwroot/default/
+</code></pre></div>
+
+<div class="row"><span class="txt">==========================================文件编辑=========================================</span></div>
+<div class="row"><pre><code>
+#vim文本编辑器
+:set nu        #设置行号
+:set nonu        #取消行号
+:w        #保存
+:wq        #保存退出
+:q!        #不保存强制退出
+:sp <filename>    #filename=/etc/pass    两个窗口同时打开
+:set ignorecase     #忽略大小写
+:set noignorecase     #恢复到大小写敏感
+ctrl + w        #多窗户切换
+gg        #文件首
+G        #文件尾
+R        #替换
+o        #本行前插入
+O        #本行后插入
+A        #本行行尾插入
+:%s/Port/NewPort/g         #把Port换成NewPort全文替换，注意大小写
+ 
+#快捷键
+INS        #插入
+DEL        #替换
+HOME        #本行行首
+END        #本行行尾
+-------------------------------------------------------------------------------------------------
+#文件读取命令
+cat -A file.txt    #文件读取命令，包括隐藏字符
+cat -n /etc/ssh/sshd_config    #文件读取，-n 显示行号
+ 
+-------------------------------------------------正责表达式------------------------------------------------
+vim student.txt
+ID  name  PHP Linux Mysql Average
+1 Liming  82  95  86  88.66
+2 Sc  74  96  87  85.66
+3 Gao 99  83  93  91.66
+..........................................................................................................
+行提取和列提取
+cut -f 2 -d ':'        #列提取，':'  做分隔符，第二列
+grep '4' file.txt      #行提取，包含'4'的行
+grep 'Li*' student.txt       #'i'字母0次或任意多次
+grep 'Li..' student.txt       #Li之后任意两个字母，除了换行符
+grep '^1' student.txt        #行首以后'1'开头
+grep 'ge$' student.txt        #行尾以后'ge'结尾
+grep [A-Z][a-z] student.txt        #大写和小写构成的两位字母开头的行
+\          #转移特殊符号，或者换行输入
+grep [^83] student.txt       # '83'以外任意字符
+..........................................................................................................
+sed 默认只会修改内存中的内容，除非天剑-i选项
+sed -n '1,3p' student.txt    #输出一到三行
+sed '3a new line' student.txt    #第三行后，加入new line
+sed '2c change' student.txt    #第二行换成change
+ 
+sed s/Liming/fuck/g student.txt     #字符串替换
+sed -i 3s/77/99/g student.txt         #第三行77换成99,同时写入文件
+sed 's/\.\/css/\.\.\/css/' index.html    #替换特殊字符
+..........................................................................................................
+格式化输出
+printf '%s\t %s\t %s\t %s\t %s\t %s\t \n' $(cat student.txt)
+ 
+%s 输出字符串
+%i   输出整形
+%8,3f  输出小数点，总8为，其中小数点3位
+ 
+\t tab键盘
+\n 换行
+\r 回车
+ 
+awk 命令
+df -h | grep '/dev/vda1' | awk '{printf $5 "\n"}' | cut -f 1 -d "%"
+awk 'BEGIN{FS=":"}{printf $1 "\n"}' /etc/passwd    #etc下面的所有用户
+awk 'END{printf "这是最后一行" "\n"}BEGIN{FS=":"}{printf $1 "\n"}' /etc/passwd   #etc下面的所有用户 ，最后加上"这是最后一行"
+</code></pre></div>
+
+<div class="row"><span class="txt">==========================================权限=========================================</span></div>
+<div class="row"><pre><code>
+# 权限修改
+chmod -R 755 /tmp/mg/  #权限递归修改/tmp/目录下所有文件权限是755
+4 = read     |    2 = write    |    1 = executable
+所有者(4+2+1)    所属组(4+1)    其他人(4+1)
+-------------------------------------------------------------------------------------------------
+#所有者修改
+chown root /root/file.txt    #file.txt文件所有者修改成root
+ 
+--------------------------------------------------------------------------------------------------
+# acl权限
+dumpe2fs -h /dev/sda5    #查看是否开启acl权限
+getfacl 文件名    #查看文件和目录acl权限
+setfacl -m u:user:rw /project    #user用户对/project有rw权限，组的话把u换成g
+setfacl -m u:user:rw -R /project    #递归，只能给目录设定
+setfacl -m d:u:st:rwx -R /project/    #只能给目录设定默认acl权限
+setfacl -m m:rx file    #把file文件的mask权限改成rx acl权限是mask权限与acl权限，相与的结果
+setfacl -b file    #删除文件下所有的ACL权限 
+setfacl -x  u:user file    #删除user用户对file文件的acl权限
+</code></pre></div>
+
+<div class="row"><span class="txt">==========================================网络命令=========================================    </span></div>
+<div class="row"><pre><code>
+#防火墙firewall-cmd
+firewall-cmd --help   #查看帮助
+firewall-cmd --version    #查看版本
+firewall-cmd --state    #显示状态
+firewall-cmd --complete-reload  #重新读配置，断开用户连接（防火墙严重问题时候用）
+ 
+firewall-cmd  --list-all    #列出所有列表
+firewall-cmd  --list-all-zones    #全部启用的区域的特性
+firewall-cmd  --zone=work --list-all    #所有显示work下的信息
+firewall-cmd  --list-services        #服务列表
+firewall-cmd  --zone=public --list-ports    #查看public所有打开的端口
+ 
+firewall-cmd --zone=public --add-port=88/tcp  #添加88端口
+firewall-cmd --zone=public --add-port=100-500/tcp   #添加100-500之端口
+firewall-cmd --zone=public --remove-port=88/tcp     #删除88端口
+ 
+firewall-cmd --get-active-zones  #获取活动的区域
+firewall-cmd --set-default-zone= #设置默认区域
+firewall-cmd --get-default-zone  #默认区域的网络设置 
+firewall-cmd --get-zone-of-interface=eth0    #查看指定接口所属区域
+ 
+firewall-cmd --get-services                 #列出所有可用服务
+firewall-cmd --zone=public --list-services    #查看某个区域的服务
+firewall-cmd --zone=public --add-service=http     #区域中注册新服务
+firewall-cmd --zone=public --remove-service=https      #删除public区域中不需要的服务
+ 
+firewall-cmd --add-rich-rule='rule family=ipv4 source address=55.22.55.66 port port=5643 protocol=tcp drop' #添加规则
+firewall-cmd --remove-rich-rule="rule family="ipv4" source address="1.2.3.4" drop"  #删除某个rich-rule
+firewall-cmd --add-rich-rule='rule family=ipv4 source address="192.168.1.188" port port=20-21 protocol=tcp accept'#开放ftp 服务给某一ip
+ 
+firewall-cmd --runtime-to-permanent  #永久生效
+firewall-cmd  --reload    #更新防火墙规则
+--------------------------------------------------------------------------------------------------------------------
+Ubuntu UFW 防火墙设置
+sudo apt-get install ufw    #安装方法
+ 
+sudo ufw enable    #启动
+sudo ufw disable     #关闭
+sudo ufw disable        #状态
+sudo ufw default deny #作用：开启了防火墙并随系统启动同时关闭所有外部对本机的访问（本机访问外部正常）。
+ 
+ 
+#开启/禁用相应端口或服务举例
+ufw default allow/deny    3外来访问默认允许/拒绝
+ufw allow/deny 20    #允许/拒绝 访问20端口,20后可跟/tcp或/udp，表示tcp或udp封包。
+ufw allow/deny servicename    #ufw从/etc/services中找到对应service的端口，进行过滤。
+ufw allow proto tcp from 10.0.1.0/10 to    # 本机ip port 25:允许自10.0.1.0/10的tcp封包访问本
+sudo ufw allow 80     #允许外部访问80端口
+sudo ufw delete allow 80     #禁止外部访问80 端口
+sudo ufw allow from 192.168.1.1     #允许此IP访问所有的本机端口
+sudo ufw deny smtp     #禁止外部访问smtp服务
+sudo ufw delete allow smtp     #删除上面建立的某条规则
+ 
+#推荐设置
+sudo apt-get install ufw
+sudo ufw enable
+sudo ufw default deny
+ 
+--------------------------------------------------------------------------------------------------------------------
+网络系统的状态信息 netstat
+ 
+netstat -t  #TCP
+netstat -u  #UDP
+netstat -l  #监听
+netstat -r  #路由
+netstat -n  #显示ip地址或端口号
+ 
+netstat -tlun     #查看本机监听端口
+netstat -an     #查看本机所有网络连接
+netstat -rn     #查看本机路由列表
+netstat -a     #列出所有端口 
+netstat -at     #列出所有tcp端口 
+netstat -au     #列出所有udp端口
+netstat -l     #只显示监听端口 
+netstat -lt     #只列出所有监听 tcp 端口 
+netstat -lu     #只列出所有监听 udp 端口 
+netstat -lx     #只列出所有监听 UNIX 端口
+netstat -s     #显示所有端口的统计信息 
+netstat -st     #显示TCP端口的统计信息 
+netstat -su     #显示UDP端口的统计信息
+</code></pre></div>
+
+<div class="row"><span class="txt">==========================================磁盘命令=========================================  </span></div>
+<div class="row"><pre><code>
+挂载命令
+mount -o remount,rw /    #重新挂载根分区
+-------------------------------------------------------------------------------------------------------------------------
+磁盘分区命令
+fdisk -l
+ 
+fdisk /dev/sda    #磁盘分区
+m、帮助信息。
+p、打印分区表。
+n、新建一个新分区。
+d、删除一个分区。
+q、退出不保存。
+w、把分区写进分区表，保存并退出。
+ 
+mkfs.ext4 /dev/sdb1    #磁盘格式化
+-------------------------------------------------------------------------------------------------------------------------
+LVM逻辑卷
+lv1+lv2....=pg{sdb([pe×n个])+sdc([pe×n个])}    #逻辑卷的结构大意，p多个硬盘pe添加在一个pg也可以添加在多个pg
+########################################################################
+pvcreate    #创建物理卷    
+pvcreate /dev/sdb /dev/sdc    #硬盘格式化成pe
+pvdisplay
+pvs
+########################################################################
+vgcreate pgname /dev/sdb /dev/sdc    #把硬盘添加到pg。centos位置/etc/lvm/backup/vgname
+vgdisplay
+vgs
+########################################################################
+lvcreate -n lvname -L 6G pgname    #lv名字和来自哪个pg
+lvdisplay
+lvs
+########################################################################
+mkfs.ext4 /dev/pgname/lvname    #逻辑卷格式化
+mount /dev/pgname/lvname /home
+########################################################################
+lvremove    /dev/pgname/lvname
+vgremove    vgname    #vg下的lv删除完，在删除vg
+pvremove    /dev/sdb    #vg删除空后才能删除pv
+########################################################################
+lvextend -L +2G /dev/pgname/lvname    #扩充逻辑卷，可以在线执行，不用unmount。
+resize2fs /dev/pgname/lvname    #更新文件系统
+pvcreate /dev/sdd
+vgextend vgname /dev/sdd    #扩充vg大小
+######缩小lv 严格按照顺序走，尽量不要缩小######
+unmount /dev/vgname/lvname    #先卸载
+e2fsck -f /dev/vgname/lvname    #检查磁盘错误
+resize2fs /dev/vgname/lvname 1G
+lvreduce -L -1G /dev/vgname/lvname    #缩小的大小
+lvdisplay
+mount /dev/vgname/lvname /home    #重新挂载
+######从vg拿走pv######
+reduce vgname /dev/sdd    #从vgname组中拿走sdd的硬盘(pv)
+-------------------------------------------------------------------------------------------------------------------------
+</code></pre></div>
+
+<div class="row"><span class="txt">编程</span></div>
+<div class="row"><pre><code>
+gcc 编译器 
+ 
+#编译的四个阶段：
+-E：仅执行编译预处理； 
+-c：仅执行编译操作，不进行连接操作；
+-S：将C代码转换为汇编代码； 
+-o：指定生成的输出文件。
+gcc -o helloword helloword.c    #指定输出文件
+</code></pre></div>
+
+<div class="row"><span class="txt">xrandr(修改分辨率)</span></div>
+<div class="row"><pre><code>xrandr #回车键，查看预设的分辨率xrandr -s 1024*768#选择分辨率后确定</code></pre></div>
+
+<div class="row"><span class="txt">date(显示时间)</span></div>
+<div class="row"><pre><code>
+date +%Y%m%d    #20070601方式打印日期
+date "+%Y_%m_%d %H:%M:%S"    #2013_02_19 13:14:58
+</code></pre></div>
+
+<div class="row"><span class="txt">setUID和setGID</span></div>
+<div class="row"><pre><code>
+#普通用户执行setUID权限的程序时候，暂时得到该文件的所有者的权限。如普通用户修改自己密码。
+chmod 4755 filename    #赋予setUID权限
+chmod u+s filename     #赋予setUID权限   
+chmod 755 filename    #删除setUID权限
+chmod u-s filename     #删除setUID权限 
+###############setGID针对目录的作用##########################
+chmod 2755 filename    #赋予setUID权限
+chmod g+s filename     #赋予setUID权限   
+chmod 755 filename    #删除setUID权限
+chmod g-s filename     #删除setUID权限
+</code></pre></div>
+
+<div class="row"><span class="txt">echo 1 > /proc/sys/vm/drop_caches    #内容释放</span></div>
+<div class="row"><pre><code>
+free -m    #查看内存状况
+sync     #硬盘写入命令，防止数据丢失
+echo 1 > /proc/sys/vm/drop_caches    #执行这条命令之前先sync
+#0 – 不释放
+#1 – 释放页缓存
+#2 – 释放dentries和inodes
+#3 – 释放所有缓存
+cat /proc/sys/vm/drop_caches    #查看内存
+</code></pre></div>
+
+
+
+
+<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><pre><code>LANG</code></pre></div>
+
+<div class="row"><span class="txt">TEXT</span></div>
+<div class="row"><pre><code>LANG</code></pre></div>
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->

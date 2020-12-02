@@ -1,10 +1,11 @@
 <?php  
+require 'data.php'; 
 require 'exec.php'; 
 
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="en" >
 <!--------------------------------------------------头部-------------------------------------------------------->
   <head>
     <!-- Required meta tags -->
@@ -83,7 +84,7 @@ for ($i=0; $i < $num; $i++) {
   </nav>
 </div> -->
 <!--------------------------------------------------内容-------------------------------------------------------->
-<main role="main" class="container">
+<main role="main" class="container" >
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!-- <div class="row"><div class="col-xs-12 col-md-12 btit">电影音乐</div></div>
@@ -98,14 +99,29 @@ for ($i=0; $i < $num; $i++) {
 <?php  
 
 $path = "博客";
-if ( $path == "博客") {
-  txtTit($path);
+
+switch ($path)
+{
+//博客部分
+case "博客":  show_cont_tit($path);
+  break;  
+
+// 软件部分
+case "软件": 
+  echo "<hr>";
+  $n = count($soft);
+  for ($i=0; $i < $n; $i++) { 
+      if ($soft[$i][3] != "") {
+        echo "<div class=\"icon col-3 col-md-1 \"><a href=\"".$soft[$i][2]."\" target=\"_blank\"><img src=\"软件/".$soft[$i][3]."\" class=\"img-fluid rounded\">".$soft[$i][1]."</a></div>";
+      }else{
+        echo "<div class=\"col-6 col-md-2 tit\"><a target=\"_blank\" href=\"".$soft[$i][2]."\">".$soft[$i][1]."</a></div>";
+      }
+  }
+break; 
+
+//出错部分
+default:  echo "!!!";
 }
-
-
-
-
-
 
 ?>
 

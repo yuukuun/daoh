@@ -1,0 +1,109 @@
+
+<pre><code>
+yum install -y epel-release git tree wget vim unzip    ####基础软件
+yum -y install http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm
+yum update --security
+apt-get install openssh-server vim
+</pre></div>
+
+<pre><code>
+创建密码钥匙：
+	ssh-keygen -t rsa -b 2048   ###创建密钥匙，加密类型rsa和dsa
+	ssh-copy-id -i ~/.ssh/id_rsa -p 22 root@192.168.1.5 ###公钥匙传到服务器.ssh/authorized_keys下
+登陆：
+ssh root@3.3.3.3 -p 22 -i ./id_rsa   ##### p:端口 i:密钥
+ssh代理：
+ssh -o ProxyCommand="nc -X 5 -x 127.0.0.1:1080 %h %p" root@3.3.3.3 -p 22    ###本地代理
+ssh -o ProxyCommand="ncat --proxy-type socks5 --proxy 127.0.0.1:1080 %h %p"  root@1.1.1.2 -p 22
+# 如果代理服务器需要认证，可以使用 nc 的升级版 ncat 指定代理服务器的用户名和密码
+$ ssh -o ProxyCommand="ncat --proxy-type http/socks4/socks5 --proxy proxy.net:port --proxy-auth \
+proxyuser:proxypwd %h %p" user@server.net
+rsync同步:
+rsync -av -e 'ssh -p 22 -i ~/.ssh/id_rsa' --exclude={user} /tmp/* root@5.5.5.5:/tmp/ 
+rsync -av -e 'ssh -p 22 -i ~/.ssh/id_rsa' --exclude={'目录',} /tmp/* root@5.5.5.5:/root/  #中文目录带点
+rsync代理：
+https://www.jianshu.com/p/f6990f3a52eb
+rsync -av -e 'ssh -o ProxyCommand="ncat --proxy-type socks5 --proxy 127.0.0.1:1080 %h %p" \
+root@1.2.3.5 -p 22' /root/test root@:/root/
+##### /tmp/*复制到/home/下 ##### a:归档 v:显示 #####
+who    ###查看谁在登录
+w    ###登录用户详细信息
+last    ###/var/log/wtmp 记录的登录系统的用户名
+lastb    ###/var/log/btmp 登入系统失败的用户名单
+lastlog    ###/var/log/lastlog
+</pre></div>
+
+<pre><code>
+路由：
+route -n    ###查看路由表
+route add default gw 192.168.1.1    ###设置网关，del删除网关
+扫描：
+nmap -sP 192.168.1.0/24 ###扫描局域网内所有ip /24=255.255.255.0
+nmap -sT 192.168.1.1    ###扫描端口
+状态：
+netstat -antp   ###查看TCP链接
+netstat -tlun   ###查看TCP链接
+netstat -an  ###查看所有链接
+HOSTS：
+vim /etc/hosts ###指定：192.168.1.10 baidu.com
+DNS：
+nslookup yahoo.com    ###查看DNS解析
+vim /etc/resolv.conf ### debian系列：nameserver 8.8.8.8
+</code></pre>
+
+<pre><code>
+fdisk -l    # 分区情况
+df -h    # 挂载情况
+du -sh /home   ##### 目录容量 s:总量 h:人类模式 c:所有文件 #####
+</code></pre>
+
+<pre><code>
+ls -lFRa    ##### -l:列表     -F:区分     -l:递归     -a:全部   #####
+ls -ltr    ###安修改时间显示
+ls [ab].txt ###查找a.txt和b.txt文件
+ls [^ab].txt ###查找非a.txt和b.txt文件
+ls [a-z]*    ###查找a-z字母开头的文件
+</code></pre>
+
+<pre><code>
+touch file.txt    ##### 创建文件
+touch file{1..10}.txt   ###创建file名字的10个文件
+mkdir -p /home/temp    #####  创建目录 p:递归
+mkdir mydir{1..5}    ###创建五个目录
+</code></pre>
+
+<pre><code>
+tar -zcvf a.tar.gz ./*    ###当前目录下压缩
+tar -zxvf a.tar.gz -C /root    ###解压到root目录
+tar -tf a.tar.gz    ###查看压缩文件
+</code></pre>
+
+<pre><code>
+find /home -iname "ssh*"    ###查找文件
+find /etc -type d -name "ssh" ###查找ssh目录
+find /home/ ! -type f   ###取反，-O -a
+sudo find /etc -mtime -2    ###最近两天
+sudo find /etc -mtime 3    ###三天
+sudo find /etc -mtime +2    ###两天前
+ 
+通配符就是键盘上特殊公共来代表特殊功能，适用范围是命令行和脚本。
+ls *.txt  ###*匹配所有字符
+ls ??.txt   ###?匹配单个字符
+</code></pre>
+
+<pre><code>
+""    ###解析变量
+''
+^     ###取反
+?    ###任意一个字符
+*    ###任意多个字符
+touch {a..d}.txt    ###创建a-b.txt的文件
+</code></pre>
+
+
+
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->

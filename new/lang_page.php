@@ -60,7 +60,8 @@ for ($i=0; $i < $num; $i++) {
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <?php
 $tpath = $_GET['tit'];
-echo "<h1><a href=\"index.php\">".$tpath."</a></h1><span class=\"texts\"><hr>";
+// echo "<h1><a href=\"index.php\">".$tpath."</a></h1><span class=\"texts\"><hr>";
+echo "<div class=\"row\"><div class=\"col-xs-12 col-md-12 btit\"><a href=\"index.php\">".$tpath."</a></div></div>";
 
 $file = "$tpath"; 
 $cbody = file($file); //file（）函数作用是返回一行数组，txt里有三行数据，因此一行被识别为一个数组，三行被识别为三个数组
@@ -72,10 +73,7 @@ for($i=0;$i<count($cbody);$i++){ //count函数就是获取数组的长度的，�
 
 ?>
 
-<!-- 
-<img src="IMG" class="img-fluid col-12 col-md-12" alt="Responsive image"> 
-(转自：<a href="AAAAA" target="_blank">AAAAA</a>)
--->
+
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 </span>
@@ -88,7 +86,7 @@ for($i=0;$i<count($cbody);$i++){ //count函数就是获取数组的长度的，�
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="css/offcanvas.js"></script>
-<div class="goTop" id="js-go_top"><a href="#ups"><img src="../css/icon_top.png" alt="回到顶部图片"></a></div>
+<div class="goTop" id="js-go_top"><a href="#ups"><img src="css/icon_top.png" alt="回到顶部图片"></a></div>
 <script src="css/GoToTop.js"></script>
 <script src="css/GoToTop.js"></script>
   </body>
