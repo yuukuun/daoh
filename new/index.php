@@ -45,14 +45,8 @@ require 'exec.php';
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <!-- <li class="nav-item active"><a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a></li> -->
-<?php  
-// 顶部导航条
-$num = count($nav);
-for ($i=0; $i < $num; $i++) { 
-  echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"".$nav[$i]."\">".$nav[$i]."</a></li>";
-}
+<?php   show_nav($nav);  // 顶部导航条   ?>
 
-?>
 
      <!--  <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
@@ -98,28 +92,30 @@ for ($i=0; $i < $num; $i++) {
 
 <?php  
 
-$path = "博客";
+$sel = "博客";
 
-switch ($path)
+switch ($sel)
 {
-//博客部分
-case "博客":  show_cont_tit($path);
+//博客
+case "博客":  show_cont_tit($sel);
   break;  
+//语言
+case "语言":  show_cont_tit($sel);
+  break;  
+// 软件
+case "软件": show_daoh($daoh,$sel);
+  break; 
+// 导航
+case "导航": show_daoh($daoh,$sel);
+  break; 
+// 音乐
+case "音乐": show_music($sel);
+  break; 
+// 阿里巴巴
+case "阿里巴巴": show_shop($shop);
+  break; 
 
-// 软件部分
-case "软件": 
-  echo "<hr>";
-  $n = count($soft);
-  for ($i=0; $i < $n; $i++) { 
-      if ($soft[$i][3] != "") {
-        echo "<div class=\"icon col-3 col-md-1 \"><a href=\"".$soft[$i][2]."\" target=\"_blank\"><img src=\"软件/".$soft[$i][3]."\" class=\"img-fluid rounded\">".$soft[$i][1]."</a></div>";
-      }else{
-        echo "<div class=\"col-6 col-md-2 tit\"><a target=\"_blank\" href=\"".$soft[$i][2]."\">".$soft[$i][1]."</a></div>";
-      }
-  }
-break; 
-
-//出错部分
+//出错
 default:  echo "!!!";
 }
 

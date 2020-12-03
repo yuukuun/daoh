@@ -47,16 +47,8 @@ require 'exec.php';
 
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-<?php  
-// 顶部导航条
-$num = count($nav);
-for ($i=0; $i < $num; $i++) { 
-  echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"".$nav[$i]."\">".$nav[$i]."</a></li>";
-}
+<?php   show_nav($nav);  // 顶部导航条   ?>
 
-
-
-?>
     </ul>
   </div>
 </nav>
@@ -67,7 +59,7 @@ for ($i=0; $i < $num; $i++) {
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <?php
 $tpath = $_GET['tit'];
-echo "<h1><a href=\"index.php\">".$tpath."</a></h1><span class=\"cont\"><hr>";
+echo "<h3><a href=\"index.php\">".$tpath."</a></h3><span class=\"cont\"><hr>";
 
 $file = "$tpath"; 
 $cbody = file($file); //file（）函数作用是返回一行数组，txt里有三行数据，因此一行被识别为一个数组，三行被识别为三个数组

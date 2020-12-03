@@ -1,12 +1,10 @@
-
+<pre><code></pre></div>
 <pre><code>
 yum install -y epel-release git tree wget vim unzip    ####基础软件
 yum -y install http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm
 yum update --security
 apt-get install openssh-server vim
-</pre></div>
 
-<pre><code>
 创建密码钥匙：
 	ssh-keygen -t rsa -b 2048   ###创建密钥匙，加密类型rsa和dsa
 	ssh-copy-id -i ~/.ssh/id_rsa -p 22 root@192.168.1.5 ###公钥匙传到服务器.ssh/authorized_keys下

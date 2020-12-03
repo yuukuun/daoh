@@ -1,0 +1,61 @@
+HTTPS Certbot acme.sh SSL证书
+
+certbot:
+<pre><code>
+###安装。根据官方安装
+yum remove epel-release
+yum install -y epel-release
+yum install -y certbot python2-certbot-nginx
+ 
+###出错就解决
+pip install --upgrade --force-reinstall 'requests==2.6.0' urllib3
+ 
+###单域名证书
+certbot certonly --webroot -w /usr/local/nginx/html/ -d baidu.com -m 0@yahoo.com --agree-tos --test-cert -n    ### --test-cert测试模式 -n不交互
+ 
+###通配符域名证书
+certbot -d baidu.cn -d '*.baidu.com' --manual --preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory certonly \
+-m 123@gmail.com --agree-tos
+ 
+###自动通配符证书，需要域名验证
+wget https://dl.eff.org/certbot-auto && chmod a+x certbot-auto
+./certbot-auto -d '*.baidu.com' --manual --preferred-challenges dns-01 certonly -m 1233@qq.com --agree-tos \
+--server https://acme-v02.api.letsencrypt.org/directory
+ 
+###续费
+echo '5 4 * * 2 /usr/bin/certbot renew --dry-run "/usr/local/nginx/sbin/nginx -s reload"' >> /var/spool/cron/root
+###删除
+certbot certificates
+certbot delete --cert-name example.com
+</code></pre>
+
+acme.sh:
+<pre><code>
+1.安装：
+wget -O -  https://get.acme.sh | sh
+acme.sh -h  ###检查
+~/.acme.sh/dnsapi/  ###支持的DNS
+ 
+2.DNS解析添加KEY：
+阿里云：https://ak-console.aliyun.com/#/accesskey
+~/.bashrc文件中添加阿里云的“AccessKey ID”和“Access Key Secret”
+export Ali_Key="sdfsdfsdfljlbjkljlkjsdfoiwje"
+export Ali_Secret="jlsdflanljkljlfdsaklkjflsa"
+ 
+CloundFlare获取证书：MyProfile中Global API key和Origin API key
+~/.bashrc文件中添加这个两个变量
+export [email protected]
+export CF_Key=85302dsiorw3oisjdkf899234sdf72dfdb46
+ 
+3.安装证书：
+acme.sh --issue --dns dns_cf -d domain.com -d '*.domain.com'   
+### 制定DNS和域名，dns_cf是CloudFlare
+ 
+4.拷贝证书到nginx目录
+acme.sh --install-cert -d 'domain.com' --key-file /usr/local/nginx/ssl/domain.com/private.pem --fullchain-file /usr/local/nginx/ssl/domain.com/fullchain.pem \
+--reloadcmd "nginx -s reload"
+ 
+5.自动续期
+0 0 * * * "/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" >> /var/log/acme.sh-auto-renew.log
+acme.sh --cron  ###续期情
+</code></pre>

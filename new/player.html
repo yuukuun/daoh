@@ -1,0 +1,32 @@
+<!-- ---------------------------------------------------------音频播放器------------------------------------------------------------------------------------------- -->
+<div class="row"><audio class="col-md-10 col-12 audioplayer" id="player" src="" autoplay="autoplay" loop="loop" controls="controls">您的浏览器不支持播放，请使用Chrome浏览器</audio></div>
+<div class="row">
+  <div  class="col-md-10 col-12 audioplayerbg" id="playerbg">
+    <div class="col-12 col-md-10 btn btn-sm btn-default">
+      <a id="playerbgdown" type="button" target="_blank" download="" >下载</a>&nbsp;&nbsp;&nbsp;
+      <a id="playerbgdown" data-toggle="modal" data-target="#myModal" type="button" target="_blank" download="" >歌词</a> 
+    </div>
+  </div>  
+</div>
+<!-- ---------------------------------------------------------歌词------------------------------------------------------------------------------------------- -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+      <!-- 这里是内容区域 -->
+       <object data="" id="inobj" class="col-md-10 col-12"></object> <!-- 导入文件 -->
+
+      </div>
+      <div class="modal-footer">
+       <!--  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> -->
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->

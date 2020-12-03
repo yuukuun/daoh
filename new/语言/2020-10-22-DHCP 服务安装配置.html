@@ -1,0 +1,38 @@
+DHCP 服务安装配置
+
+安装配置：
+<pre><code>
+关闭防火墙，关闭selinux，关闭虚拟机的DHCP。
+sudo yum install dhcp dhcp-common
+dhcp        ###软件包
+dhcp-common ###命令软件包
+dhcp        ###服务名
+dhcrelay    ###中继服务名
+vim /etc/dhcp/dhcpd.conf             ###配置
+vim /user/share/doc/dhcp***.example  ###配置模板
+UDP 67 ###监听客户端的端口
+UDP 68 ###服务的端口
+</code></pre>
+  DHCP是主机动态分配协议在应用层工作UDP模式，局域网内工作。集中管理，分配网络资源。
+环境准本：
+  防火墙和SElinux关闭，虚拟机的DHCP功能关闭掉。环境主机都设置成NAT模式。DHCP是基于配置文件向外分配资源的服务，配置文件没有正确会，不能启动DHCP服务。
+
+配置文件：
+<pre><code>
+subnet 192.168.1.0 netmask 255.255.255.0 {  ### 声明网段和子网码
+  range 192.168.1.3 192.168.1.254;          ### IP池
+  option domain-name-servers 8.8.8.8;       ###DNS服务器地址
+  option domain-name "internal.example.org";            ###DNS域
+  option routers 192.168.1.1;               ###网关地址
+  option broadcast-address 192.168.1.255;   ###广播地址(可选)
+  default-lease-time 600;                   ###默认续租时间
+  max-lease-time 7200;                      ###最大续租时间
+}
+</code></pre>
+DHCP制定IP分配：
+<pre><code>
+host fantasia {
+  hardware ethernet 08:00:07:26:c0:a5;    ###客户机mac地址。
+  fixed-address 192.168.1.50;    ###被绑定的ip，ip池以外的地址。
+}
+</code></pre>
