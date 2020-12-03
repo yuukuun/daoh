@@ -126,7 +126,7 @@ switch ($sel)
     case "女装": show_shop($shop_d);
       break; 
     //默认
-    default:  show_music('音乐');
+    default:  show_daoh($daoh_d,"软件");
 }
 
 //https://www.cnblogs.com/ronghua/p/11347090.html
