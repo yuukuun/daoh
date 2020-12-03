@@ -3,7 +3,7 @@
 function  show_nav($nav) {
 	$num = count($nav);
 	for ($i=0; $i < $num; $i++) { 
-	  echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"".$nav[$i]."\">".$nav[$i]."</a></li>";
+	  echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?s=".$nav[$i]."\">".$nav[$i]."</a></li>";
 	}
 }
 

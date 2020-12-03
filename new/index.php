@@ -45,7 +45,7 @@ require 'exec.php';
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <!-- <li class="nav-item active"><a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a></li> -->
-<?php   show_nav($nav);  // 顶部导航条   ?>
+<?php   show_nav($nav_d);  // 顶部导航条   ?>
 
 
      <!--  <li class="nav-item dropdown">
@@ -92,32 +92,41 @@ require 'exec.php';
 
 <?php  
 
-$sel = "博客";
+$sel = $_GET["s"];
+
 
 switch ($sel)
-{
-//博客
-case "博客":  show_cont_tit($sel);
-  break;  
-//语言
-case "语言":  show_cont_tit($sel);
-  break;  
-// 软件
-case "软件": show_daoh($daoh,$sel);
-  break; 
-// 导航
-case "导航": show_daoh($daoh,$sel);
-  break; 
-// 音乐
-case "音乐": show_music($sel);
-  break; 
-// 阿里巴巴
-case "阿里巴巴": show_shop($shop);
-  break; 
-
-//出错
-default:  echo "!!!";
+    {
+    //博客
+    case "博客":  show_cont_tit($sel);
+      break;  
+    //语言
+    case "语言":  show_cont_tit($sel);
+      break;  
+    // 软件
+    case "软件": show_daoh($daoh_d,$sel);
+      break; 
+    // 导航
+    case "导航": show_daoh($daoh_d,$sel);
+      break; 
+    // 音乐
+    case "音乐": show_music($sel);
+      break; 
+    // 阿里巴巴
+    case "阿里巴巴": show_shop($shop_d);
+      break; 
+    //默认
+    default:  show_music('音乐');
 }
+
+//https://www.cnblogs.com/ronghua/p/11347090.html
+// echo "<br>";
+// echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];
+// echo $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].$_SERVER['QUERY_STRING'];
+// echo "<br>";
+
+// echo $_GET["s"];
+
 
 ?>
 
