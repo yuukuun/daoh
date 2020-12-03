@@ -45,7 +45,9 @@ require 'exec.php';
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <!-- <li class="nav-item active"><a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a></li> -->
-<?php   show_nav($nav_d);  // 顶部导航条   ?>
+      <?php     
+        show_nav($daoh_d,$shop_d);  // 顶部导航条   
+      ?>
 
 
      <!--  <li class="nav-item dropdown">
@@ -112,8 +114,10 @@ switch ($sel)
     // 音乐
     case "音乐": show_music($sel);
       break; 
-    // 阿里巴巴
-    case "阿里巴巴": show_shop($shop_d);
+    // 头部
+    case "头部": show_shop($shop_d);
+    // 女装
+    case "女装": show_shop($shop_d);
       break; 
     //默认
     default:  show_music('音乐');
@@ -126,6 +130,17 @@ switch ($sel)
 // echo "<br>";
 
 // echo $_GET["s"];
+
+echo "<hr>";
+
+
+
+
+
+
+
+
+
 
 
 ?>

@@ -47,7 +47,9 @@ require 'exec.php';
 
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-<?php   show_nav($nav);  // 顶部导航条   ?>
+       <?php     
+        show_nav($daoh_d,$shop_d);  // 顶部导航条    
+      ?>
 
     </ul>
   </div>

@@ -1,9 +1,26 @@
 <?php  
 //////////// 主要导航条 ////////////
-function  show_nav($nav) {
-	$num = count($nav);
-	for ($i=0; $i < $num; $i++) { 
-	  echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?s=".$nav[$i]."\">".$nav[$i]."</a></li>";
+// function  show_nav($nav) {
+// 	$num = count($nav);
+// 	for ($i=0; $i < $num; $i++) { 
+// 	  echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?s=".$nav[$i]."\">".$nav[$i]."</a></li>";
+// 	}
+// }
+function  show_nav($arr1,$arr2) {
+	$dirarr=scandir('./');
+	foreach ( $dirarr as  $value ) {
+		if ( is_dir($value) && $value != "css" && $value != "icon" && $value != "img" && $value != "." && $value != ".." ) {
+			echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?s=".$value."\">".$value."</a></li>";
+		}	
+	}
+fors($arr1);fors($arr2);
+}
+function  fors($arr) {
+	$n = count($arr);
+	for ($i=0; $i < $n; $i++) { 
+		if ( $arr[$i][0] != $arr[$i + 1][0] ) {
+			echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?s=".$arr[$i][0]."\">".$arr[$i][0]."</a></li>";
+		}	
 	}
 }
 
@@ -15,6 +32,7 @@ function  show_cont_tit($path) {
 	}
   	echo "</div>";
 }
+
 
 //////////// 软件 导航 ////////////
 function  show_daoh($arr,$name) {
@@ -34,6 +52,7 @@ function  show_daoh($arr,$name) {
 	  }
 	echo "</div>";
 }
+
 
 //////////// 音乐 ////////////
 function  show_music($dir) {
@@ -69,6 +88,7 @@ $cbody = file($file); //file（）函数作用是返回一行数组，txt里有�
 
 }
 
+
 //////////// 阿里巴巴 ////////////
 function  show_shop($arr) {
 	echo "<div class=\"row\"><div class=\"col-xs-12 col-md-12 btit\">购物</div></div>";
@@ -88,6 +108,13 @@ function  show_shop($arr) {
 	  }
 	echo "</div>";
 }
+
+
+
+
+
+
+
 
 
 ?>
