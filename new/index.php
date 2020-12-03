@@ -104,16 +104,22 @@ switch ($sel)
       break;  
     //语言
     case "语言":  show_cont_tit($sel);
-      break;  
+      break; 
+    //易经
+    case "易经":  show_cont_tit($sel);
+      break; 
+
     // 软件
     case "软件": show_daoh($daoh_d,$sel);
       break; 
     // 导航
     case "导航": show_daoh($daoh_d,$sel);
       break; 
+
     // 音乐
     case "音乐": show_music($sel);
       break; 
+
     // 头部
     case "头部": show_shop($shop_d);
     // 女装

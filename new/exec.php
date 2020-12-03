@@ -15,6 +15,7 @@ function  show_nav($arr1,$arr2) {
 	}
 fors($arr1);fors($arr2);
 }
+
 function  fors($arr) {
 	$n = count($arr);
 	for ($i=0; $i < $n; $i++) { 
@@ -65,7 +66,7 @@ EOF;
 echo $navstart;
 	$dirarr=scandir($dir);
 	foreach ($dirarr as  $value) {
-		if ( is_dir($dir."/".$value) ) {
+		if ( is_dir($dir."/".$value) && $value != "." && $value != "..") {
 			echo "<a class=\"nav-link\" href=\"".$value."\">".$value."</a>";
 		}
 		
