@@ -28,7 +28,14 @@ function  fors($arr) {
 //////////// 博客 语言 易经 ////////////
 function  show_cont_tit($path) {
  	echo "<div class=\"row\"><div class=\"col-xs-12 col-md-12 btit\">".$path."</div></div> <div class=\"row\">";
- 	foreach (glob($path."/*.html") as $pathname) {
+ 	foreach (glob($path."/*.php") as $pathname) {
+ 		$title = strstr($pathname,'.',true);	//去掉'.'之后内容
+ 		$title = strstr($title,'/');
+ 		$title = str_replace('/','',$title);	//去到'/'
+		echo "<div class=\"col-12 col-md-6 tit\"><a href=\"page.php?tit=".$pathname."\">".$title."</a></div>";
+	}
+	echo "</div><hr><div class=\"row\">";
+	foreach (glob($path."/*.html") as $pathname) {
  		$title = strstr($pathname,'.',true);	//去掉'.'之后内容
  		$title = strstr($title,'/');
  		$title = str_replace('/','',$title);	//去到'/'

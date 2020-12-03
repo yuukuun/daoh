@@ -97,7 +97,7 @@ body {
       color: #022;
       background-color: #e8e7e3;
       border: 1px solid #f8f9fa;
-      text-align: center;
+      text-align: left;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
